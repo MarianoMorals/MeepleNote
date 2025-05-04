@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MeepleNote.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MeepleNote.Views"
+    FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
+
+    <!-- Páginas de autenticación (sin barra de navegación) -->
+    <ShellContent 
+        Route="LoginPage" 
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Shell.TabBarIsVisible="False" />
+
+    <ShellContent 
+        Route="RegisterPage" 
+        ContentTemplate="{DataTemplate views:RegisterPage}"
+        Shell.TabBarIsVisible="False" />
+
+    <!-- Barra de navegación inferior con páginas independientes -->
+    <TabBar>
+        <Tab Title="Perfil" Icon="icon_profile.png" Route="PerfilPage">
+            <ShellContent ContentTemplate="{DataTemplate views:PerfilPage}" />
+        </Tab>
+
+        <Tab Title="Colección" Icon="icon_collection.png" Route="ColeccionPage">
+            <ShellContent ContentTemplate="{DataTemplate views:ColeccionPage}" />
+        </Tab>
+
+        <Tab Title="Partidas" Icon="icon_games.png" Route="PartidasPage">
+            <ShellContent ContentTemplate="{DataTemplate views:PartidasPage}" />
+        </Tab>
+
+        <Tab Title="Explorar" Icon="icon_explore.png" Route="ExplorarPage">
+            <ShellContent ContentTemplate="{DataTemplate views:ExplorarPage}" />
+        </Tab>
+
+        <Tab Title="Utilidades" Icon="icon_tools.png" Route="UtilidadesPage">
+            <ShellContent ContentTemplate="{DataTemplate views:ExplorarPage}" />
+        </Tab>
+    </TabBar>
+</Shell>

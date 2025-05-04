@@ -1,0 +1,20 @@
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MeepleNote.Views.PerfilPage"
+    BackgroundColor="{StaticResource BackgroundColor}">
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+        <Label Text="Perfil de Usuario"
+               FontSize="24"
+               HorizontalOptions="Center" />
+        <Entry x:Name="NombreEntry" Text="{Binding Nombre}" Placeholder="Tu nombre"/>
+        <Button Text="Guardar cambios" Clicked="OnGuardarClicked"/>
+
+
+        <Button Text="Cerrar sesión" Clicked="OnCerrarSesionClicked"/>
+
+
+        <!-- Aquí luego pondre formulario para editar perfil -->
+    </VerticalStackLayout>
+</ContentPage>

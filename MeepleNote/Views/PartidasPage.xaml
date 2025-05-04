@@ -1,0 +1,14 @@
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MeepleNote.Views.PartidasPage"
+    BackgroundColor="{StaticResource BackgroundColor}">
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+        <Label Text="Historial de Partidas"
+               FontSize="24"
+               HorizontalOptions="Center" />
+
+        <!-- Aquí luego pondremos la lista de partidas -->
+    </VerticalStackLayout>
+</ContentPage>

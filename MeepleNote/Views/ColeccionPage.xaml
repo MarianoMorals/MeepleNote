@@ -1,0 +1,49 @@
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MeepleNote.Models"
+    x:Class="MeepleNote.Views.ColeccionPage"
+    BackgroundColor="{StaticResource BackgroundColor}">
+
+    <VerticalStackLayout Padding="10" Spacing="10">
+
+        <Label Text="Mi Colección"
+               FontSize="24"
+               HorizontalOptions="Center"
+               Margin="10"/>
+        <Button Text="Eliminar seleccionados"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Clicked="OnEliminarSeleccionadosClicked"
+                HorizontalOptions="Center"/>
+        <ScrollView>
+            <CollectionView x:Name="ColeccionList" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Juego">
+                        
+                        <Frame BorderColor="{StaticResource PrimaryColor}" CornerRadius="12" Margin="5">
+                            <HorizontalStackLayout Spacing="10">
+                                <CheckBox IsChecked="{Binding IsSelected}" VerticalOptions="Center" />
+                                <Image Source="{Binding FotoPortada}" 
+                                       WidthRequest="80" 
+                                       HeightRequest="80"
+                                       Aspect="AspectFit" />
+
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Titulo}" FontSize="20" TextColor="Black"/>
+                                    <Label Text="{Binding Puntuacion, StringFormat='Puntuación: {0:F1}'}" FontSize="14" TextColor="Gray"/>
+                                    <Button Text="Ver Detalles"
+                        Clicked="OnVerDetallesClicked"
+                        CommandParameter="{Binding .}" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        
+
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeepleNote", "MeepleNote\MeepleNote.csproj", "{DF0EA9F6-7444-4905-9405-85FA7F230904}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF0EA9F6-7444-4905-9405-85FA7F230904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF0EA9F6-7444-4905-9405-85FA7F230904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF0EA9F6-7444-4905-9405-85FA7F230904}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DF0EA9F6-7444-4905-9405-85FA7F230904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF0EA9F6-7444-4905-9405-85FA7F230904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF0EA9F6-7444-4905-9405-85FA7F230904}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4839A962-480E-4320-81B4-840E6AE3C5C6}
+	EndGlobalSection
+EndGlobal

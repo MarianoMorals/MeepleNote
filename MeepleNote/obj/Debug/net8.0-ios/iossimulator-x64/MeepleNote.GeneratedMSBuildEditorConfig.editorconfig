@@ -1,0 +1,89 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-ios
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MeepleNote
+build_property.ProjectDir = C:\Users\mot_7\Desktop\MeepleNote\MeepleNote\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Views/ColeccionPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.ColeccionPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ColeccionPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ColeccionPage.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Views/DetalleJuegoPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.DetalleJuegoPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DetalleJuegoPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DetalleJuegoPage.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Views/ExplorarPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.ExplorarPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ExplorarPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ExplorarPage.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Views/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Views/PartidasPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.PartidasPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PartidasPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PartidasPage.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Views/PerfilPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.PerfilPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PerfilPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PerfilPage.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Views/PrincipalPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.PrincipalPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PrincipalPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PrincipalPage.xaml
+
+[C:/Users/mot_7/Desktop/MeepleNote/MeepleNote/Views/RegisterPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.RegisterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\RegisterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\RegisterPage.xaml

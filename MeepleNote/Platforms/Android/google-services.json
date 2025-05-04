@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "114939457714",
+    "project_id": "meeplenote",
+    "storage_bucket": "meeplenote.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114939457714:android:e1066d8a2601437c1cd9ab",
+        "android_client_info": {
+          "package_name": "com.marianomorales.meeplenote"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmcqsaPemAyArjJBBiV7nFm2TeXLFp9cI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
