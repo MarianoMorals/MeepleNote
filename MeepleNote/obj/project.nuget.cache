@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W/k9wuUAHAM=",
+  "dgSpecHash": "9VAiMgbtUPk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mot_7\\Desktop\\MeepleNote\\MeepleNote\\MeepleNote.csproj",
+  "projectFilePath": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\MeepleNote.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mot_7\\.nuget\\packages\\firebase.auth\\1.0.0\\firebase.auth.1.0.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\firebase.database\\1.0.0\\firebase.database.1.0.0.nupkg.sha512",

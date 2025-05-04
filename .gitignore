@@ -1,0 +1,36 @@
+# Build Folders
+bin/
+obj/
+temp/
+TestResults/
+**/AppPackages/
+**/BundleArtifacts/
+**/PackageArtifacts/
+
+# User-specific files
+.vs/
+*.user
+*.suo
+
+# Configuration files
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Rider/JetBrains IDEs
+.idea/
+
+# macOS artifacts
+*.DS_Store
+
+# Visual Studio for Mac
+.vscode/

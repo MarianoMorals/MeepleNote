@@ -87522,11 +87522,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mot_7\\Desktop\\MeepleNote\\MeepleNote\\MeepleNote.csproj",
+      "projectUniqueName": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\MeepleNote.csproj",
       "projectName": "MeepleNote",
-      "projectPath": "C:\\Users\\mot_7\\Desktop\\MeepleNote\\MeepleNote\\MeepleNote.csproj",
+      "projectPath": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\MeepleNote.csproj",
       "packagesPath": "C:\\Users\\mot_7\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mot_7\\Desktop\\MeepleNote\\MeepleNote\\obj\\",
+      "outputPath": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
