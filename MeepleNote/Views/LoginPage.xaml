@@ -4,37 +4,35 @@
              x:Class="MeepleNote.Views.LoginPage"
              Title="LoginPage">
 
-    <VerticalStackLayout Padding="30" Spacing="15">
+    <ScrollView Padding="30" VerticalOptions="Center">
+        <VerticalStackLayout Spacing="15">
 
-        <!-- Logo Provisional-->
-        <Image Source="logo.png"
-               HeightRequest="150"
-               WidthRequest="150"
-               HorizontalOptions="Center"
-               Margin="0,20" />
+            <Image Source="logo.png"
+                    HeightRequest="150"
+                    WidthRequest="150"
+                    HorizontalOptions="Center"
+                    Margin="0,20" />
 
-        <!-- Título de la aplicación -->
-        <Label Text="MeepleNote"
-               FontSize="32"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               Margin="0,10" />
-        
-        <!-- Entradas de usuario -->
-        <Entry x:Name="UsernameEntry" Placeholder="Email" />
-        <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True" />
+            <Label Text="MeepleNote"
+                    FontSize="32"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="0,10" />
 
-        <!-- Mantener sesión -->
-        <HorizontalStackLayout HorizontalOptions="Center">
-            <CheckBox x:Name="RecordarSesionCheck" />
-            <Label Text="Mantener sesión iniciada" VerticalOptions="Center" />
-        </HorizontalStackLayout>
+            <Entry x:Name="UsernameEntry" Placeholder="Email" />
+            <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True" />
 
-        <!-- Botones -->
-        <Button Text="Iniciar sesión" Clicked="OnLoginClicked" />
-        <Button Text="Registrarse" Clicked="OnIrARegistro" />
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <CheckBox x:Name="RecordarSesionCheck" />
+                <Label Text="Mantener sesión iniciada" VerticalOptions="Center" />
+            </HorizontalStackLayout>
 
-    </VerticalStackLayout>
+            <Button Text="Iniciar sesión" Clicked="OnLoginClicked" />
+            <Button Text="Registrarse" Clicked="OnIrARegistro" />
+            <Button Text="Restablecer Contraseña" Clicked="OnRestablecerContraseñaClicked"  />
+
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

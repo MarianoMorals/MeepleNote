@@ -1,11 +1,13 @@
 using Firebase.Auth;
+using MeepleNote.Models;
 using MeepleNote.Services;
 using Microsoft.Maui.Storage; // Para Preferences
+using System;
+using System.Threading.Tasks;
+
 namespace MeepleNote.Views;
 
 public partial class LoginPage : ContentPage {
-    
-    // Se asume que _authService está bien definido en algún lugar
     private readonly FirebaseAuthService _authService = new FirebaseAuthService();
 
     public LoginPage() {
@@ -17,49 +19,77 @@ public partial class LoginPage : ContentPage {
         var password = PasswordEntry.Text;
 
         try {
-            // Login en Firebase
+            // Iniciar sesión en Firebase Authentication
             var auth = await _authService.LoginAsync(email, password);
             var token = auth.FirebaseToken;
-            var usuarioId = auth.User.LocalId;
+            var firebaseUsuarioId = auth.User.LocalId; // Obtener el ID único del usuario de Firebase
 
             if (string.IsNullOrEmpty(token))
                 throw new Exception("Token inválido");
 
-            // Guardamos preferencias para recordar la sesión
+            // Guardar preferencias de sesión y el Firebase User ID
             Preferences.Set("SesionIniciada", RecordarSesionCheck.IsChecked);
-            Preferences.Set("UsuarioId", usuarioId);
+            Preferences.Set("UsuarioId", firebaseUsuarioId); // Guardar el Firebase User ID
+            Preferences.Set("FirebaseToken", token); // Guardar el token para futuras peticiones
 
-            // Sincronización de datos
+            // Inicializar servicios con el token
             var firebaseDb = new FirebaseDatabaseService(token);
             var sqliteDb = new SQLiteService();
+            var sincronizacionService = new SincronizacionService(sqliteDb, firebaseDb);
 
-            var fechaFirebase = await firebaseDb.ObtenerFechaUltimaSync(usuarioId);
-            var fechaLocal = sqliteDb.ObtenerFechaUltimaSync();
-
-            if (fechaFirebase > fechaLocal) {
-                var datosFirebase = await firebaseDb.DescargarTodo(usuarioId);
-                await sqliteDb.GuardarTodoDesdeFirebase(datosFirebase);
+            // Verificar si el usuario ya existe en la base de datos local por su Firebase User ID
+            var usuarioExistente = await sqliteDb.GetUsuarioByFirebaseIdAsync(firebaseUsuarioId);
+            if (usuarioExistente == null) {
+                // Si el usuario no existe localmente, crear un nuevo registro con el Firebase User ID
+                var nuevoUsuario = new Usuario { FirebaseUserId = firebaseUsuarioId };
+                await sqliteDb.SaveUsuarioAsync(nuevoUsuario);
             }
+
+            // Sincronizar datos desde Firebase si es necesario al iniciar sesión
+            await sincronizacionService.SincronizarDesdeFirebaseSiNecesario();
 
             // Redirigir a la página de Colección
             await Shell.Current.GoToAsync($"//{nameof(ColeccionPage)}");
         }
-        catch (Exception ex) {
-            await DisplayAlert("Error", "Usuario o contraseña incorrectos", "OK");
+        catch (FirebaseAuthException firebaseAuthEx) {
+            string errorMessage = "Error de autenticación: ";
+            switch (firebaseAuthEx.Reason) {
+                case AuthErrorReason.InvalidEmailAddress:
+                    errorMessage += "Correo electrónico inválido.";
+                    break;
+                case AuthErrorReason.WrongPassword:
+                    errorMessage += "Contraseña incorrecta.";
+                    break;
+                default:
+                    errorMessage += firebaseAuthEx.Message;
+                    break;
+            }
+            await DisplayAlert("Error", errorMessage, "OK");
         }
-    }
-
-    private async void OnCerrarSesionClicked(object sender, EventArgs e) {
-        // Eliminar preferencias al cerrar sesión
-        Preferences.Remove("SesionIniciada");
-        Preferences.Remove("UsuarioId");
-
-        // Redirigir a la página de login
-        await Shell.Current.GoToAsync("//LoginPage");
+        catch (Exception ex) {
+            await DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
+        }
     }
 
     private async void OnIrARegistro(object sender, EventArgs e) {
         // Redirigir a la página de registro
         await Shell.Current.GoToAsync("//RegisterPage");
+    }
+
+    private async void OnRestablecerContraseñaClicked(object sender, EventArgs e) {
+        try {
+            if (string.IsNullOrEmpty(UsernameEntry.Text)) {
+                await DisplayAlert("Error", "Por favor, ingrese su correo electrónico para restablecer la contraseña.", "OK");
+                return;
+            }
+            await _authService.SendPasswordResetEmailAsync(UsernameEntry.Text);
+            await DisplayAlert("Correo Enviado", "Se ha enviado un correo electrónico a su dirección de correo electrónico con instrucciones para restablecer su contraseña.", "OK");
+        }
+        catch (FirebaseAuthException ex) {
+            await DisplayAlert("Error", $"Error al enviar el correo electrónico de restablecimiento: {ex.Message}", "OK");
+        }
+        catch (Exception ex) {
+            await DisplayAlert("Error", $"Ocurrió un error inesperado: {ex.Message}", "OK");
+        }
     }
 }

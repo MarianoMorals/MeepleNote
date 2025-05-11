@@ -1,66 +1,66 @@
 using Firebase.Auth;
 using MeepleNote.Models;
 using MeepleNote.Services;
-
+using Microsoft.Maui.Storage;
+using System;
+using System.Threading.Tasks;
 namespace MeepleNote.Views;
-
-public partial class PerfilPage : ContentPage
-{
-    private const string ApiKey = "AIzaSyCmcqsaPemAyArjJBBiV7nFm2TeXLFp9cI";
-
-    public PerfilPage()
-	{
-		InitializeComponent();
-	}
-    private async void OnGuardarClicked(object sender, EventArgs e) {
-        var usuarioId = Preferences.Get("UsuarioId", null);
-        if (usuarioId == null)
-            return;
-
-        var sqliteDb = new SQLiteService();
-        var usuario = new Usuario {
-            IdUsuario = 1,
-            Nombre = NombreEntry.Text,
-            // Otros campos necesarios
-        };
-        await sqliteDb.SaveUsuarioAsync(usuario);
-
-        var token = await new FirebaseAuthProvider(new FirebaseConfig(ApiKey))
-            .SignInWithEmailAndPasswordAsync("TU_EMAIL", "TU_PASSWORD")
-            .ContinueWith(t => t.Result.FirebaseToken);
-
-        var firebaseDb = new FirebaseDatabaseService(token);
-        var datosLocales = await sqliteDb.ObtenerTodo();
-
-        var fechaActual = DateTime.UtcNow;
-        await firebaseDb.SubirDatosUsuario(usuarioId, datosLocales.Perfil, datosLocales.Coleccion,
-            datosLocales.Juegos, datosLocales.Partidas, datosLocales.JugadoresPartida, fechaActual);
-
-        sqliteDb.GuardarFechaUltimaSync(fechaActual);
-
-        await DisplayAlert("Guardado", "Perfil actualizado", "OK");
+public partial class PerfilPage : ContentPage {
+    private SincronizacionService _sincronizacionService;
+    private readonly SQLiteService _sqliteDb;
+    private readonly FirebaseAuthService _firebaseAuthService = new FirebaseAuthService();
+    private Usuario _usuarioActual; // Para almacenar el usuario que se está editando
+    public PerfilPage() {
+        InitializeComponent();
+        _sqliteDb = new SQLiteService();
     }
-
-    private async void OnCerrarSesionClicked(object sender, EventArgs e) {
-        var usuarioId = Preferences.Get("UsuarioId", null);
-        if (usuarioId != null) {
-            var sqliteDb = new SQLiteService();
-            var token = await new FirebaseAuthProvider(new FirebaseConfig(ApiKey))
-                .SignInWithEmailAndPasswordAsync("TU_EMAIL", "TU_PASSWORD") // Si guardas token, úsalo mejor
-                .ContinueWith(t => t.Result.FirebaseToken);
-
-            var firebaseDb = new FirebaseDatabaseService(token);
-            var datosLocales = await sqliteDb.ObtenerTodo();
-
-            var fechaActual = DateTime.UtcNow;
-            await firebaseDb.SubirDatosUsuario(usuarioId, datosLocales.Perfil, datosLocales.Coleccion,
-                datosLocales.Juegos, datosLocales.Partidas, datosLocales.JugadoresPartida, fechaActual);
-
-            sqliteDb.GuardarFechaUltimaSync(fechaActual);
+    protected override async void OnAppearing() {
+        base.OnAppearing();
+        // Cargar la información del usuario al aparecer la página
+        await CargarPerfilUsuario();
+    }
+    private async Task CargarPerfilUsuario() {
+        var firebaseUsuarioId = Preferences.Get("UsuarioId", null);
+        if (!string.IsNullOrEmpty(firebaseUsuarioId)) {
+            _usuarioActual = await _sqliteDb.GetUsuarioByFirebaseIdAsync(firebaseUsuarioId);
+            if (_usuarioActual != null) {
+                BindingContext = _usuarioActual; // Establecer el contexto de binding para mostrar los datos
+            }
         }
-
-        Preferences.Clear();
-        await Shell.Current.GoToAsync("//LoginPage");
     }
-
+    private async Task InicializarSincronizacionService() {
+        string authToken = Preferences.Get("FirebaseToken", null);
+        if (!string.IsNullOrEmpty(authToken)) {
+            var firebaseDb = new FirebaseDatabaseService(authToken);
+            _sincronizacionService = new SincronizacionService(_sqliteDb, firebaseDb);
+        }
+        else {
+            _sincronizacionService = null;
+            await DisplayAlert("Error", "No se encontró el token de Firebase. La sincronización no estará disponible.", "OK");
+        }
+    }
+    private async void OnRestablecerContraseñaClicked(object sender, EventArgs e) {
+        try {
+            await _firebaseAuthService.SendPasswordResetEmailAsync(_usuarioActual.Email);
+            await DisplayAlert("Correo Enviado", "Se ha enviado un correo electrónico a su dirección de correo electrónico con instrucciones para restablecer su contraseña.", "OK");
+        }
+        catch (FirebaseAuthException ex) {
+            await DisplayAlert("Error", $"Error al enviar el correo electrónico de restablecimiento: {ex.Message}", "OK");
+        }
+        catch (Exception ex) {
+            await DisplayAlert("Error", $"Ocurrió un error inesperado: {ex.Message}", "OK");
+        }
+    }
+    private async void OnCerrarSesionClicked(object sender, EventArgs e) {
+        await InicializarSincronizacionService();
+        if (_sincronizacionService != null) {
+            await _sincronizacionService.SincronizarConFirebase();
+        }
+        _firebaseAuthService.Logout();
+        Preferences.Remove("SesionIniciada");
+        Preferences.Remove("UsuarioId");
+        Preferences.Remove("FirebaseToken");
+        // Redirigir a la página de inicio de sesión
+        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+    }
 }
