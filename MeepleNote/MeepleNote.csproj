@@ -58,6 +58,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\icono_configuracion.png" />
 	  <None Remove="Resources\Images\informacion.png" />
+	  <None Remove="Resources\Images\logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>

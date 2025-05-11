@@ -17,32 +17,80 @@ namespace MeepleNote.Services {
             _database.CreateTableAsync<Partida>();
             _database.CreateTableAsync<JugadorPartida>();
         }
+        // === USUARIO ===
+        public Task<int> SaveUsuarioAsync(Usuario usuario) => _database.InsertOrReplaceAsync(usuario);
+        public Task<List<Usuario>> GetUsuariosAsync() => _database.Table<Usuario>().ToListAsync();
+        public Task<Usuario?> GetUsuarioByIdAsync(int id) =>
+            _database.Table<Usuario>().Where(u => u.IdUsuario == id).FirstOrDefaultAsync();
 
-        // METODOS
-        public Task<int> SaveUsuarioAsync(Usuario usuario) {
-            return _database.InsertAsync(usuario);
+        // === COLECCION ===
+        public async Task ReplaceColeccionesAsync(List<Coleccion> colecciones) {
+            await _database.DeleteAllAsync<Coleccion>();
+            await _database.InsertAllAsync(colecciones);
         }
 
-        public Task<List<Usuario>> GetUsuariosAsync() {
-            return _database.Table<Usuario>().ToListAsync();
+        public Task<List<Coleccion>> GetColeccionesAsync() => _database.Table<Coleccion>().ToListAsync();
+
+        // === JUEGO ===
+        public async Task ReplaceJuegosAsync(List<Juego> juegos) {
+            await _database.DeleteAllAsync<Juego>();
+            await _database.InsertAllAsync(juegos);
         }
+
         public Task<int> SaveJuegoAsync(Juego juego) {
             return _database.InsertAsync(juego);
         }
 
-        public Task<List<Juego>> GetJuegosAsync() {
-            return _database.Table<Juego>().ToListAsync();
+        public Task<List<Juego>> GetJuegosAsync() => _database.Table<Juego>().ToListAsync();
+        public Task<int> DeleteJuegoAsync(Juego juego) => _database.DeleteAsync(juego);
+        public async Task<bool> JuegoExisteAsync(int idJuego) =>
+            await _database.Table<Juego>().Where(j => j.IdJuego == idJuego).FirstOrDefaultAsync() != null;
+
+        // === PARTIDA ===
+        public async Task ReplacePartidasAsync(List<Partida> partidas) {
+            await _database.DeleteAllAsync<Partida>();
+            await _database.InsertAllAsync(partidas);
         }
 
-        public Task<int> DeleteJuegoAsync(Juego juego) {
-            return _database.DeleteAsync(juego);
-        }
-        public async Task<bool> JuegoExisteAsync(int idJuego) {
-            var juego = await _database.Table<Juego>()
-                .Where(j => j.IdJuego == idJuego)
-                .FirstOrDefaultAsync();
+        public Task<List<Partida>> GetPartidasAsync() => _database.Table<Partida>().ToListAsync();
 
-            return juego != null;
+        // === JUGADOR PARTIDA ===
+        public async Task ReplaceJugadoresPartidaAsync(List<JugadorPartida> jugadores) {
+            await _database.DeleteAllAsync<JugadorPartida>();
+            await _database.InsertAllAsync(jugadores);
+        }
+
+        public Task<List<JugadorPartida>> GetJugadoresPartidaAsync() => _database.Table<JugadorPartida>().ToListAsync();
+
+        // === FECHA DE SINCRONIZACIÓN ===
+        public void GuardarFechaUltimaSync(DateTime fecha) {
+            Preferences.Set("UltimaSync", fecha.ToString("O")); // ISO 8601
+        }
+
+        public DateTime? ObtenerFechaUltimaSync() {
+            var str = Preferences.Get("UltimaSync", null);
+            return str != null ? DateTime.Parse(str) : null;
+        }
+
+        // === SINCRONIZACIÓN COMPLETA ===
+        public async Task<DatosUsuario> ObtenerTodo() {
+            return new DatosUsuario {
+                Perfil = await GetUsuarioByIdAsync(1), // Siempre asumimos ID 1
+                Juegos = await GetJuegosAsync(),
+                Coleccion = await GetColeccionesAsync(),
+                Partidas = await GetPartidasAsync(),
+                JugadoresPartida = await GetJugadoresPartidaAsync()
+            };
+        }
+
+        public async Task GuardarTodoDesdeFirebase(DatosUsuario datos) {
+            if (datos.Perfil != null)
+                await SaveUsuarioAsync(datos.Perfil);
+
+            await ReplaceJuegosAsync(datos.Juegos);
+            await ReplaceColeccionesAsync(datos.Coleccion);
+            await ReplacePartidasAsync(datos.Partidas);
+            await ReplaceJugadoresPartidaAsync(datos.JugadoresPartida);
         }
 
     }

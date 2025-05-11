@@ -1,10 +1,12 @@
 using Firebase.Auth;
+using MeepleNote.Services;
 using Microsoft.Maui.Storage; // Para Preferences
 namespace MeepleNote.Views;
 
 public partial class LoginPage : ContentPage {
-    // Tu API Key de Firebase (sácala desde Configuración del proyecto en Firebase)
-    private const string ApiKey = "AIzaSyCmcqsaPemAyArjJBBiV7nFm2TeXLFp9cI";
+    
+    // Se asume que _authService está bien definido en algún lugar
+    private readonly FirebaseAuthService _authService = new FirebaseAuthService();
 
     public LoginPage() {
         InitializeComponent();
@@ -15,20 +17,32 @@ public partial class LoginPage : ContentPage {
         var password = PasswordEntry.Text;
 
         try {
-            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(ApiKey));
-            var auth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
-
+            // Login en Firebase
+            var auth = await _authService.LoginAsync(email, password);
             var token = auth.FirebaseToken;
+            var usuarioId = auth.User.LocalId;
 
             if (string.IsNullOrEmpty(token))
                 throw new Exception("Token inválido");
 
+            // Guardamos preferencias para recordar la sesión
             Preferences.Set("SesionIniciada", RecordarSesionCheck.IsChecked);
-            Preferences.Set("UsuarioId", auth.User.LocalId); // UID del usuario
+            Preferences.Set("UsuarioId", usuarioId);
 
-            // Navegar a la página principal (PerfilPage como default)
-            await Shell.Current.GoToAsync($"//{nameof(PerfilPage)}");
-            
+            // Sincronización de datos
+            var firebaseDb = new FirebaseDatabaseService(token);
+            var sqliteDb = new SQLiteService();
+
+            var fechaFirebase = await firebaseDb.ObtenerFechaUltimaSync(usuarioId);
+            var fechaLocal = sqliteDb.ObtenerFechaUltimaSync();
+
+            if (fechaFirebase > fechaLocal) {
+                var datosFirebase = await firebaseDb.DescargarTodo(usuarioId);
+                await sqliteDb.GuardarTodoDesdeFirebase(datosFirebase);
+            }
+
+            // Redirigir a la página de Colección
+            await Shell.Current.GoToAsync($"//{nameof(ColeccionPage)}");
         }
         catch (Exception ex) {
             await DisplayAlert("Error", "Usuario o contraseña incorrectos", "OK");
@@ -36,13 +50,16 @@ public partial class LoginPage : ContentPage {
     }
 
     private async void OnCerrarSesionClicked(object sender, EventArgs e) {
+        // Eliminar preferencias al cerrar sesión
         Preferences.Remove("SesionIniciada");
         Preferences.Remove("UsuarioId");
 
+        // Redirigir a la página de login
         await Shell.Current.GoToAsync("//LoginPage");
     }
 
     private async void OnIrARegistro(object sender, EventArgs e) {
+        // Redirigir a la página de registro
         await Shell.Current.GoToAsync("//RegisterPage");
     }
 }

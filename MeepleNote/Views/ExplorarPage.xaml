@@ -4,67 +4,102 @@
     xmlns:models="clr-namespace:MeepleNote.Models"
     x:Class="MeepleNote.Views.ExplorarPage"
     BackgroundColor="{StaticResource BackgroundColor}">
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto">
+        <!-- Cabecera -->
+        <Label Text="Explorar Juegos" 
+               Grid.Row="0"
+               FontSize="24" 
+               HorizontalOptions="Center" 
+               Margin="10"
+               FontAttributes="Bold"/>
 
-    <VerticalStackLayout Padding="10" Spacing="10">
+        <!-- Barra de búsqueda -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto" ColumnSpacing="5">
+            <Entry x:Name="BuscarEntry" 
+                   Placeholder="Buscar juegos de mesa..."
+                   TextChanged="OnBuscarTextChanged"
+                   Completed="OnBuscarClicked"
+                   ClearButtonVisibility="WhileEditing"/>
 
-        <Label Text="Explorar Juegos" FontSize="24" HorizontalOptions="Center" Margin="10"/>
+            <Button x:Name="BuscarButton" 
+                    Grid.Column="1"
+                    Text="Buscar" 
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Clicked="OnBuscarClicked"/>
+        </Grid>
 
-        <Entry x:Name="BuscarEntry" 
-               Placeholder="Introduce nombre de juego"
-               TextChanged="OnBuscarTextChanged" />
-
+        <!-- Sugerencias -->
         <CollectionView x:Name="SugerenciasList"
+                Grid.Row="2"
                 IsVisible="False"
                 SelectionMode="Single"
-                HeightRequest="200">
+                HeightRequest="200"
+                SelectionChanged="SugerenciasList_SelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Label Text="{Binding Titulo}"
-                   FontSize="16"
-                   Padding="10"
-                   TextColor="Black"/>
+                           FontSize="16"
+                           Padding="10"
+                           TextColor="Black"/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text="Buscar" 
-                Style="{StaticResource PrimaryButtonStyle}"
-                Clicked="OnBuscarClicked"/>
+        <!-- Indicadores -->
+        <ActivityIndicator x:Name="LoadingIndicator"
+                           Grid.Row="3"
+                           IsVisible="False"
+                           IsRunning="False"
+                           Color="{StaticResource PrimaryColor}"
+                           HorizontalOptions="Center"/>
+
         <Label x:Name="SinResultadosLabel"
+               Grid.Row="3"
                Text="No se encontraron juegos con ese nombre."
                IsVisible="False"
                TextColor="Gray"
                FontSize="16"
                HorizontalOptions="Center"/>
 
-        <ScrollView>
-            <CollectionView x:Name="ResultadosList" 
-                            HeightRequest="500"
-                            SelectionMode="None">
+        <!-- Lista de resultados - IMPORTANTE -->
+        <RefreshView Grid.Row="4"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="ResultadosList"
+                          SelectionMode="None"
+                          VerticalOptions="FillAndExpand"
+                          >
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Juego">
-                        <Frame BorderColor="{StaticResource PrimaryColor}" CornerRadius="12" Margin="5">
-                            <VerticalStackLayout Spacing="5">
-                                <Image Source="{Binding FotoPortada}" 
-                                       WidthRequest="80" 
-                                       HeightRequest="80"
-                                       Aspect="AspectFit" />
-                                <Label Text="{Binding Titulo}" FontSize="20" TextColor="Black" HorizontalOptions="Center" />
-                                <Label Text="{Binding Puntuacion, StringFormat='Puntuación: {0:F1}'}" FontSize="14" TextColor="Gray" HorizontalOptions="Center"/>
-                                <Button Text="Ver Detalles"
-                                        Clicked="OnVerDetallesClicked"
-                                        CommandParameter="{Binding .}"/>
-                                <Button Text="Añadir a Colección"
-                                        BackgroundColor="{StaticResource AccentColor}"
-                                        Clicked="OnAgregarClicked"
-                                        CommandParameter="{Binding .}"/>
+                        <Grid Padding="10" ColumnDefinitions="80,*" ColumnSpacing="10">
+                            <Image Source="{Binding FotoPortada}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="80"
+                                   WidthRequest="80"/>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="5">
+                                <Label Text="{Binding Titulo}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Puntuacion, StringFormat='⭐ {0:F1}'}"/>
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <Button Text="Detalles" Clicked="OnVerDetallesClicked"
+                                            CommandParameter="{Binding .}"/>
+                                    <Button Text="Añadir" Clicked="OnAgregarClicked"
+                                            CommandParameter="{Binding .}"/>
+                                </HorizontalStackLayout>
                             </VerticalStackLayout>
-                        </Frame>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </ScrollView>
-        
+        </RefreshView>
 
-    </VerticalStackLayout>
+        <!-- Footer para cargar más -->
+        <ActivityIndicator x:Name="LoadingMoreIndicator"
+                           Grid.Row="5"
+                           IsVisible="False"
+                           IsRunning="False"
+                           Color="{StaticResource PrimaryColor}"
+                           HorizontalOptions="Center"/>
+    </Grid>
 </ContentPage>
