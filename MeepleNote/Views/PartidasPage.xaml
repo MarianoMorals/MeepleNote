@@ -2,13 +2,54 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MeepleNote.Views.PartidasPage"
+    Title="Mis Partidas"
     BackgroundColor="{StaticResource BackgroundColor}">
 
-    <VerticalStackLayout Padding="20" Spacing="20">
-        <Label Text="Historial de Partidas"
-               FontSize="24"
-               HorizontalOptions="Center" />
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" 
+                 Command="{Binding RefreshCommand}">
+        <CollectionView x:Name="PartidasCollection" 
+                        SelectionMode="None"
+                        ItemsUpdatingScrollMode="KeepLastItemInView">
 
-        <!-- Aquí luego pondremos la lista de partidas -->
-    </VerticalStackLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="{StaticResource PrimaryColor}" 
+                           CornerRadius="10" 
+                           Padding="10" 
+                           Margin="5"
+                           HasShadow="False"
+                           InputTransparent="False"
+                           BackgroundColor="Transparent">
+
+                        <!-- Gesto de toque en toda la tarjeta -->
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                    Command="{Binding BindingContext.PartidaTapCommand, Source={x:Reference PartidasCollection}}"
+                                    CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="Auto,*,Auto" BackgroundColor="Transparent">
+                            <Image Source="{Binding FotoPortada}" 
+                                   WidthRequest="60" 
+                                   HeightRequest="60"
+                                   Aspect="AspectFill"/>
+
+                            <VerticalStackLayout Grid.Column="1" Padding="10,0">
+                                <Label Text="{Binding TituloJuego}" 
+                                       FontSize="16" 
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding Fecha, StringFormat='🗓 {0:dd/MM/yyyy}'}" 
+                                       FontSize="14"/>
+                            </VerticalStackLayout>
+
+                            <Label Grid.Column="2" 
+                                   Text="{Binding Ganador, StringFormat='🏆 {0}'}"
+                                   FontSize="14"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
 </ContentPage>

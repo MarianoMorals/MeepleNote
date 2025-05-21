@@ -14,7 +14,7 @@
                FontAttributes="Bold"/>
 
         <!-- Barra de búsqueda -->
-        <Grid Grid.Row="1" ColumnDefinitions="*,Auto" ColumnSpacing="5">
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto" ColumnSpacing="5" Margin="5">
             <Entry x:Name="BuscarEntry" 
                    Placeholder="Buscar juegos de mesa..."
                    TextChanged="OnBuscarTextChanged"
@@ -67,8 +67,7 @@
                     Command="{Binding RefreshCommand}">
             <CollectionView x:Name="ResultadosList"
                           SelectionMode="None"
-                          VerticalOptions="FillAndExpand"
-                          >
+                          VerticalOptions="FillAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Juego">
                         <Grid Padding="10" ColumnDefinitions="80,*" ColumnSpacing="10">
@@ -79,7 +78,7 @@
 
                             <VerticalStackLayout Grid.Column="1" Spacing="5">
                                 <Label Text="{Binding Titulo}" FontAttributes="Bold"/>
-                                <Label Text="{Binding Puntuacion, StringFormat='⭐ {0:F1}'}"/>
+                                <Label Text="{Binding Puntuacion, StringFormat='⭐ {0:F2}'}"/>
 
                                 <HorizontalStackLayout Spacing="10">
                                     <Button Text="Detalles" Clicked="OnVerDetallesClicked"

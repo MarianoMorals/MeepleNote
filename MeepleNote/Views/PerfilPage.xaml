@@ -4,16 +4,41 @@
     x:Class="MeepleNote.Views.PerfilPage"
     BackgroundColor="{StaticResource BackgroundColor}">
     <ScrollView Padding="20">
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="15">
             <Label Text="Perfil de Usuario"
                    FontSize="24"
                    HorizontalOptions="Center" />
-            <Label Text="Nombre:" />
-            <Entry x:Name="NombreEntry" Text="{Binding Nombre}" IsReadOnly="True" Placeholder="Tu nombre" />
-            <Label Text="Fecha de Nacimiento:" />
-            <DatePicker x:Name="FechaNacimientoPicker" Date="{Binding FechaNacimiento}" IsEnabled="False"/>
-            <Button Text="Restablecer contraseña" Clicked="OnRestablecerContraseñaClicked" />
-            <Button Text="Cerrar sesión" Clicked="OnCerrarSesionClicked" BackgroundColor="{StaticResource AccentColor}" TextColor="White" />
+
+            <Frame BorderColor="{StaticResource PrimaryColor}" CornerRadius="10" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Nombre:" FontAttributes="Bold"/>
+                    <Entry x:Name="NombreEntry" 
+                           Text="{Binding Nombre}" 
+                           Placeholder="Tu nombre" 
+                           TextColor="Black"/>
+
+                    <Label Text="Fecha de Nacimiento:" FontAttributes="Bold" Margin="0,10,0,0"/>
+                    <DatePicker x:Name="FechaNacimientoPicker" 
+                                Date="{Binding FechaNacimiento}"
+                                TextColor="Black"
+                                MaximumDate="{Binding TodayDate}"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button x:Name="GuardarButton" 
+                    Text="Guardar Cambios" 
+                    Clicked="OnGuardarClicked"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Margin="0,20,0,0"/>
+
+            <Button Text="Restablecer contraseña" 
+                    Clicked="OnRestablecerContraseñaClicked" 
+                    Style="{StaticResource SecondaryButtonStyle}"/>
+
+            <Button Text="Cerrar sesión" 
+                    Clicked="OnCerrarSesionClicked" 
+                    Style="{StaticResource AccentButtonStyle}"
+                    Margin="0,30,0,0"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

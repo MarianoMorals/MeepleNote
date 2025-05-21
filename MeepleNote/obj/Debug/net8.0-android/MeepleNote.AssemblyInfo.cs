@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MeepleNote")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+5f894072e258fdc178b1f52a45f91a62be18e1f7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+3b62b4791b38c29a49b31c155d911ce55bcd55a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeepleNote")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeepleNote")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

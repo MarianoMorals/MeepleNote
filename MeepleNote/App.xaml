@@ -10,34 +10,71 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Colores principales -->
-            <Color x:Key="PrimaryColor">#1E3A8A</Color>
-            <!-- Azul Oscuro -->
-            <Color x:Key="AccentColor">#FACC15</Color>
-            <!-- Amarillo Dorado -->
-            <Color x:Key="AlertColor">#F87171</Color>
-            <!-- Rojo Suave -->
-            <Color x:Key="SecondaryColor">#86EFAC</Color>
-            <!-- Verde Pastel -->
-            <Color x:Key="BackgroundColor">#F9FAFB</Color>
-            <!-- Blanco Roto -->
+            <!-- PALETA MONOCROMÁTICA AZUL - VARIACIONES DEL MISMO TONO -->
+            <!-- Color principal - Azul vibrante (600) -->
+            <Color x:Key="PrimaryColor">#2563EB</Color>
+            <!-- Color secundario - Azul más oscuro (800) -->
+            <Color x:Key="SecondaryColor">#1E40AF</Color>
+            <!-- Color de acento - Azul más claro (400) -->
+            <Color x:Key="AccentColor">#60A5FA</Color>
+            <!-- Color de alerta - Azul rojizo (para contraste) -->
+            <Color x:Key="AlertColor">#C73E1D</Color>
+            <!-- Excepción para alertas -->
+            <!-- Fondo - Azul muy claro (50) -->
+            <Color x:Key="BackgroundColor">#EFF6FF</Color>
+            <!-- Texto principal - Azul casi negro (900) -->
+            <Color x:Key="TextColor">#1E3A8A</Color>
+            <!-- Superficies/Tarjetas - Blanco azulado -->
+            <Color x:Key="SurfaceColor">#FFFFFF</Color>
+            <!-- Color adicional - Azul medio (500) -->
+            <Color x:Key="ExtraColor">#3B82F6</Color>
 
             <!-- Estilos reutilizables -->
             <Style x:Key="PrimaryButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="CornerRadius" Value="12" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="HeightRequest" Value="50" />
-                <Setter Property="Margin" Value="10"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="FontSize" Value="16"/>
             </Style>
 
+            <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style x:Key="AccentButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+            
+            <Style x:Key="DangerButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource AlertColor}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="WidthRequest" Value="40"/>
+            </Style>
+            
             <Style x:Key="TitleLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="28" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="Margin" Value="20"/>
             </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="TitleColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -17,6 +17,9 @@
     <MauiXaml Update="Views\DetalleJuegoPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\DetallePartidaPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\ExplorarPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
@@ -33,6 +36,9 @@
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Views\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\RegistrarPartidaPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

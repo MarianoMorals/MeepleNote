@@ -5,45 +5,66 @@
     x:Class="MeepleNote.Views.ColeccionPage"
     BackgroundColor="{StaticResource BackgroundColor}">
 
-    <VerticalStackLayout Padding="10" Spacing="10">
-
+    <Grid RowDefinitions="Auto,Auto,*" Padding="10">
+        <!-- Título -->
         <Label Text="Mi Colección"
+               Grid.Row="0"
                FontSize="24"
                HorizontalOptions="Center"
-               Margin="10"/>
+               Margin="0,10"/>
+
+        <!-- Botón Eliminar -->
         <Button Text="Eliminar seleccionados"
+                Grid.Row="1"
                 Style="{StaticResource PrimaryButtonStyle}"
                 Clicked="OnEliminarSeleccionadosClicked"
-                HorizontalOptions="Center"/>
-        <ScrollView>
-            <CollectionView x:Name="ColeccionList" SelectionMode="None">
+                HorizontalOptions="Center"
+                Margin="0,10"/>
+
+        <!-- Lista de juegos - Ahora en un ScrollView dentro del Grid -->
+        <ScrollView Grid.Row="2">
+            <CollectionView x:Name="ColeccionList" 
+                          SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Juego">
-                        
-                        <Frame BorderColor="{StaticResource PrimaryColor}" CornerRadius="12" Margin="5">
-                            <HorizontalStackLayout Spacing="10">
-                                <CheckBox IsChecked="{Binding IsSelected}" VerticalOptions="Center" />
+                        <Frame BorderColor="{StaticResource PrimaryColor}" 
+                               CornerRadius="12" 
+                               Margin="0,5"
+                               Padding="10">
+                            <HorizontalStackLayout Spacing="15">
+                                <CheckBox IsChecked="{Binding IsSelected}" 
+                                          VerticalOptions="Center" />
+
                                 <Image Source="{Binding FotoPortada}" 
                                        WidthRequest="80" 
                                        HeightRequest="80"
                                        Aspect="AspectFit" />
 
-                                <VerticalStackLayout>
-                                    <Label Text="{Binding Titulo}" FontSize="20" TextColor="Black"/>
-                                    <Label Text="{Binding Puntuacion, StringFormat='Puntuación: {0:F1}'}" FontSize="14" TextColor="Gray"/>
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="5"
+                                                     HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Titulo}" 
+                                           FontSize="18" 
+                                           TextColor="Black"
+                                           LineBreakMode="WordWrap"
+                                           MaxLines="2"
+                                           VerticalOptions="Center" />
+
+                                    <Label Text="{Binding Puntuacion, StringFormat='⭐ {0:F2}'}" 
+                                           FontSize="14" 
+                                           TextColor="Gray"/>
+
                                     <Button Text="Ver Detalles"
-                        Clicked="OnVerDetallesClicked"
-                        CommandParameter="{Binding .}" />
+                                            Clicked="OnVerDetallesClicked"
+                                            CommandParameter="{Binding .}"
+                                            Style="{StaticResource SecondaryButtonStyle}"
+                                            HorizontalOptions="Start"/>
                                 </VerticalStackLayout>
                             </HorizontalStackLayout>
                         </Frame>
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
-
-        
-
-
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

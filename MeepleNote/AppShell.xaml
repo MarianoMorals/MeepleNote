@@ -20,7 +20,7 @@
 
     <!-- Barra de navegación inferior con páginas independientes -->
     <TabBar>
-        <Tab Title="Perfil" Icon="icon_profile.png" Route="PerfilPage">
+        <Tab Title="Perfil" Icon="icono_configuracion.png" Route="PerfilPage">
             <ShellContent ContentTemplate="{DataTemplate views:PerfilPage}" />
         </Tab>
 

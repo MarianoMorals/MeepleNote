@@ -16,7 +16,7 @@ namespace MeepleNote.Views {
         }
 
         private async Task CargarColeccion() {
-            var juegos = await dbService.GetJuegosAsync();
+            var juegos = await dbService.GetJuegosAsyncEnColeccion();
             ColeccionList.ItemsSource = juegos;
         }
 
@@ -38,7 +38,8 @@ namespace MeepleNote.Views {
             bool confirmar = await DisplayAlert("Eliminar", $"¿Eliminar {seleccionados.Count} juego(s) de tu colección?", "Sí", "No");
             if (confirmar) {
                 foreach (var juego in seleccionados) {
-                    await dbService.DeleteJuegoAsync(juego);
+                    //await dbService.DeleteJuegoAsync(juego);
+                    await dbService.QuitarJuegoExistenteDeColeccion(juego.IdJuego);
                 }
 
                 await CargarColeccion();

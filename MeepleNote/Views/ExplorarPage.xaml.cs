@@ -167,8 +167,20 @@ namespace MeepleNote.Views {
                 try {
                     bool yaExiste = await _dbService.JuegoExisteAsync(juego.IdJuego);
                     if (yaExiste) {
-                        await DisplayAlert("Atención", "Este juego ya está en tu colección.", "OK");
-                        return;
+                        bool enColeccion = await _dbService.JuegoEnColeccionAsync(juego.IdJuego);
+
+
+                        if (enColeccion) {
+                            await DisplayAlert("Atención", "Este juego ya está en tu colección.", "OK");
+                            return;
+                        }
+                        else {
+                            await _dbService.AnnadirJuegoExistenteAColeccion(juego.IdJuego);
+                            await DisplayAlert("Éxito", $"{juego.Titulo} añadido a tu colección", "OK");
+                            return;
+
+                        }
+
                     }
 
                     var juegoCompleto = await _explorarService.ObtenerDetallesJuegoAsync(juego.IdJuego);

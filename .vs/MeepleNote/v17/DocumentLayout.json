@@ -3,16 +3,140 @@
   "WorkspaceRootPath": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\detallepartidapage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\detallepartidapage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\detallepartidapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\detallepartidapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\partidaspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\partidaspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\partidaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\partidaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\perfilpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\perfilpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\coleccionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\coleccionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\sqliteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\sqliteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\explorarpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\explorarpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\coleccionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\coleccionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\explorarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\explorarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\detallejuegopage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\detallejuegopage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\detallejuegopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\detallejuegopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\partida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\partida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\registrarpartidapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\registrarpartidapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\juego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\juego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\jugadorpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\jugadorpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\registrarpartidapage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\registrarpartidapage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\partidaspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\partidaspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\coleccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\coleccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\appshell.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\appshell.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\explorarpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\explorarpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\sincronizacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\sincronizacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\loginpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\loginpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\principalpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\principalpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\datosusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\datosusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\perfilpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\perfilpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\perfilpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\perfilpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\principalpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\principalpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\registerpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
@@ -21,74 +145,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\datosusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\datosusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\perfilpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\perfilpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\sqliteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\sqliteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\sincronizacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\sincronizacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\juego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\juego.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\explorarpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\explorarpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\explorarpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\explorarpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\detallejuegopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\detallejuegopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\detallejuegopage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\detallejuegopage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\services\\explorarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\services\\explorarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\coleccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\coleccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\partida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\partida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\models\\jugadorpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\models\\jugadorpartida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -101,30 +157,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\resources\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\resources\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\appshell.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\appshell.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\principalpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\principalpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\principalpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\principalpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\coleccionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\coleccionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\views\\coleccionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|solutionrelative:meeplenote\\views\\coleccionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF0EA9F6-7444-4905-9405-85FA7F230904}|MeepleNote\\MeepleNote.csproj|c:\\users\\mot_7\\source\\repos\\meeplenote\\meeplenote\\meeplenote.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -141,8 +173,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 383,
-          "SelectedChildIndex": 3,
+          "DockedHeight": 298,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -158,59 +190,453 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LoginPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\LoginPage.xaml.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\LoginPage.xaml.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\LoginPage.xaml.cs",
-              "RelativeToolTip": "MeepleNote\\Views\\LoginPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFMAAAANAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "PerfilPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PerfilPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\PerfilPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PerfilPage.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\Views\\PerfilPage.xaml.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA8wB0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T09:46:37.748Z",
+              "WhenOpened": "2025-05-04T11:03:52.455Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Usuario.cs",
-              "RelativeToolTip": "MeepleNote\\Models\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "PartidasPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PartidasPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\PartidasPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PartidasPage.xaml.cs*",
+              "RelativeToolTip": "MeepleNote\\Views\\PartidasPage.xaml.cs*",
+              "ViewState": "AgIAACsAAAAAAAAAAAAWwEQAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T07:20:14.806Z",
+              "WhenOpened": "2025-05-21T06:22:04.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PartidaViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\PartidaViewModel.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Models\\PartidaViewModel.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\PartidaViewModel.cs*",
+              "RelativeToolTip": "MeepleNote\\Models\\PartidaViewModel.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T07:53:18.982Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LoginPage.xaml",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\LoginPage.xaml",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\LoginPage.xaml",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\LoginPage.xaml",
-              "RelativeToolTip": "MeepleNote\\Views\\LoginPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Title": "DetallePartidaPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetallePartidaPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\DetallePartidaPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetallePartidaPage.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\Views\\DetallePartidaPage.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowBcAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T07:02:24.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DetallePartidaPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetallePartidaPage.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\DetallePartidaPage.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetallePartidaPage.xaml",
+              "RelativeToolTip": "MeepleNote\\Views\\DetallePartidaPage.xaml",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAkwCYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-04T09:46:16.322Z",
+              "WhenOpened": "2025-05-21T07:02:15.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ExplorarPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ExplorarPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\ExplorarPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ExplorarPage.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\Views\\ExplorarPage.xaml.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAqwKYAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T06:18:44.787Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "ExplorarService.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\ExplorarService.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Services\\ExplorarService.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\ExplorarService.cs",
+              "RelativeToolTip": "MeepleNote\\Services\\ExplorarService.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAIwHwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T06:18:03.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "SQLiteService.cs",
               "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\SQLiteService.cs",
               "RelativeDocumentMoniker": "MeepleNote\\Services\\SQLiteService.cs",
               "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\SQLiteService.cs",
               "RelativeToolTip": "MeepleNote\\Services\\SQLiteService.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAuwGsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAA0wFQAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T06:19:43.85Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
+              "Title": "ColeccionPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ColeccionPage.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\ColeccionPage.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ColeccionPage.xaml",
+              "RelativeToolTip": "MeepleNote\\Views\\ColeccionPage.xaml",
+              "ViewState": "AgIAACAAAAAAAAAAAAAkwDgAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-27T10:10:13.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ColeccionPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ColeccionPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\ColeccionPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ColeccionPage.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\Views\\ColeccionPage.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAiwBIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-27T10:10:26.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DetalleJuegoPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetalleJuegoPage.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\DetalleJuegoPage.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetalleJuegoPage.xaml",
+              "RelativeToolTip": "MeepleNote\\Views\\DetalleJuegoPage.xaml",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAmwAAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-30T06:36:35.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DetalleJuegoPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetalleJuegoPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\DetalleJuegoPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetalleJuegoPage.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\Views\\DetalleJuegoPage.xaml.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAADwv1MAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T06:36:57.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Partida.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Partida.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Models\\Partida.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Partida.cs",
+              "RelativeToolTip": "MeepleNote\\Models\\Partida.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T07:20:12.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RegistrarPartidaPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\RegistrarPartidaPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\RegistrarPartidaPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\RegistrarPartidaPage.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\Views\\RegistrarPartidaPage.xaml.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAmwGUAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T07:00:40.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Juego.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Juego.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Models\\Juego.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Juego.cs",
+              "RelativeToolTip": "MeepleNote\\Models\\Juego.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwBsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T06:51:59.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "JugadorPartida.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\JugadorPartida.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Models\\JugadorPartida.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\JugadorPartida.cs",
+              "RelativeToolTip": "MeepleNote\\Models\\JugadorPartida.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T07:20:10.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RegistrarPartidaPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\RegistrarPartidaPage.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\RegistrarPartidaPage.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\RegistrarPartidaPage.xaml",
+              "RelativeToolTip": "MeepleNote\\Views\\RegistrarPartidaPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-21T07:00:27.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PartidasPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PartidasPage.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\PartidasPage.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PartidasPage.xaml",
+              "RelativeToolTip": "MeepleNote\\Views\\PartidasPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-21T06:21:54.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\App.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\App.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\App.xaml",
+              "RelativeToolTip": "MeepleNote\\App.xaml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-04T18:47:38.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Coleccion.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Coleccion.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Models\\Coleccion.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Coleccion.cs",
+              "RelativeToolTip": "MeepleNote\\Models\\Coleccion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T09:35:33.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ExplorarPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ExplorarPage.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\ExplorarPage.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ExplorarPage.xaml",
+              "RelativeToolTip": "MeepleNote\\Views\\ExplorarPage.xaml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAFIAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-30T06:18:47.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\AppShell.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\AppShell.xaml",
+              "RelativeToolTip": "MeepleNote\\AppShell.xaml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-04T11:00:25.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\App.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\App.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T07:23:48.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\AppShell.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\AppShell.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\AppShell.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T19:38:38.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "FirebaseAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\FirebaseAuthService.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Services\\FirebaseAuthService.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\FirebaseAuthService.cs",
+              "RelativeToolTip": "MeepleNote\\Services\\FirebaseAuthService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAswDYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T19:17:10.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "SincronizacionService.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\SincronizacionService.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Services\\SincronizacionService.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\SincronizacionService.cs",
+              "RelativeToolTip": "MeepleNote\\Services\\SincronizacionService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwEUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T09:38:41.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Usuario.cs",
+              "RelativeToolTip": "MeepleNote\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T07:20:14.806Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "LoginPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\LoginPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\LoginPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\LoginPage.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\Views\\LoginPage.xaml.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T09:46:37.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "PrincipalPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PrincipalPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\PrincipalPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PrincipalPage.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\Views\\PrincipalPage.xaml.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-27T09:47:31.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "DatosUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\DatosUsuario.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Models\\DatosUsuario.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\DatosUsuario.cs",
+              "RelativeToolTip": "MeepleNote\\Models\\DatosUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T10:09:32.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "LoginPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\LoginPage.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\LoginPage.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\LoginPage.xaml",
+              "RelativeToolTip": "MeepleNote\\Views\\LoginPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-04T09:46:16.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "PrincipalPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PrincipalPage.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\PrincipalPage.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PrincipalPage.xaml",
+              "RelativeToolTip": "MeepleNote\\Views\\PrincipalPage.xaml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAFkAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-04T18:44:38.636Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "PerfilPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PerfilPage.xaml",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\PerfilPage.xaml",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PerfilPage.xaml",
+              "RelativeToolTip": "MeepleNote\\Views\\PerfilPage.xaml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-04T11:01:42.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "FirebaseDatabaseService.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\FirebaseDatabaseService.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Services\\FirebaseDatabaseService.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\FirebaseDatabaseService.cs",
+              "RelativeToolTip": "MeepleNote\\Services\\FirebaseDatabaseService.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAswGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T18:52:44.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "RegisterPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\RegisterPage.xaml.cs",
+              "RelativeDocumentMoniker": "MeepleNote\\Views\\RegisterPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\RegisterPage.xaml.cs",
+              "RelativeToolTip": "MeepleNote\\Views\\RegisterPage.xaml.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwAsAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T10:23:22.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
               "Title": "RegisterPage.xaml",
               "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\RegisterPage.xaml",
               "RelativeDocumentMoniker": "MeepleNote\\Views\\RegisterPage.xaml",
@@ -223,237 +649,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RegisterPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\RegisterPage.xaml.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\RegisterPage.xaml.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\RegisterPage.xaml.cs",
-              "RelativeToolTip": "MeepleNote\\Views\\RegisterPage.xaml.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAYwAsAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T10:23:22.353Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PerfilPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PerfilPage.xaml.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\PerfilPage.xaml.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PerfilPage.xaml.cs",
-              "RelativeToolTip": "MeepleNote\\Views\\PerfilPage.xaml.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAArwDIAAABUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T11:03:52.455Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DatosUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\DatosUsuario.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Models\\DatosUsuario.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\DatosUsuario.cs",
-              "RelativeToolTip": "MeepleNote\\Models\\DatosUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T10:09:32.968Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PerfilPage.xaml",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PerfilPage.xaml",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\PerfilPage.xaml",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PerfilPage.xaml",
-              "RelativeToolTip": "MeepleNote\\Views\\PerfilPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-04T11:01:42.116Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FirebaseAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\FirebaseAuthService.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Services\\FirebaseAuthService.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\FirebaseAuthService.cs",
-              "RelativeToolTip": "MeepleNote\\Services\\FirebaseAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T19:17:10.228Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SincronizacionService.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\SincronizacionService.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Services\\SincronizacionService.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\SincronizacionService.cs",
-              "RelativeToolTip": "MeepleNote\\Services\\SincronizacionService.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAuwEUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T09:38:41.015Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "FirebaseDatabaseService.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\FirebaseDatabaseService.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Services\\FirebaseDatabaseService.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\FirebaseDatabaseService.cs",
-              "RelativeToolTip": "MeepleNote\\Services\\FirebaseDatabaseService.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAA4wGQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T18:52:44.883Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\App.xaml",
-              "RelativeDocumentMoniker": "MeepleNote\\App.xaml",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\App.xaml",
-              "RelativeToolTip": "MeepleNote\\App.xaml",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAuwBoAAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-04T18:47:38.64Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Juego.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Juego.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Models\\Juego.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Juego.cs",
-              "RelativeToolTip": "MeepleNote\\Models\\Juego.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAqwBMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T06:51:59.869Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ExplorarPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ExplorarPage.xaml.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\ExplorarPage.xaml.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ExplorarPage.xaml.cs",
-              "RelativeToolTip": "MeepleNote\\Views\\ExplorarPage.xaml.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAA2wM4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T06:18:44.787Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DetalleJuegoPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetalleJuegoPage.xaml.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\DetalleJuegoPage.xaml.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetalleJuegoPage.xaml.cs",
-              "RelativeToolTip": "MeepleNote\\Views\\DetalleJuegoPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T06:36:57.035Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "DetalleJuegoPage.xaml",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetalleJuegoPage.xaml",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\DetalleJuegoPage.xaml",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\DetalleJuegoPage.xaml",
-              "RelativeToolTip": "MeepleNote\\Views\\DetalleJuegoPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-30T06:36:35.078Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ExplorarPage.xaml",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ExplorarPage.xaml",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\ExplorarPage.xaml",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ExplorarPage.xaml",
-              "RelativeToolTip": "MeepleNote\\Views\\ExplorarPage.xaml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAgwAAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-30T06:18:47.993Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ExplorarService.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\ExplorarService.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Services\\ExplorarService.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Services\\ExplorarService.cs",
-              "RelativeToolTip": "MeepleNote\\Services\\ExplorarService.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAjwCcAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T06:18:03.116Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Coleccion.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Coleccion.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Models\\Coleccion.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Coleccion.cs",
-              "RelativeToolTip": "MeepleNote\\Models\\Coleccion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T09:35:33.726Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Partida.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Partida.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Models\\Partida.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\Partida.cs",
-              "RelativeToolTip": "MeepleNote\\Models\\Partida.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T07:20:12.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "JugadorPartida.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\JugadorPartida.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Models\\JugadorPartida.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Models\\JugadorPartida.cs",
-              "RelativeToolTip": "MeepleNote\\Models\\JugadorPartida.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T07:20:10.512Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "ColeccionPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ColeccionPage.xaml.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\ColeccionPage.xaml.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ColeccionPage.xaml.cs",
-              "RelativeToolTip": "MeepleNote\\Views\\ColeccionPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T10:10:26.863Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 38,
               "Title": "Styles.xaml",
               "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Resources\\Styles\\Styles.xaml",
               "RelativeDocumentMoniker": "MeepleNote\\Resources\\Styles\\Styles.xaml",
@@ -461,12 +657,11 @@
               "RelativeToolTip": "MeepleNote\\Resources\\Styles\\Styles.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-04T19:30:58.537Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-04T19:30:58.537Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 36,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\MauiProgram.cs",
               "RelativeDocumentMoniker": "MeepleNote\\MauiProgram.cs",
@@ -478,19 +673,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "PrincipalPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PrincipalPage.xaml.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\PrincipalPage.xaml.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PrincipalPage.xaml.cs",
-              "RelativeToolTip": "MeepleNote\\Views\\PrincipalPage.xaml.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAYwCAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T09:47:31.248Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 37,
               "Title": "Colors.xaml",
               "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Resources\\Styles\\Colors.xaml",
               "RelativeDocumentMoniker": "MeepleNote\\Resources\\Styles\\Colors.xaml",
@@ -498,61 +681,11 @@
               "RelativeToolTip": "MeepleNote\\Resources\\Styles\\Colors.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-04T19:58:23.893Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-04T19:58:23.893Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\AppShell.xaml",
-              "RelativeDocumentMoniker": "MeepleNote\\AppShell.xaml",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\AppShell.xaml",
-              "RelativeToolTip": "MeepleNote\\AppShell.xaml",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAuwBgAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-04T11:00:25.512Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "PrincipalPage.xaml",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PrincipalPage.xaml",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\PrincipalPage.xaml",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\PrincipalPage.xaml",
-              "RelativeToolTip": "MeepleNote\\Views\\PrincipalPage.xaml",
-              "ViewState": "AgIAADAAAAAAAAAAAAAuwFkAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-04T18:44:38.636Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "AppShell.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\AppShell.xaml.cs",
-              "RelativeDocumentMoniker": "MeepleNote\\AppShell.xaml.cs",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\AppShell.xaml.cs",
-              "RelativeToolTip": "MeepleNote\\AppShell.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T19:38:38.82Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "ColeccionPage.xaml",
-              "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ColeccionPage.xaml",
-              "RelativeDocumentMoniker": "MeepleNote\\Views\\ColeccionPage.xaml",
-              "ToolTip": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Views\\ColeccionPage.xaml",
-              "RelativeToolTip": "MeepleNote\\Views\\ColeccionPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-27T10:10:13.434Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 39,
               "Title": "MeepleNote.csproj",
               "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\MeepleNote.csproj",
               "RelativeDocumentMoniker": "MeepleNote\\MeepleNote.csproj",
@@ -560,12 +693,11 @@
               "RelativeToolTip": "MeepleNote\\MeepleNote.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAQwGYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-04T11:10:01.354Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-04T11:10:01.354Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 40,
               "Title": "MainActivity.cs",
               "DocumentMoniker": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\Platforms\\Android\\MainActivity.cs",
               "RelativeDocumentMoniker": "MeepleNote\\Platforms\\Android\\MainActivity.cs",

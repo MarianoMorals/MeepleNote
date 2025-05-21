@@ -29,7 +29,7 @@ public partial class LoginPage : ContentPage {
 
             // Guardar preferencias de sesión y el Firebase User ID
             Preferences.Set("SesionIniciada", RecordarSesionCheck.IsChecked);
-            Preferences.Set("UsuarioId", firebaseUsuarioId); // Guardar el Firebase User ID
+            Preferences.Set("UsuarioId", firebaseUsuarioId.ToString()); // Guardar el Firebase User ID
             Preferences.Set("FirebaseToken", token); // Guardar el token para futuras peticiones
 
             // Inicializar servicios con el token
@@ -43,10 +43,16 @@ public partial class LoginPage : ContentPage {
                 // Si el usuario no existe localmente, crear un nuevo registro con el Firebase User ID
                 var nuevoUsuario = new Usuario { FirebaseUserId = firebaseUsuarioId };
                 await sqliteDb.SaveUsuarioAsync(nuevoUsuario);
+
+                Preferences.Set("IdUsuario", nuevoUsuario.IdUsuario);
+
             }
 
             // Sincronizar datos desde Firebase si es necesario al iniciar sesión
             await sincronizacionService.SincronizarDesdeFirebaseSiNecesario();
+
+            //Guardar preferenias de IdUsuario
+            Preferences.Set("IdUsuario", usuarioExistente.IdUsuario);
 
             // Redirigir a la página de Colección
             await Shell.Current.GoToAsync($"//{nameof(ColeccionPage)}");

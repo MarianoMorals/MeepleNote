@@ -25,8 +25,24 @@ namespace MeepleNote.Models {
         public string Autor { get; set; }
 
         public string Artista { get; set; }
+        public bool EnColeccion { get; set; }
 
         [Ignore] // SQLite ignorará esta propiedad
         public bool IsSelected { get; set; }
+
+        [Ignore]
+        public string Descripcion { get; set; }
+
+        [Ignore]
+        public int MinJugadores { get; set; }
+
+        [Ignore]
+        public int MaxJugadores { get; set; }
+
+        [Ignore]
+        public string RangoJugadores => $"{MinJugadores}-{MaxJugadores}";
+
+        [Ignore]
+        public string PuntuacionFormateada => Puntuacion.ToString("0.00");
     }
 }

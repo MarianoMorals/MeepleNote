@@ -1,19 +1,100 @@
-<ContentPage 
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MeepleNote.Views.DetalleJuegoPage"
-    BackgroundColor="{StaticResource BackgroundColor}">
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeepleNote.Views.DetalleJuegoPage"
+             Title="{Binding Titulo}">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
-            <Image x:Name="ImagenPortada" HeightRequest="200" Aspect="AspectFit"/>
-            <Label x:Name="Titulo" FontSize="24" FontAttributes="Bold" TextColor="Black"/>
-            <Label x:Name="Puntuacion" FontSize="18" TextColor="Gray"/>
-            <Label x:Name="Jugadores" FontSize="18"/>
-            <Label x:Name="Duracion" FontSize="18"/>
-            <Label x:Name="Edad" FontSize="18"/>
-            <Label x:Name="Autor" FontSize="18"/>
-            <Label x:Name="Artista" FontSize="18"/>
-        </VerticalStackLayout>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
+              Padding="20" 
+              RowSpacing="15">
+
+            <!-- Portada -->
+            <Frame Grid.Row="0" CornerRadius="12" Padding="0" HeightRequest="200">
+                <Image x:Name="ImagenPortada" Aspect="AspectFill"/>
+            </Frame>
+
+            <!-- Título y Rating -->
+            <Label Grid.Row="1" x:Name="Titulo" FontSize="24" FontAttributes="Bold"/>
+
+            <HorizontalStackLayout Grid.Row="2" Spacing="5">
+                <Label Text="⭐" FontSize="18"/>
+                <Label x:Name="Puntuacion" FontSize="18"/>
+                <Label Text="/10" FontSize="18" TextColor="Gray"/>
+            </HorizontalStackLayout>
+
+            <!-- Detalles en 2 columnas -->
+            <Grid Grid.Row="3" ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
+                <Label Grid.Column="0" Grid.Row="0" 
+                       x:Name="Jugadores" 
+                       FontSize="16"/>
+
+                <Label Grid.Column="1" Grid.Row="0" 
+                       x:Name="Duracion" 
+                       FontSize="16"/>
+
+                <Label Grid.Column="0" Grid.Row="1" 
+                       x:Name="Edad" 
+                       FontSize="16"/>
+
+                <Label Grid.Column="1" Grid.Row="1" 
+                       x:Name="Autor" 
+                       FontSize="16"/>
+
+                <Label Grid.Column="0" Grid.Row="2" 
+                       x:Name="Artista" 
+                       FontSize="16"/>
+            </Grid>
+
+            <!-- Descripción -->
+            <Frame Grid.Row="4" BorderColor="{StaticResource PrimaryColor}" CornerRadius="12" Padding="15">
+                <Label x:Name="Descripcion" 
+                       FontSize="16" 
+                       TextType="Html"/>
+            </Frame>
+
+            <!-- Botones -->
+            <Button Grid.Row="5" 
+                    Text="Registrar Partida" 
+                    Clicked="OnRegistrarPartidaClicked"
+                    Style="{StaticResource PrimaryButton}"/>
+
+            <!-- Últimas partidas -->
+            <Label Grid.Row="6" Text="Últimas partidas" FontSize="20" FontAttributes="Bold"/>
+
+            <CollectionView Grid.Row="7" x:Name="PartidasCollection"
+               
+                           SelectionMode="Single"
+                           SelectionChanged="OnPartidaSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="{StaticResource PrimaryColor}" 
+                               CornerRadius="10" 
+                               Padding="10" 
+                               Margin="0,0,0,10">
+                            <Grid ColumnDefinitions="Auto,*,Auto">
+                                <Image Source="{Binding FotoPortada}" 
+                                       WidthRequest="60" 
+                                       HeightRequest="60"
+                                       Aspect="AspectFill"/>
+
+                                <VerticalStackLayout Grid.Column="1" 
+                                                     Padding="10,0">
+                                    <Label Text="{Binding TituloJuego}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding Fecha, StringFormat='🗓 {0:dd/MM/yyyy}'}" 
+                                           FontSize="14"/>
+                                </VerticalStackLayout>
+
+                                <Label Grid.Column="2" 
+                                       Text="{Binding Ganador, StringFormat='🏆 {0}'}"
+                                       FontSize="14"
+                                       VerticalOptions="Center"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ScrollView>
 </ContentPage>
