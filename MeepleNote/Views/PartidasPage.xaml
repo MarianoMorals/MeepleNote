@@ -11,7 +11,7 @@
                 Grid.Row="0"
                 Margin="10"
                 Clicked="OnVerPartidasPublicasClicked"
-                ImageSource="public.png"
+                ImageSource="publicar.png"
                 Style="{StaticResource PrimaryButtonStyle}"
                 HorizontalOptions="End"/>
 
@@ -22,7 +22,15 @@
             <CollectionView x:Name="PartidasCollection" 
                             SelectionMode="None"
                             ItemsUpdatingScrollMode="KeepLastItemInView">
-
+                
+                <CollectionView.EmptyView>
+                    <Label Text="No has registrado partidas aún"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="{StaticResource TextColor}"/>
+                </CollectionView.EmptyView>
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="{StaticResource PrimaryColor}" 

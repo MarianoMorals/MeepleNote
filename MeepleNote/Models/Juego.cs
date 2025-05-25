@@ -9,9 +9,7 @@ namespace MeepleNote.Models {
     public class Juego {
         [PrimaryKey]
         public int IdJuego { get; set; }
-
-        [Indexed] // Para mejor rendimiento en búsquedas
-        public int IdUsuario { get; set; }
+        public string IdUsuario { get; set; }
 
         public string FotoPortada { get; set; }
 

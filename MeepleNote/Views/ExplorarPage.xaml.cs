@@ -165,7 +165,7 @@ namespace MeepleNote.Views {
         private async void OnAgregarClicked(object sender, EventArgs e) {
             if (sender is Button button && button.CommandParameter is Juego juego) {
                 try {
-                    var idUsuario = Preferences.Get("IdUsuario", 0); // Obtener el ID del usuario actual
+                    var idUsuario = Preferences.Get("UsuarioId", "0"); // Lo vinculamos al id de firebase que es unico a nivel global y no solo local.
                     bool yaExiste = await _dbService.JuegoExisteAsync(juego.IdJuego, idUsuario);
 
                     if (yaExiste) {

@@ -14,18 +14,24 @@
                Margin="0,10"/>
 
         <!-- Botón Eliminar -->
-        <Button Text="Eliminar seleccionados"
+        <Button x:Name="EliminarButton"
+                Text="Eliminar seleccionados"
                 Grid.Row="1"
                 ImageSource="eliminar.png"
                 Style="{StaticResource PrimaryButtonStyle}"
                 Clicked="OnEliminarSeleccionadosClicked"
                 HorizontalOptions="Center"
-                Margin="0,10"/>
+                Margin="0,10"
+                IsVisible="False"/>
+
 
         <!-- Lista de juegos - Ahora en un ScrollView dentro del Grid -->
         <ScrollView Grid.Row="2">
-            <CollectionView x:Name="ColeccionList" 
+            <StackLayout>
+
+                <CollectionView x:Name="ColeccionList" 
                           SelectionMode="None">
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Juego">
                         <Frame BorderColor="{StaticResource PrimaryColor}" 
@@ -54,19 +60,30 @@
                                            FontSize="14" 
                                            TextColor="Gray"/>
 
-                                    <Button Text="Detalles"
-                                            ImageSource="details.png"
-                                            Clicked="OnVerDetallesClicked"
-                                            CommandParameter="{Binding .}"
-                                            Style="{StaticResource SecondaryButtonStyle}"
-                                            HorizontalOptions="Start"/>
-                                </VerticalStackLayout>
+                                        <Button Text="Detalles"
+                                                ImageSource="details.png"
+                                                Clicked="OnVerDetallesClicked"
+                                                CommandParameter="{Binding .}"
+                                                Style="{StaticResource SecondaryButtonStyle}"
+                                                HorizontalOptions="Start"/>
+                                    </VerticalStackLayout>
                             </HorizontalStackLayout>
                         </Frame>
 
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+                <!-- EmptyView manual -->
+                <Label x:Name="EmptyLabel"
+                   Text="No tienes juegos en tu colección"
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="0,20"
+                   TextColor="{StaticResource TextColor}"
+                   IsVisible="False"/>
+            </StackLayout>
         </ScrollView>
+        
     </Grid>
 </ContentPage>

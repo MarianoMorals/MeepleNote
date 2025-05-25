@@ -3096,10 +3096,11 @@ int drawable publicar 0x7f0700f0
 int drawable refresh 0x7f0700f1
 int drawable register 0x7f0700f2
 int drawable save 0x7f0700f3
-int drawable test_level_drawable 0x7f0700f4
-int drawable tooltip_frame_dark 0x7f0700f5
-int drawable tooltip_frame_light 0x7f0700f6
-int drawable utilidades 0x7f0700f7
+int drawable splash 0x7f0700f4
+int drawable test_level_drawable 0x7f0700f5
+int drawable tooltip_frame_dark 0x7f0700f6
+int drawable tooltip_frame_light 0x7f0700f7
+int drawable utilidades 0x7f0700f8
 int id ALT 0x7f080000
 int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002

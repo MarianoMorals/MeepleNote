@@ -11,15 +11,26 @@ namespace MeepleNote.Views {
 
         public DetalleJuegoPage(Juego juego) {
             InitializeComponent();
+
+            if (juego == null) {
+                DisplayAlert("Error", "Juego no válido", "OK");
+                return;
+            }
+
             _dbService = new SQLiteService();
             _explorarService = new ExplorarService();
-            _juego = juego;
+            _juego = juego ?? throw new ArgumentNullException(nameof(juego));
             _partidas = new ObservableCollection<PartidaViewModel>();
-            PartidasCollection.ItemsSource = _partidas;
 
-            CargarDatosIniciales();
-            CargarDetallesCompletos();
-            CargarPartidasRecientes();
+            try {
+                PartidasCollection.ItemsSource = _partidas;
+                CargarDatosIniciales();
+                CargarDetallesCompletos();
+                CargarPartidasRecientes();
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Error inicializando página: {ex.Message}");
+            }
         }
 
         private void CargarDatosIniciales() {

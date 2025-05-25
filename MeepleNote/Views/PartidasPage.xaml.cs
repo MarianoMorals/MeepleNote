@@ -37,17 +37,18 @@ namespace MeepleNote.Views {
         protected override async void OnAppearing() {
             base.OnAppearing();
 
-            if (_isInitialLoad) {
+            /*if (_isInitialLoad) {
                 _isInitialLoad = false;
                 await CargarPartidas();
-            }
+            }*/
+            await CargarPartidas();
         }
 
         private async Task CargarPartidas() {
             IsRefreshing = true;
             _partidas.Clear();
 
-            var idUsuario = Preferences.Get("IdUsuario", 0);
+            var idUsuario = Preferences.Get("UsuarioId", "0");
             var partidas = (await _dbService.GetPartidasAsync(idUsuario))
                 .DistinctBy(p => p.IdPartida)
                 .OrderByDescending(p => p.Fecha)

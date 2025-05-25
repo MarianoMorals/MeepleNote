@@ -28,7 +28,8 @@
             <Color x:Key="SurfaceColor">#FFFFFF</Color>
             <!-- Color adicional - Azul medio (500) -->
             <Color x:Key="ExtraColor">#3B82F6</Color>
-
+            <Color x:Key="StarColor">#FFD700</Color>
+            <Color x:Key="EmptyStarColor">#CCCCCC</Color>
             <!-- Estilos reutilizables -->
             <Style x:Key="PrimaryButtonStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>

@@ -25,9 +25,22 @@ namespace MeepleNote.Services {
         public Task<int> SaveUsuarioAsync(Usuario usuario) => _database.InsertOrReplaceAsync(usuario);
         public Task<List<Usuario>> GetUsuariosAsync() => _database.Table<Usuario>().ToListAsync();
 
+        public async Task<string?> GetEmailUsuarioAsync(string idUsuario) {
+            try {
+                var usuario = await _database.Table<Usuario>()
+                                           .Where(u => u.FirebaseUserId == idUsuario)
+                                           .FirstOrDefaultAsync();
+
+                return usuario?.Email ?? string.Empty;
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Error al obtener email: {ex.Message}");
+                return string.Empty;
+            }
+        }
         // Obtener usuario por su ID local (clave primaria autoincremental)
-        public Task<Usuario?> GetUsuarioByIdAsync(int id) =>
-            _database.Table<Usuario>().Where(u => u.IdUsuario == id).FirstOrDefaultAsync();
+        public Task<Usuario?> GetUsuarioByIdAsync(string id) =>
+            _database.Table<Usuario>().Where(u => u.FirebaseUserId == id).FirstOrDefaultAsync();
 
         // Nuevo método para obtener usuario por su Firebase User ID
         public Task<Usuario?> GetUsuarioByFirebaseIdAsync(string firebaseId) =>
@@ -57,9 +70,9 @@ namespace MeepleNote.Services {
 
         public Task<int> SaveJuegoAsync(Juego juego) => _database.InsertAsync(juego);
 
-        public async Task AnnadirJuegoExistenteAColeccion(int idJuego, int idUsuario) {
+        public async Task AnnadirJuegoExistenteAColeccion(int idJuego, string firebaseId) {
             var juego = await _database.Table<Juego>()
-                                       .Where(j => j.IdJuego == idJuego && j.IdUsuario == idUsuario)
+                                       .Where(j => j.IdJuego == idJuego && j.IdUsuario == firebaseId) 
                                        .FirstOrDefaultAsync();
             if (juego != null) {
                 juego.EnColeccion = true;
@@ -75,17 +88,17 @@ namespace MeepleNote.Services {
             }
         }
 
-        public async Task<List<Juego>> GetJuegosAsync(int idUsuario) =>
+        public async Task<List<Juego>> GetJuegosAsync(string idUsuario) =>
             await _database.Table<Juego>().Where(j => j.IdUsuario == idUsuario).ToListAsync();
-        public async Task<List<Juego>> GetJuegosAsyncEnColeccion(int idUsuario) =>
+        public async Task<List<Juego>> GetJuegosAsyncEnColeccion(string idUsuario) =>
             await _database.Table<Juego>().Where(j => j.EnColeccion && j.IdUsuario == idUsuario).ToListAsync();
         public Task<int> DeleteJuegoAsync(Juego juego) => _database.DeleteAsync(juego);
-        public async Task<bool> JuegoExisteAsync(int idJuego, int idUsuario) =>
+        public async Task<bool> JuegoExisteAsync(int idJuego, string idUsuario) =>
             await _database.Table<Juego>()
                    .Where(j => j.IdJuego == idJuego && j.IdUsuario == idUsuario)
                    .FirstOrDefaultAsync() != null;
 
-        public async Task<bool> JuegoEnColeccionAsync(int idJuego, int idUsuario) =>
+        public async Task<bool> JuegoEnColeccionAsync(int idJuego, string idUsuario) =>
             await _database.Table<Juego>()
                            .Where(j => j.IdJuego == idJuego && j.IdUsuario == idUsuario && j.EnColeccion)
                            .FirstOrDefaultAsync() != null;
@@ -101,7 +114,7 @@ namespace MeepleNote.Services {
             await _database.InsertAllAsync(partidas);
         }
 
-        public async Task<List<Partida>> GetPartidasAsync(int idUsuario) => 
+        public async Task<List<Partida>> GetPartidasAsync(string idUsuario) => 
             await _database.Table<Partida>().Where(p => p.IdUsuario == idUsuario).ToListAsync();
 
         public async Task<int> SavePartidaAsync(Partida partida) {
@@ -198,7 +211,7 @@ namespace MeepleNote.Services {
         // === SINCRONIZACIÓN COMPLETA ===
         public async Task<DatosUsuario> ObtenerTodo() {
 
-            var idUsuario = Preferences.Get("IdUsuario", 0);
+            var idUsuario = Preferences.Get("UsuarioId", "0");
 
 
             var usuario = await GetUsuarioByIdAsync(idUsuario);
@@ -226,9 +239,9 @@ namespace MeepleNote.Services {
             await ReplaceJugadoresPartidaAsync(datos.JugadoresPartida);
         }
 
-        public async Task LimpiarDatosUsuario() {
+        /*public async Task LimpiarDatosUsuario() {
             try {
-                var idUsuario = Preferences.Get("IdUsuario", 0);
+                var idUsuario = Preferences.Get("UsuarioId", 0);
 
                 // Eliminar solo los datos del usuario actual
                 await _database.ExecuteAsync("DELETE FROM Partida WHERE IdUsuario = ?", idUsuario);
@@ -244,7 +257,7 @@ namespace MeepleNote.Services {
                 Console.WriteLine($"Error al limpiar datos de usuario: {ex.Message}");
                 throw;
             }
-        }
+        }*/
 
         public async Task ResetearBaseDatosCompleta() {
             try {

@@ -22,7 +22,7 @@ namespace MeepleNote.Services {
                 return;
 
             // Obtener datos locales buscando el usuario por su Firebase User ID
-            var idUsuario = Preferences.Get("IdUsuario", 0);
+            var idUsuario = Preferences.Get("UsuarioId", "0");
 
 
             var usuario = await _sqlite.GetUsuarioByFirebaseIdAsync(_firebaseUsuarioId);

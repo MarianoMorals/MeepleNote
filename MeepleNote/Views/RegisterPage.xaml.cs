@@ -89,8 +89,17 @@ public partial class RegisterPage : ContentPage {
             await DisplayAlert("Éxito", "Usuario registrado correctamente.", "OK");
             await Shell.Current.GoToAsync("//LoginPage");
         }
-        catch (FirebaseAuthException ex) {
-            await DisplayAlert("Error", $"Firebase error: {ex.Reason}", "OK");
+        catch (FirebaseAuthException firebaseAuthEx) {
+            string errorMessage = "Error de autenticación: ";
+            switch (firebaseAuthEx.Reason) {
+                case AuthErrorReason.EmailExists:
+                    errorMessage += "Ya existe un usuario registrado con este correo.";
+                    break;
+                default:
+                    errorMessage += firebaseAuthEx.Message;
+                    break;
+            }
+            await DisplayAlert("Error", errorMessage, "OK");
         }
         catch (Exception ex) {
             await DisplayAlert("Error", $"No se pudo registrar: {ex.Message}", "OK");

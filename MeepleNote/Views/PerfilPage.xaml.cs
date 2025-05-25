@@ -110,7 +110,7 @@ namespace MeepleNote.Views {
                 }
 
                 // 2. Limpiar datos locales
-                await _sqliteDb.LimpiarDatosUsuario();
+                //await _sqliteDb.LimpiarDatosUsuario();
 
                 // 3. Cerrar sesión en Firebase
                 _firebaseAuthService.Logout();

@@ -22,7 +22,7 @@ public partial class LoginPage : ContentPage {
 
         try {
             var sqliteDb = new SQLiteService();
-            await sqliteDb.LimpiarDatosUsuario();
+            //await sqliteDb.LimpiarDatosUsuario();
 
 
             // Iniciar sesión en Firebase Authentication
@@ -35,7 +35,7 @@ public partial class LoginPage : ContentPage {
 
             // Guardar preferencias de sesión y el Firebase User ID
             Preferences.Set("SesionIniciada", RecordarSesionCheck.IsChecked);
-            Preferences.Set("UsuarioId", firebaseUsuarioId.ToString()); // Guardar el Firebase User ID
+            Preferences.Set("UsuarioId", firebaseUsuarioId); // Guardar el Firebase User ID
             Preferences.Set("FirebaseToken", token); // Guardar el token para futuras peticiones
 
             // Inicializar servicios con el token
@@ -59,7 +59,7 @@ public partial class LoginPage : ContentPage {
 
             
             //Guardar preferenias de IdUsuario
-            Preferences.Set("IdUsuario", usuarioExistente.IdUsuario);
+            //Preferences.Set("IdUsuario", usuarioExistente.IdUsuario);
 
             // Redirigir a la página de Colección
             await Shell.Current.GoToAsync($"//{nameof(ColeccionPage)}");

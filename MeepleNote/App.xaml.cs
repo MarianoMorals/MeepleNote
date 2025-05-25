@@ -9,6 +9,9 @@ namespace MeepleNote {
 
         public App() {
             InitializeComponent();
+
+            Application.Current.UserAppTheme = AppTheme.Light;
+
             MainPage = new AppShell();
             HandleInitialNavigation();
         }
@@ -16,7 +19,7 @@ namespace MeepleNote {
         private async void HandleInitialNavigation() {
             // Limpiar datos residuales al iniciar la app
             var sqliteDb = new SQLiteService();
-            await sqliteDb.LimpiarDatosUsuario();
+            //await sqliteDb.LimpiarDatosUsuario();
 
             bool sesionActiva = Preferences.Get("SesionIniciada", false);
 

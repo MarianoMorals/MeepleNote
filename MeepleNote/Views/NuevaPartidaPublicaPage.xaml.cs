@@ -6,6 +6,7 @@ namespace MeepleNote.Views {
     public partial class NuevaPartidaPublicaPage : ContentPage {
         private readonly SQLiteService _dbService;
         private readonly Juego _juego;
+        private string emailUsuario;
 
         public DateTime TodayDate => DateTime.Today;
         public Juego Juego => _juego;
@@ -20,8 +21,23 @@ namespace MeepleNote.Views {
             FechaPicker.Date = DateTime.Today.AddDays(1);
             HoraPicker.Time = new TimeSpan(18, 0, 0);
             JugadoresPicker.SelectedIndex = 3; // 4 jugadores por defecto
-        }
 
+            var idUsuario = Preferences.Get("UsuarioId", "0");
+
+            ObtenerEmailOrganizador(idUsuario);
+
+            EmailEntry.Text = emailUsuario;
+        }
+        private async void ObtenerEmailOrganizador(string idUsuarioOrganizador) {
+            var email = await _dbService.GetEmailUsuarioAsync(idUsuarioOrganizador);
+
+            if (string.IsNullOrEmpty(email)) {
+                await DisplayAlert("Info", "No se pudo obtener el email de contacto", "OK");
+                emailUsuario = string.Empty;
+            }
+
+            emailUsuario = email;
+        }
         private async void OnPublicarClicked(object sender, EventArgs e) {
             if (string.IsNullOrWhiteSpace(CiudadEntry.Text)) {
                 await DisplayAlert("Error", "Debes indicar una ciudad", "OK");

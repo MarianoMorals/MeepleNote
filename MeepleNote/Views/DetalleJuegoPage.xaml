@@ -64,13 +64,13 @@
                     Text="Registrar Partida" 
                     Clicked="OnRegistrarPartidaClicked"
                     ImageSource="partidaannadir.png"
-                    Style="{StaticResource PrimaryButton}"/>
+                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             <Button Grid.Row="6"
                     Text="Crear Partida Pública"
                     Clicked="OnCrearPartidaPublicaClicked"
                     ImageSource="publicar.png"
-                    Style="{StaticResource PrimaryButton}"/>
+                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             <!-- Últimas partidas -->
             <Label Grid.Row="7" Text="Últimas partidas" FontSize="20" FontAttributes="Bold"/>

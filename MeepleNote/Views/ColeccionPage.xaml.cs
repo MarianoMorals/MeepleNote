@@ -1,5 +1,6 @@
 using MeepleNote.Models;
 using MeepleNote.Services;
+using System.Diagnostics;
 
 namespace MeepleNote.Views {
     public partial class ColeccionPage : ContentPage {
@@ -16,14 +17,29 @@ namespace MeepleNote.Views {
         }
 
         private async Task CargarColeccion() {
-            var idUsuario = Preferences.Get("IdUsuario", 0);
-            var juegos = await dbService.GetJuegosAsyncEnColeccion(idUsuario);
+            var idUsuario = Preferences.Get("UsuarioId", "0");
+            var juegos = await dbService.GetJuegosAsyncEnColeccion(idUsuario.ToString());
+
             ColeccionList.ItemsSource = juegos;
+            EliminarButton.IsVisible = juegos?.Any() == true;
+            EmptyLabel.IsVisible = !juegos.Any();
         }
 
         private async void OnVerDetallesClicked(object sender, EventArgs e) {
-            if (sender is Button button && button.CommandParameter is Juego juego) {
-                await Navigation.PushAsync(new DetalleJuegoPage(juego));
+            try {
+                if (sender is Button button && button.BindingContext is Juego juego) {
+                    if (juego == null) {
+                        await DisplayAlert("Error", "Juego no disponible", "OK");
+                        return;
+                    }
+
+                    var detailPage = new DetalleJuegoPage(juego);
+                    await Navigation.PushAsync(detailPage);
+                }
+            }
+            catch (Exception ex) {
+                Debug.WriteLine($"CRASH DETAIL: {ex.ToString()}");
+                await DisplayAlert("Error", $"Error técnico: {ex.Message}", "OK");
             }
         }
 

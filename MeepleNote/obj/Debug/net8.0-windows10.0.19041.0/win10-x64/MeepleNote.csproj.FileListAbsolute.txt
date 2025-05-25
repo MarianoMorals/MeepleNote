@@ -1,0 +1,12 @@
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MeepleNote.csproj.AssemblyReference.cache
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauiimage.inputs
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauifont.inputs
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauisplash.inputs
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauimanifest.stamp
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.i.cs
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.cs
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlTypeInfo.g.cs
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xaml
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlSaveStateFile.xml
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MeepleNote.GeneratedMSBuildEditorConfig.editorconfig
