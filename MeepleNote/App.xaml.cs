@@ -26,7 +26,7 @@ namespace MeepleNote {
             if (sesionActiva) {
                 // Cargar datos desde Firebase al iniciar
                 await CargarDatosDesdeFirebase();
-                await Shell.Current.GoToAsync($"//{nameof(ExplorarPage)}");
+                await Shell.Current.GoToAsync($"//PrincipalPage");
             }
             else {
                 await Shell.Current.GoToAsync("//LoginPage");

@@ -29,6 +29,10 @@ namespace MeepleNote.Services
             List<Partida> partidas,
             List<JugadorPartida> jugadoresPartida,
             DateTime fechaSync) {
+
+            // Asegúrate de que el usuario tenga el FirebaseUserId correcto
+            usuario.FirebaseUserId = usuarioId;
+
             await _firebase.Child("usuarios").Child(usuarioId).Child("perfil").PutAsync(usuario);
             await _firebase.Child("usuarios").Child(usuarioId).Child("coleccion").PutAsync(colecciones);
             await _firebase.Child("usuarios").Child(usuarioId).Child("juegos").PutAsync(juegos);
@@ -69,10 +73,13 @@ namespace MeepleNote.Services
         public async Task<List<JugadorPartida>> DescargarJugadoresPartida(string usuarioId) =>
             await _firebase.Child("usuarios").Child(usuarioId).Child("jugadoresPartida").OnceSingleAsync<List<JugadorPartida>>() ?? new();
         public async Task SubirPartidasPublicas(List<PartidaPublica> partidas) {
-            await _firebase.Child("partidasPublicas").PutAsync(partidas);
+            // Guardar en el nodo global, no asociado a un usuario específico
+            await _firebase.Child("partidasPublicasGlobales").PutAsync(partidas);
         }
-        public async Task<List<PartidaPublica>> DescargarPartidasPublicas() =>
-            await _firebase.Child("partidasPublicas").OnceSingleAsync<List<PartidaPublica>>() ?? new();
+
+        public async Task<List<PartidaPublica>> DescargarPartidasPublicas() {
+            return await _firebase.Child("partidasPublicasGlobales").OnceSingleAsync<List<PartidaPublica>>() ?? new();
+        }
 
         public async Task<DatosUsuario?> DescargarTodo(string usuarioId) {
             try {
@@ -103,4 +110,6 @@ namespace MeepleNote.Services
 
 
     }
+
+
 }

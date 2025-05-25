@@ -57,12 +57,12 @@ public partial class LoginPage : ContentPage {
 
             }
 
-            
+
             //Guardar preferenias de IdUsuario
             //Preferences.Set("IdUsuario", usuarioExistente.IdUsuario);
 
             // Redirigir a la página de Colección
-            await Shell.Current.GoToAsync($"//{nameof(ColeccionPage)}");
+            await Shell.Current.GoToAsync($"//PrincipalPage");
         }
         catch (FirebaseAuthException firebaseAuthEx) {
             string errorMessage = "Error de autenticación: ";
@@ -86,7 +86,7 @@ public partial class LoginPage : ContentPage {
 
     private async void OnIrARegistro(object sender, EventArgs e) {
         // Redirigir a la página de registro
-        await Shell.Current.GoToAsync("//RegisterPage");
+        Application.Current.MainPage = new NavigationPage(new PrincipalPage());
     }
 
     private async void OnRestablecerContraseñaClicked(object sender, EventArgs e) {

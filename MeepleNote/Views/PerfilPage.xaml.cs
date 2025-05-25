@@ -27,7 +27,6 @@ namespace MeepleNote.Views {
         protected override async void OnAppearing() {
             base.OnAppearing();
             await CargarPerfilUsuario();
-            //await _sqliteDb.MarcarTodosLosJuegosEnColeccionAsync();
 
         }
 
@@ -123,6 +122,26 @@ namespace MeepleNote.Views {
             }
             catch (Exception ex) {
                 await DisplayAlert("Error", $"Error al cerrar sesión: {ex.Message}", "OK");
+            }
+        }
+
+        protected override bool OnBackButtonPressed() {
+            Dispatcher.Dispatch(async () => {
+                await VolverAInicio();
+            });
+            return true; // Indica que hemos manejado el evento
+        }
+
+        private async void OnBackClicked(object sender, EventArgs e) {
+            await VolverAInicio();
+        }
+
+        private async Task VolverAInicio() {
+            if (Navigation.NavigationStack.Count > 1) {
+                await Navigation.PopAsync();
+            }
+            else {
+                await Shell.Current.GoToAsync("//PrincipalPage");
             }
         }
     }

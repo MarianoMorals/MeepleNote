@@ -21,10 +21,13 @@
     <ShellContent Route="PartidasPublicasPage" 
               ContentTemplate="{DataTemplate views:PartidasPublicasPage}" />
     
+    <ShellContent Route="PerfilPage" 
+          ContentTemplate="{DataTemplate views:PerfilPage}" />
+    
     <!-- Barra de navegación inferior con páginas independientes -->
     <TabBar>
-        <Tab Title="Perfil" Icon="home.png" Route="PerfilPage">
-            <ShellContent ContentTemplate="{DataTemplate views:PerfilPage}" />
+        <Tab Title="Inicio" Icon="home.png" Route="PrincipalPage">
+            <ShellContent ContentTemplate="{DataTemplate views:PrincipalPage}" />
         </Tab>
 
         <Tab Title="Colección" Icon="coleccion.png" Route="ColeccionPage">

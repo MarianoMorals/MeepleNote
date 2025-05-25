@@ -21,56 +21,54 @@
                     <Frame BorderColor="{StaticResource PrimaryColor}" 
                            CornerRadius="10" 
                            Padding="15"
-                           Margin="5">
-                        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+                           Margin="10,5">
+                        <Grid ColumnDefinitions="80,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                            <!-- Imagen del juego -->
                             <Image Source="{Binding FotoPortada}"
+                                   Grid.Column="0"
                                    Grid.RowSpan="5"
-                                   WidthRequest="80"
-                                   HeightRequest="80"
-                                   Aspect="AspectFill"/>
+                                   WidthRequest="70"
+                                   HeightRequest="70"
+                                   Aspect="AspectFill"
+                                   Margin="0,0,10,0"/>
 
-                            <Label Text="{Binding TituloJuego}"
-                                   Grid.Column="1"
-                                   FontSize="16"
-                                   FontAttributes="Bold"/>
+                            <!-- Datos organizados -->
+                            <StackLayout Grid.Column="1" Spacing="5">
+                                <Label Text="{Binding TituloJuego}"
+                                       FontSize="16"
+                                       FontAttributes="Bold"/>
 
-                            <Label Text="{Binding Fecha, StringFormat='🗓 {0:dd/MM/yyyy HH:mm}'}"
-                                   Grid.Column="1"
-                                   Grid.Row="1"
-                                   FontSize="14"/>
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="{Binding Fecha, StringFormat='🗓 {0:dd/MM/yy}'}"
+                                           FontSize="14"/>
+                                    <Label Text="{Binding Ciudad, StringFormat='📍 {0}'}"
+                                           FontSize="14"/>
+                                </HorizontalStackLayout>
 
-                            <Label Text="{Binding Ciudad, StringFormat='📍 {0}'}"
-                                   Grid.Column="1"
-                                   Grid.Row="2"
-                                   FontSize="14"/>
+                                <Label Text="{Binding JugadoresRequeridos, StringFormat='👥 {0} jugadores'}"
+                                       FontSize="14"/>
 
-                            <Label Text="{Binding JugadoresRequeridos, StringFormat='👥 {0} jugadores'}"
-                                   Grid.Column="1"
-                                   Grid.Row="3"
-                                   FontSize="14"/>
+                                <Label Text="{Binding EmailContacto, StringFormat='✉ {0}'}"
+                                       FontSize="14"
+                                       TextColor="{StaticResource PrimaryColor}"/>
 
-                            <Label Text="{Binding Organizador, StringFormat='Organiza: {0}'}"
-                                   Grid.Column="1"
-                                   Grid.Row="4"
-                                   FontSize="14"
-                                   FontAttributes="Italic"/>
+                                <Label Text="{Binding Organizador, StringFormat='Organiza: {0}'}"
+                                       FontSize="14"
+                                       FontAttributes="Italic"/>
+                            </StackLayout>
 
-                            <Button Text="Contactar"
-                                    Grid.Column="1"
+                            <!-- Botón en fila aparte -->
+                            <Button Text="✔ Completada"
+                                    Grid.ColumnSpan="2"
                                     Grid.Row="5"
-                                    Command="{Binding Source={x:Reference PartidasPublicasList}, Path=BindingContext.ContactarCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Style="{StaticResource SecondaryButtonStyle}"
-                                    HorizontalOptions="End"/>
-
-                            <Button Text="Marcar como completada"
-                                    Grid.Column="1"
-                                    Grid.Row="6"
                                     IsVisible="{Binding EsOrganizador}"
                                     Command="{Binding Source={x:Reference PartidasPublicasList}, Path=BindingContext.CompletarCommand}"
                                     CommandParameter="{Binding .}"
-                                    Style="{StaticResource AccentButtonStyle}"
-                                    HorizontalOptions="End"/>
+                                    Style="{StaticResource SecondaryButtonStyle}"
+                                    HorizontalOptions="End"
+                                    Margin="0,10,0,0"
+                                    WidthRequest="150"
+                                    HeightRequest="40"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>

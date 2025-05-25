@@ -37,7 +37,9 @@ namespace MeepleNote.Views {
             ImagenPortada.Source = _juego.FotoPortada;
             Titulo.Text = _juego.Titulo;
             Puntuacion.Text = _juego.PuntuacionFormateada;
-            PuntuacionPersonalEntry.Text = _juego.PuntuacionPersonalFormateada;
+            if (_juego.PuntuacionPersonal >= 1 && _juego.PuntuacionPersonal <= 5) {
+                PuntuacionPicker.SelectedIndex = (int)_juego.PuntuacionPersonal - 1;
+            }
             Duracion.Text = $"⏱ {_juego.DuracionEstimada} min";
             Edad.Text = $"🧒 +{_juego.Edad} años";
             Autor.Text = $"🎨 {_juego.Autor}";
@@ -103,14 +105,20 @@ namespace MeepleNote.Views {
                 });
             }
         }*/
-        private async void OnPuntuacionPersonalChanged(object sender, EventArgs e) {
-            if (double.TryParse(PuntuacionPersonalEntry.Text, out double puntuacion)) {
-                _juego.PuntuacionPersonal = Math.Clamp(puntuacion, 1, 10);
+        private async void OnPuntuacionChanged(object sender, EventArgs e) {
+            if (PuntuacionPicker.SelectedIndex >= 0) {
+                _juego.PuntuacionPersonal = PuntuacionPicker.SelectedIndex + 1;
                 await _dbService.SaveJuegoAsync(_juego);
             }
         }
         private async void OnRegistrarPartidaClicked(object sender, EventArgs e) {
             await Navigation.PushAsync(new RegistrarPartidaPage(_juego));
+
+            // Esperar a que se cierre la página de registro
+            this.Dispatcher.DispatchDelayed(TimeSpan.FromMilliseconds(500), () =>
+            {
+                CargarPartidasRecientes();
+            });
         }
 
         private async void OnPartidaSelected(object sender, SelectionChangedEventArgs e) {

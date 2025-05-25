@@ -67,7 +67,19 @@ namespace MeepleNote.Views {
             };
 
             try {
+                // Guardar localmente
                 await _dbService.SavePartidaPublicaAsync(partida);
+
+                // Obtener todas las partidas públicas
+                var partidasPublicas = await _dbService.GetPartidasPublicasAsync(false);
+
+                // Subir a Firebase
+                var token = Preferences.Get("FirebaseToken", null);
+                if (!string.IsNullOrEmpty(token)) {
+                    var firebaseDb = new FirebaseDatabaseService(token);
+                    await firebaseDb.SubirPartidasPublicas(partidasPublicas);
+                }
+
                 await DisplayAlert("Éxito", "Partida pública creada", "OK");
                 await Navigation.PopAsync();
             }

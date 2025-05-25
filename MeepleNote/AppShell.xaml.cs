@@ -14,6 +14,7 @@ public partial class AppShell : Shell {
         Routing.RegisterRoute("RegisterPage", typeof(RegisterPage));
 
         // Registrar rutas de las páginas principales
+        Routing.RegisterRoute("PrincipalPage", typeof(PrincipalPage));
         Routing.RegisterRoute("PerfilPage", typeof(PerfilPage));
         Routing.RegisterRoute("ColeccionPage", typeof(ColeccionPage));
         Routing.RegisterRoute("PartidasPage", typeof(PartidasPage));
