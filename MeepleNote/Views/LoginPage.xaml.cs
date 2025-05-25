@@ -9,9 +9,11 @@ namespace MeepleNote.Views;
 
 public partial class LoginPage : ContentPage {
     private readonly FirebaseAuthService _authService = new FirebaseAuthService();
+    private SQLiteService _dbService = new SQLiteService();
 
     public LoginPage() {
         InitializeComponent();
+        //_dbService.ResetearBaseDatosCompleta();
     }
 
     private async void OnLoginClicked(object sender, EventArgs e) {
@@ -19,6 +21,10 @@ public partial class LoginPage : ContentPage {
         var password = PasswordEntry.Text;
 
         try {
+            var sqliteDb = new SQLiteService();
+            await sqliteDb.LimpiarDatosUsuario();
+
+
             // Iniciar sesión en Firebase Authentication
             var auth = await _authService.LoginAsync(email, password);
             var token = auth.FirebaseToken;
@@ -34,8 +40,11 @@ public partial class LoginPage : ContentPage {
 
             // Inicializar servicios con el token
             var firebaseDb = new FirebaseDatabaseService(token);
-            var sqliteDb = new SQLiteService();
             var sincronizacionService = new SincronizacionService(sqliteDb, firebaseDb);
+
+            // Sincronizar datos desde Firebase si es necesario al iniciar sesión
+            await sincronizacionService.SincronizarDesdeFirebaseSiNecesario();
+
 
             // Verificar si el usuario ya existe en la base de datos local por su Firebase User ID
             var usuarioExistente = await sqliteDb.GetUsuarioByFirebaseIdAsync(firebaseUsuarioId);
@@ -48,9 +57,7 @@ public partial class LoginPage : ContentPage {
 
             }
 
-            // Sincronizar datos desde Firebase si es necesario al iniciar sesión
-            await sincronizacionService.SincronizarDesdeFirebaseSiNecesario();
-
+            
             //Guardar preferenias de IdUsuario
             Preferences.Set("IdUsuario", usuarioExistente.IdUsuario);
 

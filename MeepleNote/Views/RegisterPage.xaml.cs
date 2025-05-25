@@ -9,12 +9,44 @@ namespace MeepleNote.Views;
 
 public partial class RegisterPage : ContentPage {
     // Usa la misma API key que en LoginPage
-    private const string ApiKey = "AIzaSyCmcqsaPemAyArjJBBiV7nFm2TeXLFp9cI"; // Reemplaza con tu API Key real
+    private const string ApiKey = "AIzaSyCmcqsaPemAyArjJBBiV7nFm2TeXLFp9cI";
     private readonly SQLiteService _sqliteService;
 
     public RegisterPage() {
         InitializeComponent();
         _sqliteService = new SQLiteService();
+
+        // Configurar el botón de retroceso
+        SetupBackButton();
+    }
+    private void SetupBackButton() {
+        // Para Android e iOS
+        NavigationPage.SetHasBackButton(this, true);
+
+        // Personalizar el comportamiento del botón de retroceso
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.WinUI) {
+            NavigationPage.SetBackButtonTitle(this, "Volver");
+        }
+    }
+
+    protected override bool OnBackButtonPressed() {
+        Dispatcher.Dispatch(async () => {
+            await VolverALogin();
+        });
+        return true; // Indica que hemos manejado el evento
+    }
+
+    private async void OnBackClicked(object sender, EventArgs e) {
+        await VolverALogin();
+    }
+
+    private async Task VolverALogin() {
+        if (Navigation.NavigationStack.Count > 1) {
+            await Navigation.PopAsync();
+        }
+        else {
+            await Shell.Current.GoToAsync("//LoginPage");
+        }
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e) {

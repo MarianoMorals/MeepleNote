@@ -7,7 +7,6 @@ using Microsoft.Maui.Storage; // Para Preferences
 namespace MeepleNote.Services {
     public class SQLiteService {
         private SQLiteAsyncConnection _database;
-
         public SQLiteService() {
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, "meeplenote.db3");
             _database = new SQLiteAsyncConnection(dbPath);
@@ -18,6 +17,8 @@ namespace MeepleNote.Services {
             _database.CreateTableAsync<Coleccion>();
             _database.CreateTableAsync<Partida>();
             _database.CreateTableAsync<JugadorPartida>();
+            _database.CreateTableAsync<PartidaPublica>();
+
         }
 
         // === USUARIO ===
@@ -56,8 +57,10 @@ namespace MeepleNote.Services {
 
         public Task<int> SaveJuegoAsync(Juego juego) => _database.InsertAsync(juego);
 
-        public async Task AnnadirJuegoExistenteAColeccion(int idJuego) {
-            var juego = await _database.Table<Juego>().Where(j => j.IdJuego == idJuego).FirstOrDefaultAsync();
+        public async Task AnnadirJuegoExistenteAColeccion(int idJuego, int idUsuario) {
+            var juego = await _database.Table<Juego>()
+                                       .Where(j => j.IdJuego == idJuego && j.IdUsuario == idUsuario)
+                                       .FirstOrDefaultAsync();
             if (juego != null) {
                 juego.EnColeccion = true;
                 await _database.UpdateAsync(juego);
@@ -72,16 +75,20 @@ namespace MeepleNote.Services {
             }
         }
 
-        public Task<List<Juego>> GetJuegosAsync() => _database.Table<Juego>().ToListAsync();
-        public Task<List<Juego>> GetJuegosAsyncEnColeccion() => _database.Table<Juego>().Where(j => j.EnColeccion).ToListAsync();
-
+        public async Task<List<Juego>> GetJuegosAsync(int idUsuario) =>
+            await _database.Table<Juego>().Where(j => j.IdUsuario == idUsuario).ToListAsync();
+        public async Task<List<Juego>> GetJuegosAsyncEnColeccion(int idUsuario) =>
+            await _database.Table<Juego>().Where(j => j.EnColeccion && j.IdUsuario == idUsuario).ToListAsync();
         public Task<int> DeleteJuegoAsync(Juego juego) => _database.DeleteAsync(juego);
-        public async Task<bool> JuegoExisteAsync(int idJuego) =>
-            await _database.Table<Juego>().Where(j => j.IdJuego == idJuego).FirstOrDefaultAsync() != null;
+        public async Task<bool> JuegoExisteAsync(int idJuego, int idUsuario) =>
+            await _database.Table<Juego>()
+                   .Where(j => j.IdJuego == idJuego && j.IdUsuario == idUsuario)
+                   .FirstOrDefaultAsync() != null;
 
-        public async Task<bool> JuegoEnColeccionAsync(int idJuego) =>
-            await _database.Table<Juego>().Where(j => j.IdJuego == idJuego && j.EnColeccion).FirstOrDefaultAsync() != null;
-
+        public async Task<bool> JuegoEnColeccionAsync(int idJuego, int idUsuario) =>
+            await _database.Table<Juego>()
+                           .Where(j => j.IdJuego == idJuego && j.IdUsuario == idUsuario && j.EnColeccion)
+                           .FirstOrDefaultAsync() != null;
         public Task<Juego> GetJuegoByIdAsync(int idJuego) =>
             _database.Table<Juego>().FirstOrDefaultAsync(j => j.IdJuego == idJuego);
         public async Task MarcarTodosLosJuegosEnColeccionAsync() {
@@ -94,7 +101,8 @@ namespace MeepleNote.Services {
             await _database.InsertAllAsync(partidas);
         }
 
-        public Task<List<Partida>> GetPartidasAsync() => _database.Table<Partida>().ToListAsync();
+        public async Task<List<Partida>> GetPartidasAsync(int idUsuario) => 
+            await _database.Table<Partida>().Where(p => p.IdUsuario == idUsuario).ToListAsync();
 
         public async Task<int> SavePartidaAsync(Partida partida) {
             if (partida.IdPartida != 0)
@@ -153,6 +161,31 @@ namespace MeepleNote.Services {
 
         public Task<List<JugadorPartida>> GetJugadoresPartidaAsync() => _database.Table<JugadorPartida>().ToListAsync();
 
+        // === PARTIDA PUBLICA ===
+        public async Task<List<PartidaPublica>> GetPartidasPublicasAsync(bool soloFuturas = true) {
+            var query = _database.Table<PartidaPublica>();
+
+            if (soloFuturas) {
+                query = query.Where(p => p.Fecha >= DateTime.Now && !p.Completada);
+            }
+
+            return await query.ToListAsync();
+        }
+
+        public async Task<int> SavePartidaPublicaAsync(PartidaPublica partida) {
+            if (partida.Id == 0) {
+                return await _database.InsertAsync(partida);
+            }
+            else {
+                return await _database.UpdateAsync(partida);
+            }
+        }
+
+        public async Task<int> MarcarPartidaPublicaCompletadaAsync(int id) {
+            return await _database.ExecuteAsync(
+                "UPDATE PartidaPublica SET Completada = 1 WHERE Id = ?", id);
+        }
+
         // === FECHA DE SINCRONIZACIÓN ===
         public void GuardarFechaUltimaSync(DateTime fecha) =>
             Preferences.Set("UltimaSync", fecha.ToString("O")); // ISO 8601
@@ -164,11 +197,14 @@ namespace MeepleNote.Services {
 
         // === SINCRONIZACIÓN COMPLETA ===
         public async Task<DatosUsuario> ObtenerTodo() {
-            // Asumimos que el perfil del usuario logueado tiene el ID local 1 (esto puede necesitar ajuste)
-            var usuario = await GetUsuarioByIdAsync(1);
-            var juegos = await GetJuegosAsync();
+
+            var idUsuario = Preferences.Get("IdUsuario", 0);
+
+
+            var usuario = await GetUsuarioByIdAsync(idUsuario);
+            var juegos = await GetJuegosAsync(idUsuario);
             var coleccion = await GetColeccionesAsync();
-            var partidas = await GetPartidasAsync();
+            var partidas = await GetPartidasAsync(idUsuario);
             var jugadoresPartida = await GetJugadoresPartidaAsync();
 
             return new DatosUsuario {
@@ -188,6 +224,55 @@ namespace MeepleNote.Services {
             await ReplaceColeccionesAsync(datos.Coleccion);
             await ReplacePartidasAsync(datos.Partidas);
             await ReplaceJugadoresPartidaAsync(datos.JugadoresPartida);
+        }
+
+        public async Task LimpiarDatosUsuario() {
+            try {
+                var idUsuario = Preferences.Get("IdUsuario", 0);
+
+                // Eliminar solo los datos del usuario actual
+                await _database.ExecuteAsync("DELETE FROM Partida WHERE IdUsuario = ?", idUsuario);
+                await _database.ExecuteAsync("DELETE FROM JugadorPartida WHERE IdPartida IN " +
+                                           "(SELECT IdPartida FROM Partida WHERE IdUsuario = ?)", idUsuario);
+                await _database.ExecuteAsync("DELETE FROM Coleccion WHERE IdUsuario = ?", idUsuario);
+                await _database.ExecuteAsync("DELETE FROM Juego WHERE IdUsuario = ?", idUsuario);
+                await _database.ExecuteAsync("DELETE FROM PartidaPublica WHERE IdUsuarioOrganizador = ?", idUsuario);
+
+                Console.WriteLine("Datos del usuario limpiados correctamente");
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Error al limpiar datos de usuario: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task ResetearBaseDatosCompleta() {
+            try {
+                // Eliminar todas las tablas en orden adecuado (primero las que tienen FK)
+                await _database.DeleteAllAsync<JugadorPartida>();
+                await _database.DeleteAllAsync<Partida>();
+                await _database.DeleteAllAsync<Coleccion>();
+                await _database.DeleteAllAsync<Juego>();
+                await _database.DeleteAllAsync<Usuario>();
+                await _database.DeleteAllAsync<PartidaPublica>(); // Nueva tabla
+
+                // Resetear las preferencias relacionadas
+                Preferences.Clear();
+
+                // Recrear las tablas
+                await _database.CreateTableAsync<Usuario>();
+                await _database.CreateTableAsync<Juego>();
+                await _database.CreateTableAsync<Coleccion>();
+                await _database.CreateTableAsync<Partida>();
+                await _database.CreateTableAsync<JugadorPartida>();
+                await _database.CreateTableAsync<PartidaPublica>();
+
+                Console.WriteLine("Base de datos reseteada completamente");
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Error al resetear BD: {ex.Message}");
+                throw; // Puedes manejar esto diferente si prefieres
+            }
         }
     }
 }

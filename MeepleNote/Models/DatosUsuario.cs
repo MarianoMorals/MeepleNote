@@ -12,5 +12,6 @@ namespace MeepleNote.Models
         public List<Coleccion> Coleccion { get; set; } = new();
         public List<Partida> Partidas { get; set; } = new();
         public List<JugadorPartida> JugadoresPartida { get; set; } = new();
+        public List<PartidaPublica> PartidaPublicas { get; set;} = new();
     }
 }

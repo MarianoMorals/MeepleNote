@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeepleNote.Views.NuevaPartidaPublicaPage"
+             Title="Nueva Partida Pública"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Frame BorderColor="{StaticResource PrimaryColor}" 
+                   CornerRadius="12" 
+                   Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Juego:" FontAttributes="Bold"/>
+                    <Label Text="{Binding Juego.Titulo}" FontSize="16"/>
+
+                    <Label Text="Fecha y Hora:" FontAttributes="Bold"/>
+                    <DatePicker x:Name="FechaPicker" MinimumDate="{Binding TodayDate}"/>
+                    <TimePicker x:Name="HoraPicker"/>
+
+                    <Label Text="Ciudad:" FontAttributes="Bold"/>
+                    <Entry x:Name="CiudadEntry" Placeholder="Ej: Madrid"/>
+
+                    <Label Text="Jugadores requeridos:" FontAttributes="Bold"/>
+                    <Picker x:Name="JugadoresPicker" Title="Selecciona">
+                        <Picker.Items>
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                            <x:String>6+</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Text="Email de contacto:" FontAttributes="Bold"/>
+                    <Entry x:Name="EmailEntry" 
+                           Placeholder="tu@email.com"
+                           Keyboard="Email"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Publicar Partida"
+                    Clicked="OnPublicarClicked"
+                    Style="{StaticResource PrimaryButton}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

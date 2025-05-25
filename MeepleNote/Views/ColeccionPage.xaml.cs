@@ -16,7 +16,8 @@ namespace MeepleNote.Views {
         }
 
         private async Task CargarColeccion() {
-            var juegos = await dbService.GetJuegosAsyncEnColeccion();
+            var idUsuario = Preferences.Get("IdUsuario", 0);
+            var juegos = await dbService.GetJuegosAsyncEnColeccion(idUsuario);
             ColeccionList.ItemsSource = juegos;
         }
 

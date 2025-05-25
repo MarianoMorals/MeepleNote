@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MeepleNote.Views.RegisterPage"
              Title="RegisterPage">
+    
     <ScrollView Padding="30">
         <VerticalStackLayout Spacing="15">
             <Entry x:Name="NameEntry" Placeholder="Nombre" />
@@ -10,7 +11,7 @@
             <Entry x:Name="EmailEntry" Placeholder="Correo electrónico" />
             <Entry x:Name="PasswordEntry" Placeholder="Contraseña (minimo 6 carácteres)" IsPassword="True" />
             <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirmar contraseña (minimo 6 carácteres)" IsPassword="True" />
-            <Button Text="Registrarse" Clicked="OnRegisterClicked"/>
+            <Button Text="Registrarse" Clicked="OnRegisterClicked" ImageSource="register.png"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

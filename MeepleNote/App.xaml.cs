@@ -7,27 +7,45 @@ namespace MeepleNote {
     public partial class App : Application {
         private const string ApiKey = "AIzaSyCmcqsaPemAyArjJBBiV7nFm2TeXLFp9cI";
 
-
         public App() {
             InitializeComponent();
-
-            // Configurar la página principal inicial
             MainPage = new AppShell();
-
-            // Manejar la navegación inicial
             HandleInitialNavigation();
         }
 
         private async void HandleInitialNavigation() {
+            // Limpiar datos residuales al iniciar la app
+            var sqliteDb = new SQLiteService();
+            await sqliteDb.LimpiarDatosUsuario();
+
             bool sesionActiva = Preferences.Get("SesionIniciada", false);
 
             if (sesionActiva) {
-                // Navegar a la página principal
+                // Cargar datos desde Firebase al iniciar
+                await CargarDatosDesdeFirebase();
                 await Shell.Current.GoToAsync($"//{nameof(ExplorarPage)}");
             }
             else {
-                // Navegar a la página de login
                 await Shell.Current.GoToAsync("//LoginPage");
+            }
+        }
+
+        private async Task CargarDatosDesdeFirebase() {
+            try {
+                var usuarioId = Preferences.Get("UsuarioId", null);
+                var token = Preferences.Get("FirebaseToken", null);
+
+                if (string.IsNullOrEmpty(usuarioId)) return;
+
+                var sqliteDb = new SQLiteService();
+                var firebaseDb = new FirebaseDatabaseService(token);
+                var sincService = new SincronizacionService(sqliteDb, firebaseDb);
+
+                await sincService.SincronizarDesdeFirebaseSiNecesario();
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Error al cargar datos desde Firebase: {ex.Message}");
+                // Podrías mostrar un mensaje al usuario si lo deseas
             }
         }
 
@@ -36,23 +54,34 @@ namespace MeepleNote {
         }
 
         private async Task RealizarSincronizacionAntesDeCerrar() {
-            var usuarioId = Preferences.Get("UsuarioId", null);
-            if (usuarioId == null) return;
+            try {
+                var usuarioId = Preferences.Get("UsuarioId", null);
+                var token = Preferences.Get("FirebaseToken", null);
 
-            var sqliteDb = new SQLiteService();
-            var token = await new FirebaseAuthProvider(new FirebaseConfig(ApiKey))
-                .SignInWithEmailAndPasswordAsync("TU_EMAIL", "TU_PASSWORD")
-                .ContinueWith(t => t.Result.FirebaseToken);
+                if (string.IsNullOrEmpty(usuarioId)) return;
 
-            var firebaseDb = new FirebaseDatabaseService(token);
-            var datosLocales = await sqliteDb.ObtenerTodo();
+                var sqliteDb = new SQLiteService();
+                var firebaseDb = new FirebaseDatabaseService(token);
+                var sincService = new SincronizacionService(sqliteDb, firebaseDb);
 
-            var fechaActual = DateTime.UtcNow;
-            await firebaseDb.SubirDatosUsuario(usuarioId, datosLocales.Perfil, datosLocales.Coleccion,
-                datosLocales.Juegos, datosLocales.Partidas, datosLocales.JugadoresPartida, fechaActual);
+                // Sincronizar todos los datos locales con Firebase
+                await sincService.SincronizarConFirebase();
 
-            sqliteDb.GuardarFechaUltimaSync(fechaActual);
+                Console.WriteLine("Datos sincronizados correctamente con Firebase");
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Error en sincronización: {ex.Message}");
+                // Aquí podrías implementar un sistema de reintentos o notificación de error
+            }
         }
 
+        protected override async void OnResume() {
+            base.OnResume();
+
+            // Verificar si hay cambios en Firebase al reanudar la app
+            if (Preferences.Get("SesionIniciada", false)) {
+                await CargarDatosDesdeFirebase();
+            }
+        }
     }
 }

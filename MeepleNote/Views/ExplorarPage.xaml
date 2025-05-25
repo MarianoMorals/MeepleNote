@@ -25,6 +25,7 @@
                     Grid.Column="1"
                     Text="Buscar" 
                     Style="{StaticResource PrimaryButtonStyle}"
+                    ImageSource="buscar.png"
                     Clicked="OnBuscarClicked"/>
         </Grid>
 
@@ -82,8 +83,10 @@
 
                                 <HorizontalStackLayout Spacing="10">
                                     <Button Text="Detalles" Clicked="OnVerDetallesClicked"
+                                            ImageSource="details.png"
                                             CommandParameter="{Binding .}"/>
                                     <Button Text="Añadir" Clicked="OnAgregarClicked"
+                                            ImageSource="annadir.png"
                                             CommandParameter="{Binding .}"/>
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>

@@ -165,26 +165,26 @@ namespace MeepleNote.Views {
         private async void OnAgregarClicked(object sender, EventArgs e) {
             if (sender is Button button && button.CommandParameter is Juego juego) {
                 try {
-                    bool yaExiste = await _dbService.JuegoExisteAsync(juego.IdJuego);
-                    if (yaExiste) {
-                        bool enColeccion = await _dbService.JuegoEnColeccionAsync(juego.IdJuego);
+                    var idUsuario = Preferences.Get("IdUsuario", 0); // Obtener el ID del usuario actual
+                    bool yaExiste = await _dbService.JuegoExisteAsync(juego.IdJuego, idUsuario);
 
+                    if (yaExiste) {
+                        bool enColeccion = await _dbService.JuegoEnColeccionAsync(juego.IdJuego, idUsuario);
 
                         if (enColeccion) {
                             await DisplayAlert("Atención", "Este juego ya está en tu colección.", "OK");
                             return;
                         }
                         else {
-                            await _dbService.AnnadirJuegoExistenteAColeccion(juego.IdJuego);
+                            await _dbService.AnnadirJuegoExistenteAColeccion(juego.IdJuego, idUsuario);
                             await DisplayAlert("Éxito", $"{juego.Titulo} añadido a tu colección", "OK");
                             return;
-
                         }
-
                     }
 
                     var juegoCompleto = await _explorarService.ObtenerDetallesJuegoAsync(juego.IdJuego);
                     if (juegoCompleto != null) {
+                        juegoCompleto.IdUsuario = idUsuario; // Asignar el ID de usuario
                         await _dbService.SaveJuegoAsync(juegoCompleto);
                         await DisplayAlert("Éxito", $"{juegoCompleto.Titulo} añadido a tu colección", "OK");
                     }

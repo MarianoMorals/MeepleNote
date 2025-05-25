@@ -103,16 +103,22 @@ namespace MeepleNote.Views {
             if (!confirmar) return;
 
             try {
-                // Sincronizar antes de cerrar sesión
+                // 1. Sincronizar datos antes de cerrar
                 await InicializarSincronizacionService();
                 if (_sincronizacionService != null) {
                     await _sincronizacionService.SincronizarConFirebase();
                 }
 
-                _firebaseAuthService.Logout();
-                Preferences.Clear(); // Limpiar todas las preferencias
+                // 2. Limpiar datos locales
+                await _sqliteDb.LimpiarDatosUsuario();
 
-                // Redirigir a la página de login
+                // 3. Cerrar sesión en Firebase
+                _firebaseAuthService.Logout();
+
+                // 4. Limpiar preferencias
+                Preferences.Clear();
+
+                // 5. Redirigir a login
                 await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             }
             catch (Exception ex) {

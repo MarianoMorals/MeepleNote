@@ -7,7 +7,6 @@ using System.Windows.Input;
 namespace MeepleNote.Views {
     public partial class PartidasPage : ContentPage {
         private readonly SQLiteService _dbService;
-        private readonly ExplorarService _explorarService;
         private readonly ObservableCollection<PartidaViewModel> _partidas;
         private bool _isInitialLoad = true;
 
@@ -32,7 +31,6 @@ namespace MeepleNote.Views {
             _dbService = new SQLiteService();
             _partidas = new ObservableCollection<PartidaViewModel>();
             BindingContext = this;
-            // Asignación del ItemsSource solo una vez
             PartidasCollection.ItemsSource = _partidas;
         }
 
@@ -41,8 +39,6 @@ namespace MeepleNote.Views {
 
             if (_isInitialLoad) {
                 _isInitialLoad = false;
-                //await _dbService.EliminarTodasPartidas();
-
                 await CargarPartidas();
             }
         }
@@ -51,14 +47,14 @@ namespace MeepleNote.Views {
             IsRefreshing = true;
             _partidas.Clear();
 
-            var partidas = (await _dbService.GetPartidasAsync())
+            var idUsuario = Preferences.Get("IdUsuario", 0);
+            var partidas = (await _dbService.GetPartidasAsync(idUsuario))
                 .DistinctBy(p => p.IdPartida)
                 .OrderByDescending(p => p.Fecha)
                 .ToList();
 
             foreach (var partida in partidas) {
                 var juego = await _dbService.GetJuegoByIdAsync(partida.IdJuego);
-                
 
                 _partidas.Add(new PartidaViewModel {
                     IdPartida = partida.IdPartida,
@@ -78,7 +74,6 @@ namespace MeepleNote.Views {
 
             try {
                 Debug.WriteLine($"Partida seleccionada ID: {partida.IdPartida}");
-
                 var partidaCompleta = await _dbService.GetPartidaByIdAsync(partida.IdPartida);
 
                 if (partidaCompleta != null) {
@@ -89,5 +84,9 @@ namespace MeepleNote.Views {
                 Debug.WriteLine($"Error al navegar a partida: {ex.Message}");
             }
         });
+
+        private async void OnVerPartidasPublicasClicked(object sender, EventArgs e) {
+            await Navigation.PushAsync(new PartidasPublicasPage());
+        }
     }
 }

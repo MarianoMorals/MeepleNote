@@ -20,6 +20,13 @@
                 <Label Text="⭐" FontSize="18"/>
                 <Label x:Name="Puntuacion" FontSize="18"/>
                 <Label Text="/10" FontSize="18" TextColor="Gray"/>
+
+                <!-- Puntuación personal -->
+                <Label Text="Tu puntuación:" FontSize="18" Margin="20,0,0,0"/>
+                <Entry x:Name="PuntuacionPersonalEntry" 
+                       WidthRequest="60"
+                       Keyboard="Numeric"
+                       Completed="OnPuntuacionPersonalChanged"/>
             </HorizontalStackLayout>
 
             <!-- Detalles en 2 columnas -->
@@ -56,12 +63,19 @@
             <Button Grid.Row="5" 
                     Text="Registrar Partida" 
                     Clicked="OnRegistrarPartidaClicked"
+                    ImageSource="partidaannadir.png"
+                    Style="{StaticResource PrimaryButton}"/>
+
+            <Button Grid.Row="6"
+                    Text="Crear Partida Pública"
+                    Clicked="OnCrearPartidaPublicaClicked"
+                    ImageSource="publicar.png"
                     Style="{StaticResource PrimaryButton}"/>
 
             <!-- Últimas partidas -->
-            <Label Grid.Row="6" Text="Últimas partidas" FontSize="20" FontAttributes="Bold"/>
+            <Label Grid.Row="7" Text="Últimas partidas" FontSize="20" FontAttributes="Bold"/>
 
-            <CollectionView Grid.Row="7" x:Name="PartidasCollection"
+            <CollectionView Grid.Row="8" x:Name="PartidasCollection"
                
                            SelectionMode="Single"
                            SelectionChanged="OnPartidaSelected">

@@ -23,6 +23,7 @@
                         Clicked="Btn_Ayuda_Clicked"/>
 
                 <!-- Título -->
+                
                 <Label Text="MeepleNote"
                        Style="{StaticResource TitleLabelStyle}"
                        Grid.Column="1"

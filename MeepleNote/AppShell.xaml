@@ -17,26 +17,29 @@
         Route="RegisterPage" 
         ContentTemplate="{DataTemplate views:RegisterPage}"
         Shell.TabBarIsVisible="False" />
-
+    
+    <ShellContent Route="PartidasPublicasPage" 
+              ContentTemplate="{DataTemplate views:PartidasPublicasPage}" />
+    
     <!-- Barra de navegación inferior con páginas independientes -->
     <TabBar>
-        <Tab Title="Perfil" Icon="icono_configuracion.png" Route="PerfilPage">
+        <Tab Title="Perfil" Icon="home.png" Route="PerfilPage">
             <ShellContent ContentTemplate="{DataTemplate views:PerfilPage}" />
         </Tab>
 
-        <Tab Title="Colección" Icon="icon_collection.png" Route="ColeccionPage">
+        <Tab Title="Colección" Icon="coleccion.png" Route="ColeccionPage">
             <ShellContent ContentTemplate="{DataTemplate views:ColeccionPage}" />
         </Tab>
 
-        <Tab Title="Partidas" Icon="icon_games.png" Route="PartidasPage">
+        <Tab Title="Partidas" Icon="partidas.png" Route="PartidasPage">
             <ShellContent ContentTemplate="{DataTemplate views:PartidasPage}" />
         </Tab>
 
-        <Tab Title="Explorar" Icon="icon_explore.png" Route="ExplorarPage">
+        <Tab Title="Explorar" Icon="buscar.png" Route="ExplorarPage">
             <ShellContent ContentTemplate="{DataTemplate views:ExplorarPage}" />
         </Tab>
 
-        <Tab Title="Utilidades" Icon="icon_tools.png" Route="UtilidadesPage">
+        <Tab Title="Utilidades" Icon="utilidades.png" Route="UtilidadesPage">
             <ShellContent ContentTemplate="{DataTemplate views:ExplorarPage}" />
         </Tab>
     </TabBar>

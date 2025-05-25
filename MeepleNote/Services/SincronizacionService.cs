@@ -22,11 +22,16 @@ namespace MeepleNote.Services {
                 return;
 
             // Obtener datos locales buscando el usuario por su Firebase User ID
+            var idUsuario = Preferences.Get("IdUsuario", 0);
+
+
             var usuario = await _sqlite.GetUsuarioByFirebaseIdAsync(_firebaseUsuarioId);
-            var juegos = await _sqlite.GetJuegosAsync();
+            var juegos = await _sqlite.GetJuegosAsync(idUsuario);
             var colecciones = await _sqlite.GetColeccionesAsync();
-            var partidas = await _sqlite.GetPartidasAsync();
+            var partidas = await _sqlite.GetPartidasAsync(idUsuario);
             var jugadores = await _sqlite.GetJugadoresPartidaAsync();
+            var partidasPublicas = await _sqlite.GetPartidasPublicasAsync(false);
+            await _firebase.SubirPartidasPublicas(partidasPublicas);
 
             var fechaSync = DateTime.UtcNow;
 
@@ -51,12 +56,14 @@ namespace MeepleNote.Services {
                 var colecciones = await _firebase.DescargarColeccion(_firebaseUsuarioId);
                 var partidas = await _firebase.DescargarPartidas(_firebaseUsuarioId);
                 var jugadores = await _firebase.DescargarJugadoresPartida(_firebaseUsuarioId);
+                var partidasPublicas = await _firebase.DescargarPartidasPublicas();
 
                 // Reemplazar los datos locales con los descargados de Firebase
                 await _sqlite.ReplaceJuegosAsync(juegos);
                 await _sqlite.ReplaceColeccionesAsync(colecciones);
                 await _sqlite.ReplacePartidasAsync(partidas);
                 await _sqlite.ReplaceJugadoresPartidaAsync(jugadores);
+
 
                 // Guardar el perfil del usuario si se descargó
                 if (usuario != null)

@@ -26,17 +26,20 @@
             </Frame>
 
             <Button x:Name="GuardarButton" 
-                    Text="Guardar Cambios" 
+                    Text="Guardar Cambios"
+                    ImageSource="save.png"
                     Clicked="OnGuardarClicked"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Margin="0,20,0,0"/>
 
             <Button Text="Restablecer contraseña" 
-                    Clicked="OnRestablecerContraseñaClicked" 
+                    Clicked="OnRestablecerContraseñaClicked"
+                    ImageSource="refresh.png"
                     Style="{StaticResource SecondaryButtonStyle}"/>
 
             <Button Text="Cerrar sesión" 
-                    Clicked="OnCerrarSesionClicked" 
+                    Clicked="OnCerrarSesionClicked"
+                    ImageSource="logout.png"
                     Style="{StaticResource AccentButtonStyle}"
                     Margin="0,30,0,0"/>
         </VerticalStackLayout>

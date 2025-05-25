@@ -32,6 +32,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                     <Button Text="Eliminar Partida"
+                            ImageSource="eliminar.png"
                             BackgroundColor="Red"
                             TextColor="White"
                             CornerRadius="10"

@@ -5,51 +5,63 @@
     Title="Mis Partidas"
     BackgroundColor="{StaticResource BackgroundColor}">
 
-    <RefreshView IsRefreshing="{Binding IsRefreshing}" 
-                 Command="{Binding RefreshCommand}">
-        <CollectionView x:Name="PartidasCollection" 
-                        SelectionMode="None"
-                        ItemsUpdatingScrollMode="KeepLastItemInView">
+    <Grid RowDefinitions="Auto,*">
+        <!-- Botón para partidas públicas -->
+        <Button Text="Ver Partidas Públicas"
+                Grid.Row="0"
+                Margin="10"
+                Clicked="OnVerPartidasPublicasClicked"
+                ImageSource="public.png"
+                Style="{StaticResource PrimaryButtonStyle}"
+                HorizontalOptions="End"/>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BorderColor="{StaticResource PrimaryColor}" 
-                           CornerRadius="10" 
-                           Padding="10" 
-                           Margin="5"
-                           HasShadow="False"
-                           InputTransparent="False"
-                           BackgroundColor="Transparent">
+        <!-- Lista de partidas -->
+        <RefreshView Grid.Row="1"
+                    IsRefreshing="{Binding IsRefreshing}" 
+                    Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="PartidasCollection" 
+                            SelectionMode="None"
+                            ItemsUpdatingScrollMode="KeepLastItemInView">
 
-                        <!-- Gesto de toque en toda la tarjeta -->
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer 
-                                    Command="{Binding BindingContext.PartidaTapCommand, Source={x:Reference PartidasCollection}}"
-                                    CommandParameter="{Binding .}" />
-                        </Frame.GestureRecognizers>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="{StaticResource PrimaryColor}" 
+                               CornerRadius="10" 
+                               Padding="10" 
+                               Margin="5"
+                               HasShadow="False"
+                               InputTransparent="False"
+                               BackgroundColor="Transparent">
 
-                        <Grid ColumnDefinitions="Auto,*,Auto" BackgroundColor="Transparent">
-                            <Image Source="{Binding FotoPortada}" 
-                                   WidthRequest="60" 
-                                   HeightRequest="60"
-                                   Aspect="AspectFill"/>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                        Command="{Binding BindingContext.PartidaTapCommand, Source={x:Reference PartidasCollection}}"
+                                        CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
 
-                            <VerticalStackLayout Grid.Column="1" Padding="10,0">
-                                <Label Text="{Binding TituloJuego}" 
-                                       FontSize="16" 
-                                       FontAttributes="Bold"/>
-                                <Label Text="{Binding Fecha, StringFormat='🗓 {0:dd/MM/yyyy}'}" 
-                                       FontSize="14"/>
-                            </VerticalStackLayout>
+                            <Grid ColumnDefinitions="Auto,*,Auto" BackgroundColor="Transparent">
+                                <Image Source="{Binding FotoPortada}" 
+                                       WidthRequest="60" 
+                                       HeightRequest="60"
+                                       Aspect="AspectFill"/>
 
-                            <Label Grid.Column="2" 
-                                   Text="{Binding Ganador, StringFormat='🏆 {0}'}"
-                                   FontSize="14"
-                                   VerticalOptions="Center"/>
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
+                                <VerticalStackLayout Grid.Column="1" Padding="10,0">
+                                    <Label Text="{Binding TituloJuego}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding Fecha, StringFormat='🗓 {0:dd/MM/yyyy}'}" 
+                                           FontSize="14"/>
+                                </VerticalStackLayout>
+
+                                <Label Grid.Column="2" 
+                                       Text="{Binding Ganador, StringFormat='🏆 {0}'}"
+                                       FontSize="14"
+                                       VerticalOptions="Center"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
 </ContentPage>

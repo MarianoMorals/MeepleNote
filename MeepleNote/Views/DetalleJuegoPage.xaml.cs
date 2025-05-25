@@ -26,6 +26,7 @@ namespace MeepleNote.Views {
             ImagenPortada.Source = _juego.FotoPortada;
             Titulo.Text = _juego.Titulo;
             Puntuacion.Text = _juego.PuntuacionFormateada;
+            PuntuacionPersonalEntry.Text = _juego.PuntuacionPersonalFormateada;
             Duracion.Text = $"⏱ {_juego.DuracionEstimada} min";
             Edad.Text = $"🧒 +{_juego.Edad} años";
             Autor.Text = $"🎨 {_juego.Autor}";
@@ -91,7 +92,12 @@ namespace MeepleNote.Views {
                 });
             }
         }*/
-
+        private async void OnPuntuacionPersonalChanged(object sender, EventArgs e) {
+            if (double.TryParse(PuntuacionPersonalEntry.Text, out double puntuacion)) {
+                _juego.PuntuacionPersonal = Math.Clamp(puntuacion, 1, 10);
+                await _dbService.SaveJuegoAsync(_juego);
+            }
+        }
         private async void OnRegistrarPartidaClicked(object sender, EventArgs e) {
             await Navigation.PushAsync(new RegistrarPartidaPage(_juego));
         }
@@ -102,6 +108,10 @@ namespace MeepleNote.Views {
                 await Navigation.PushAsync(new DetallePartidaPage(partidaCompleta));
                 PartidasCollection.SelectedItem = null;
             }
+        }
+
+        private async void OnCrearPartidaPublicaClicked(object sender, EventArgs e) {
+            await Navigation.PushAsync(new NuevaPartidaPublicaPage(_juego));
         }
     }
 }

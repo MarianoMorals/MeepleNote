@@ -16,6 +16,7 @@
         <!-- Botón Eliminar -->
         <Button Text="Eliminar seleccionados"
                 Grid.Row="1"
+                ImageSource="eliminar.png"
                 Style="{StaticResource PrimaryButtonStyle}"
                 Clicked="OnEliminarSeleccionadosClicked"
                 HorizontalOptions="Center"
@@ -53,7 +54,8 @@
                                            FontSize="14" 
                                            TextColor="Gray"/>
 
-                                    <Button Text="Ver Detalles"
+                                    <Button Text="Detalles"
+                                            ImageSource="details.png"
                                             Clicked="OnVerDetallesClicked"
                                             CommandParameter="{Binding .}"
                                             Style="{StaticResource SecondaryButtonStyle}"

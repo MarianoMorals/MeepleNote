@@ -10,6 +10,9 @@ namespace MeepleNote.Models {
         [PrimaryKey]
         public int IdJuego { get; set; }
 
+        [Indexed] // Para mejor rendimiento en búsquedas
+        public int IdUsuario { get; set; }
+
         public string FotoPortada { get; set; }
 
         public string Titulo { get; set; }
@@ -44,5 +47,10 @@ namespace MeepleNote.Models {
 
         [Ignore]
         public string PuntuacionFormateada => Puntuacion.ToString("0.00");
+
+        public double PuntuacionPersonal { get; set; }
+
+        [Ignore]
+        public string PuntuacionPersonalFormateada => PuntuacionPersonal.ToString("0.00");
     }
 }

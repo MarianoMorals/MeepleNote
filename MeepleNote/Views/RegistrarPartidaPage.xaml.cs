@@ -98,7 +98,8 @@ namespace MeepleNote.Views {
             }
 
             // Si el juego no existe en la colección, guardar info básica
-            if (_juego.IdJuego > 0 && !await _dbService.JuegoExisteAsync(_juego.IdJuego)) {
+            var idUsuario = Preferences.Get("IdUsuario", 0);
+            if (_juego.IdJuego > 0 && !await _dbService.JuegoExisteAsync(_juego.IdJuego, idUsuario)) {
                 _juego.EnColeccion = false;//Lo añadimos pero no a la coleccion.
                 await _dbService.SaveJuegoAsync(_juego);
             }

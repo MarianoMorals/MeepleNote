@@ -66,11 +66,23 @@ build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.LoginPage
 build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
 
+[C:/Users/mot_7/source/repos/MeepleNote/MeepleNote/Views/NuevaPartidaPublicaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.NuevaPartidaPublicaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\NuevaPartidaPublicaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\NuevaPartidaPublicaPage.xaml
+
 [C:/Users/mot_7/source/repos/MeepleNote/MeepleNote/Views/PartidasPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.PartidasPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\PartidasPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\PartidasPage.xaml
+
+[C:/Users/mot_7/source/repos/MeepleNote/MeepleNote/Views/PartidasPublicasPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.PartidasPublicasPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PartidasPublicasPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PartidasPublicasPage.xaml
 
 [C:/Users/mot_7/source/repos/MeepleNote/MeepleNote/Views/PerfilPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

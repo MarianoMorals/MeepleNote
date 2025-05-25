@@ -68,6 +68,12 @@ namespace MeepleNote.Services
 
         public async Task<List<JugadorPartida>> DescargarJugadoresPartida(string usuarioId) =>
             await _firebase.Child("usuarios").Child(usuarioId).Child("jugadoresPartida").OnceSingleAsync<List<JugadorPartida>>() ?? new();
+        public async Task SubirPartidasPublicas(List<PartidaPublica> partidas) {
+            await _firebase.Child("partidasPublicas").PutAsync(partidas);
+        }
+        public async Task<List<PartidaPublica>> DescargarPartidasPublicas() =>
+            await _firebase.Child("partidasPublicas").OnceSingleAsync<List<PartidaPublica>>() ?? new();
+
         public async Task<DatosUsuario?> DescargarTodo(string usuarioId) {
             try {
                 // Descargar todos los datos relevantes del usuario
