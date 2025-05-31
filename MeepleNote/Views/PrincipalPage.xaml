@@ -48,8 +48,17 @@
                                 <Label x:Name="MostPlayedGameLabel" FontSize="16"/>
                                 <Label x:Name="PlayCountLabel" TextColor="Gray"/>
                             </StackLayout>
-                        </HorizontalStackLayout>                        
+                        </HorizontalStackLayout>
                     </Grid>
+                    <!-- Mensaje cuando no hay partidas -->
+                    <Label x:Name="NoMostPlayedLabel" 
+                           Text="No hay partidas registradas"
+                           FontSize="14"
+                           TextColor="Gray"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsVisible="False"
+                           Padding="35"/>
                 </StackLayout>
             </Frame>
 
@@ -58,23 +67,30 @@
                 <StackLayout>
                     <Label Text="Tus últimas partidas:" FontAttributes="Bold"/>
                     <CollectionView x:Name="RecentGamesCollection" HeightRequest="150">
+                        <CollectionView.EmptyView>
+                            <Label Text="No hay partidas registradas"
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </CollectionView.EmptyView>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="Auto,*,Auto" Padding="5">
                                     <Image Source="{Binding FotoPortada}" 
-                                           WidthRequest="50"
-                                           HeightRequest="50"
-                                           Aspect="AspectFill"/>
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               Aspect="AspectFill"/>
 
                                     <StackLayout Grid.Column="1" VerticalOptions="Center">
                                         <Label Text="{Binding TituloJuego}" FontSize="14"/>
                                         <Label Text="{Binding Fecha, StringFormat='Jugado el {0:dd/MM/yy}'}" 
-                                               FontSize="12" TextColor="Gray"/>
+                                   FontSize="12" TextColor="Gray"/>
                                     </StackLayout>
 
                                     <Label Grid.Column="2" 
-                                           Text="{Binding Ganador, StringFormat='🏆 {0}'}"
-                                           VerticalOptions="Center"/>
+                               Text="{Binding Ganador, StringFormat='🏆 {0}'}"
+                               VerticalOptions="Center"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

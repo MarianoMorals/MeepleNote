@@ -5,6 +5,7 @@ using System;
 namespace MeepleNote.Views {
     public partial class NuevaPartidaPublicaPage : ContentPage {
         private readonly SQLiteService _dbService;
+        private readonly FirebaseDatabaseService _firebaseService;
         private readonly Juego _juego;
         private string emailUsuario;
 
@@ -13,6 +14,12 @@ namespace MeepleNote.Views {
 
         public NuevaPartidaPublicaPage(Juego juego) {
             InitializeComponent();
+
+            string authToken = Preferences.Get("FirebaseToken", null);
+            if (!string.IsNullOrEmpty(authToken)) {
+                _firebaseService = new FirebaseDatabaseService(authToken);
+            }
+
             _dbService = new SQLiteService();
             _juego = juego;
             BindingContext = this;
@@ -26,7 +33,6 @@ namespace MeepleNote.Views {
 
             ObtenerEmailOrganizador(idUsuario);
 
-            EmailEntry.Text = emailUsuario;
         }
         private async void ObtenerEmailOrganizador(string idUsuarioOrganizador) {
             var email = await _dbService.GetEmailUsuarioAsync(idUsuarioOrganizador);
@@ -36,7 +42,7 @@ namespace MeepleNote.Views {
                 emailUsuario = string.Empty;
             }
 
-            emailUsuario = email;
+            EmailEntry.Text = email;
         }
         private async void OnPublicarClicked(object sender, EventArgs e) {
             if (string.IsNullOrWhiteSpace(CiudadEntry.Text)) {
@@ -55,10 +61,14 @@ namespace MeepleNote.Views {
                 return;
             }
 
+            var idUsuario = Preferences.Get("UsuarioId", "1");
+            Usuario usuario = await _dbService.GetUsuarioByFirebaseIdAsync(idUsuario);
+
             var partida = new PartidaPublica {
+                IdFirebase = null, // Temporal hasta obtener ID de Firebase
                 IdJuego = _juego.IdJuego,
-                IdUsuarioOrganizador = Preferences.Get("IdUsuario", 0),
-                NombreOrganizador = Preferences.Get("NombreUsuario", "Anónimo"),
+                IdUsuarioOrganizador = idUsuario,
+                NombreOrganizador = usuario.Nombre,
                 EmailContacto = EmailEntry.Text,
                 Fecha = fechaCompleta,
                 Ciudad = CiudadEntry.Text,
@@ -67,24 +77,17 @@ namespace MeepleNote.Views {
             };
 
             try {
-                // Guardar localmente
+                // 1. Crear en Firebase primero para obtener ID
+                partida.IdFirebase = await _firebaseService.CrearPartidaPublicaEnFirebase(partida);
+
+                // 2. Guardar localmente (IdLocal se autoincrementará)
                 await _dbService.SavePartidaPublicaAsync(partida);
-
-                // Obtener todas las partidas públicas
-                var partidasPublicas = await _dbService.GetPartidasPublicasAsync(false);
-
-                // Subir a Firebase
-                var token = Preferences.Get("FirebaseToken", null);
-                if (!string.IsNullOrEmpty(token)) {
-                    var firebaseDb = new FirebaseDatabaseService(token);
-                    await firebaseDb.SubirPartidasPublicas(partidasPublicas);
-                }
 
                 await DisplayAlert("Éxito", "Partida pública creada", "OK");
                 await Navigation.PopAsync();
             }
             catch (Exception ex) {
-                await DisplayAlert("Error", $"No se pudo publicar: {ex.Message}", "OK");
+                await DisplayAlert("Error", ex.Message, "OK");
             }
         }
     }

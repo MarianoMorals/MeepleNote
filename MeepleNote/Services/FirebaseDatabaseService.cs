@@ -3,6 +3,7 @@ using Firebase.Database.Query;
 using MeepleNote.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,7 +79,14 @@ namespace MeepleNote.Services
         }
 
         public async Task<List<PartidaPublica>> DescargarPartidasPublicas() {
-            return await _firebase.Child("partidasPublicasGlobales").OnceSingleAsync<List<PartidaPublica>>() ?? new();
+            return (await _firebase
+                .Child("partidasPublicasGlobales")
+                .OnceAsync<PartidaPublica>())
+                .Select(item => {
+                    var partida = item.Object;
+                    partida.IdFirebase = item.Key; // Asignar el ID de Firebase
+                    return partida;
+                }).ToList();
         }
 
         public async Task<DatosUsuario?> DescargarTodo(string usuarioId) {
@@ -105,6 +113,37 @@ namespace MeepleNote.Services
                 // Manejo de errores si algo sale mal
                 Console.WriteLine($"Error al descargar los datos del usuario {usuarioId}: {ex.Message}");
                 return null;
+            }
+        }
+
+        public async Task<string> CrearPartidaPublicaEnFirebase(PartidaPublica partida) {
+            try {
+                // Eliminamos el ID de Firebase antes de enviar
+                partida.IdFirebase = null;
+
+                var nuevaPartidaRef = await _firebase
+                    .Child("partidasPublicasGlobales")
+                    .PostAsync(partida);
+
+                return nuevaPartidaRef.Key;
+            }
+            catch (Exception ex) {
+                Debug.WriteLine($"Error al crear partida pública: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task ActualizarPartidaPublicaEnFirebase(PartidaPublica partida) {
+            try {
+                // Actualización directa usando el ID como clave
+                await _firebase
+                    .Child("partidasPublicasGlobales")
+                    .Child(partida.IdFirebase.ToString())
+                    .PutAsync(partida);
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Error al actualizar partida: {ex.Message}");
+                throw;
             }
         }
 

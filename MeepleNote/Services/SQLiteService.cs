@@ -31,7 +31,7 @@ namespace MeepleNote.Services {
                                            .Where(u => u.FirebaseUserId == idUsuario)
                                            .FirstOrDefaultAsync();
 
-                return usuario?.Email ?? string.Empty;
+                return usuario.Email;
             }
             catch (Exception ex) {
                 Console.WriteLine($"Error al obtener email: {ex.Message}");
@@ -68,7 +68,36 @@ namespace MeepleNote.Services {
             await _database.InsertAllAsync(juegos);
         }
 
-        public Task<int> SaveJuegoAsync(Juego juego) => _database.InsertAsync(juego);
+        public async Task<int> SaveJuegoAsync(Juego juego) {
+            // Verificar si el juego ya existe en la base de datos
+            var juegoExistente = await _database.Table<Juego>()
+                                               .Where(j => j.IdJuego == juego.IdJuego && j.IdUsuario == juego.IdUsuario)
+                                               .FirstOrDefaultAsync();
+
+            if (juegoExistente != null) {
+                // Actualizar los campos necesarios
+                juegoExistente.PuntuacionPersonal = juego.PuntuacionPersonal;
+                juegoExistente.Titulo = juego.Titulo;
+                juegoExistente.FotoPortada = juego.FotoPortada;
+                juegoExistente.Puntuacion = juego.Puntuacion;
+                juegoExistente.Descripcion = juego.Descripcion;
+                juegoExistente.MinJugadores = juego.MinJugadores;
+                juegoExistente.MaxJugadores = juego.MaxJugadores;
+                juegoExistente.DuracionEstimada = juego.DuracionEstimada;
+                juegoExistente.Edad = juego.Edad;
+                juegoExistente.Autor = juego.Autor;
+                juegoExistente.Artista = juego.Artista;
+
+                // Mantener el estado de EnColeccion como estaba
+                juegoExistente.EnColeccion = juego.EnColeccion;
+
+                return await _database.UpdateAsync(juegoExistente);
+            }
+            else {
+                // Si no existe, insertarlo con el valor de EnColeccion que traiga
+                return await _database.InsertAsync(juego);
+            }
+        }
 
         public async Task AnnadirJuegoExistenteAColeccion(int idJuego, string firebaseId) {
             var juego = await _database.Table<Juego>()
@@ -114,8 +143,11 @@ namespace MeepleNote.Services {
             await _database.InsertAllAsync(partidas);
         }
 
-        public async Task<List<Partida>> GetPartidasAsync(string idUsuario) => 
-            await _database.Table<Partida>().Where(p => p.IdUsuario == idUsuario).ToListAsync();
+        public async Task<List<Partida>> GetPartidasAsync(string idUsuario) {
+            return await _database.Table<Partida>()
+                                 .Where(p => p.IdUsuario == idUsuario)
+                                 .ToListAsync();
+        }
 
         public async Task<int> SavePartidaAsync(Partida partida) {
             if (partida.IdPartida != 0)
@@ -175,28 +207,42 @@ namespace MeepleNote.Services {
         public Task<List<JugadorPartida>> GetJugadoresPartidaAsync() => _database.Table<JugadorPartida>().ToListAsync();
 
         // === PARTIDA PUBLICA ===
-        public async Task<List<PartidaPublica>> GetPartidasPublicasAsync(bool soloFuturas = true) {
-            var query = _database.Table<PartidaPublica>();
-
-            if (soloFuturas) {
-                query = query.Where(p => p.Fecha >= DateTime.Now && !p.Completada);
-            }
-
-            return await query.ToListAsync();
+        public async Task<List<PartidaPublica>> GetPartidasPublicasAsync() {
+            return await _database.Table<PartidaPublica>()
+                                 .Where(p => !p.Completada)
+                                 .ToListAsync();
         }
 
         public async Task<int> SavePartidaPublicaAsync(PartidaPublica partida) {
-            if (partida.Id == 0) {
-                return await _database.InsertAsync(partida);
+            if (string.IsNullOrEmpty(partida.IdFirebase))
+                return 0;
+
+            // Buscar por IdFirebase en lugar de ID local
+            var existente = await _database.Table<PartidaPublica>()
+                                         .FirstOrDefaultAsync(p => p.IdFirebase == partida.IdFirebase);
+
+            if (existente != null) {
+                // Actualizar solo los campos necesarios
+                existente.Completada = partida.Completada;
+                
+                return await _database.UpdateAsync(existente);
             }
             else {
-                return await _database.UpdateAsync(partida);
+                return await _database.InsertAsync(partida);
             }
         }
 
-        public async Task<int> MarcarPartidaPublicaCompletadaAsync(int id) {
-            return await _database.ExecuteAsync(
-                "UPDATE PartidaPublica SET Completada = 1 WHERE Id = ?", id);
+        public async Task MarcarPartidaPublicaCompletadaAsync(string idFirebase) {
+            await _database.ExecuteAsync(
+                "UPDATE PartidaPublica SET Completada = 1 WHERE IdFirebase = ?", idFirebase);
+        }
+
+        public async Task ReplacePartidasPublicasAsync(List<PartidaPublica> partidas) {
+            await _database.RunInTransactionAsync(tx =>
+            {
+                tx.DeleteAll<PartidaPublica>();
+                tx.InsertAll(partidas);
+            });
         }
 
         // === FECHA DE SINCRONIZACIÓN ===

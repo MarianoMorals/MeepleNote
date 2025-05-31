@@ -41,12 +41,16 @@
                                 <HorizontalStackLayout Spacing="10">
                                     <Label Text="{Binding Fecha, StringFormat='🗓 {0:dd/MM/yy}'}"
                                            FontSize="14"/>
-                                    <Label Text="{Binding Ciudad, StringFormat='📍 {0}'}"
+                                    <Label Text="{Binding Fecha, StringFormat='🕒 {0:HH:mm}'}"
                                            FontSize="14"/>
                                 </HorizontalStackLayout>
 
-                                <Label Text="{Binding JugadoresRequeridos, StringFormat='👥 {0} jugadores'}"
-                                       FontSize="14"/>
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="{Binding Ciudad, StringFormat='📍 {0}'}"
+                                           FontSize="14"/>
+                                    <Label Text="{Binding JugadoresRequeridos, StringFormat='👥 {0} jugadores'}"
+                                           FontSize="14"/>
+                                </HorizontalStackLayout>
 
                                 <Label Text="{Binding EmailContacto, StringFormat='✉ {0}'}"
                                        FontSize="14"

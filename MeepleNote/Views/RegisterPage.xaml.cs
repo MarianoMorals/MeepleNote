@@ -87,7 +87,7 @@ public partial class RegisterPage : ContentPage {
             await _sqliteService.SaveUsuarioAsync(nuevoUsuario);
 
             await DisplayAlert("Éxito", "Usuario registrado correctamente.", "OK");
-            await Shell.Current.GoToAsync("//LoginPage");
+            await Shell.Current.GoToAsync($"//LoginPage");
         }
         catch (FirebaseAuthException firebaseAuthEx) {
             string errorMessage = "Error de autenticación: ";

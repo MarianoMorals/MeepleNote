@@ -42,7 +42,7 @@
 
             <Button Text="Publicar Partida"
                     Clicked="OnPublicarClicked"
-                    Style="{StaticResource PrimaryButton}"/>
+                    Style="{StaticResource PrimaryButtonStyle}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

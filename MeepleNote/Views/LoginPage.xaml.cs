@@ -86,7 +86,7 @@ public partial class LoginPage : ContentPage {
 
     private async void OnIrARegistro(object sender, EventArgs e) {
         // Redirigir a la página de registro
-        Application.Current.MainPage = new NavigationPage(new PrincipalPage());
+        await Shell.Current.GoToAsync($"//RegisterPage");
     }
 
     private async void OnRestablecerContraseñaClicked(object sender, EventArgs e) {

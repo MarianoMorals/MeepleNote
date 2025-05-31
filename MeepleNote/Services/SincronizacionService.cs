@@ -30,7 +30,7 @@ namespace MeepleNote.Services {
             var colecciones = await _sqlite.GetColeccionesAsync();
             var partidas = await _sqlite.GetPartidasAsync(idUsuario);
             var jugadores = await _sqlite.GetJugadoresPartidaAsync();
-            var partidasPublicas = await _sqlite.GetPartidasPublicasAsync(false);
+            var partidasPublicas = await _sqlite.GetPartidasPublicasAsync();
             await _firebase.SubirPartidasPublicas(partidasPublicas);
 
             var fechaSync = DateTime.UtcNow;
@@ -63,6 +63,7 @@ namespace MeepleNote.Services {
                 await _sqlite.ReplaceColeccionesAsync(colecciones);
                 await _sqlite.ReplacePartidasAsync(partidas);
                 await _sqlite.ReplaceJugadoresPartidaAsync(jugadores);
+                await _sqlite.ReplacePartidasPublicasAsync(partidasPublicas);
 
 
                 // Guardar el perfil del usuario si se descargó

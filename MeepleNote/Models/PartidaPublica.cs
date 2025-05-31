@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace MeepleNote.Models {
     public class PartidaPublica {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        [PrimaryKey, AutoIncrement]  // Mantenemos AutoIncrement para SQLite
+        public int IdLocal { get; set; }  // ID local para SQLite
+
+        public string IdFirebase { get; set; }  // ID de Firebase como string
         public int IdJuego { get; set; }
-        public int IdUsuarioOrganizador { get; set; }
+        public string IdUsuarioOrganizador { get; set; }
         public string NombreOrganizador { get; set; }
         public string EmailContacto { get; set; }
         public DateTime Fecha { get; set; }

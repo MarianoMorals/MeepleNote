@@ -38,7 +38,7 @@ namespace MeepleNote.Views {
             BindingContext = this;
 
             ResultadosList.ItemsSource = _juegos;
-            ResultadosList.RemainingItemsThreshold = 5; // Cargar más cuando queden 5 items por ver
+            ResultadosList.RemainingItemsThreshold = 1; // Cargar más cuando quede 1 item por ver
             ResultadosList.RemainingItemsThresholdReached += ResultadosList_RemainingItemsThresholdReached;
         }
 
@@ -52,6 +52,7 @@ namespace MeepleNote.Views {
                 _currentPage = 0;
                 _hasMoreItems = true;
                 _juegos.Clear();
+                SinResultadosLabel.IsVisible = false;
 
                 await LoadMoreItems();
             }
@@ -66,8 +67,13 @@ namespace MeepleNote.Views {
 
         private async void OnBuscarClicked(object sender, EventArgs e) {
             _currentQuery = BuscarEntry.Text?.Trim() ?? string.Empty;
-            SinResultadosLabel.IsVisible = false;
+
+            BuscarEntry.Text = string.Empty;
+
+            // Ocultar sugerencias al hacer clic en buscar
             SugerenciasList.IsVisible = false;
+
+            SinResultadosLabel.IsVisible = false;
 
             if (!string.IsNullOrWhiteSpace(_currentQuery)) {
                 LoadingIndicator.IsVisible = true;
@@ -81,7 +87,8 @@ namespace MeepleNote.Views {
         }
 
         private async Task LoadMoreItems() {
-            if (_isLoading || !_hasMoreItems) return;
+            if (_isLoading || !_hasMoreItems || string.IsNullOrWhiteSpace(_currentQuery))
+                return;
 
             _isLoading = true;
             Device.BeginInvokeOnMainThread(() => LoadingMoreIndicator.IsVisible = true);
@@ -89,21 +96,23 @@ namespace MeepleNote.Views {
             try {
                 var nuevosJuegos = await _explorarService.BuscarJuegosAsync(
                     _currentQuery,
-                    _currentPage * PageSize,
+                    _currentPage * PageSize,  // Calcula el offset correctamente
                     PageSize);
 
                 if (nuevosJuegos.Any()) {
                     Device.BeginInvokeOnMainThread(() => {
                         foreach (var juego in nuevosJuegos) {
-                            _juegos.Add(juego);
+                            // Verifica que el juego no esté ya en la lista
+                            if (!_juegos.Any(j => j.IdJuego == juego.IdJuego)) {
+                                _juegos.Add(juego);
+                            }
                         }
                     });
-
-                    _currentPage++;
+                    _currentPage++; // Solo incrementa la página si obtuvimos resultados
                 }
                 else {
                     _hasMoreItems = false;
-                    if (_currentPage == 0) {
+                    if (_currentPage == 0) { // Solo mostrar "sin resultados" en la primera carga
                         Device.BeginInvokeOnMainThread(() => {
                             SinResultadosLabel.IsVisible = true;
                         });
@@ -129,6 +138,12 @@ namespace MeepleNote.Views {
         private async void OnBuscarTextChanged(object sender, TextChangedEventArgs e) {
             string texto = e.NewTextValue?.Trim() ?? string.Empty;
 
+            // Si el texto coincide con la búsqueda actual, no hacer nada
+            if (texto == _currentQuery) {
+                return;
+            }
+
+            // Ocultar sugerencias si el texto está vacío
             if (string.IsNullOrWhiteSpace(texto)) {
                 SugerenciasList.IsVisible = false;
                 return;
@@ -141,26 +156,39 @@ namespace MeepleNote.Views {
                     SugerenciasList.IsVisible = juegos.Any();
                 });
             }
+            else {
+                SugerenciasList.IsVisible = false;
+            }
         }
 
         private async void SugerenciasList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             if (e.CurrentSelection.FirstOrDefault() is Juego juego) {
-                Device.BeginInvokeOnMainThread(() => {
-                    BuscarEntry.Text = juego.Titulo;
-                    SugerenciasList.IsVisible = false;
-                });
+                // Ocultar sugerencias inmediatamente
+                SugerenciasList.IsVisible = false;
 
+                // Establecer el texto de búsqueda
+                BuscarEntry.Text = string.Empty;
                 _currentQuery = juego.Titulo;
 
+                // Mostrar indicador de carga
                 LoadingIndicator.IsVisible = true;
                 LoadingIndicator.IsRunning = true;
 
-                await RefreshDataAsync();
+                // Limpiar resultados anteriores
+                _juegos.Clear();
+                _currentPage = 0;
+                _hasMoreItems = true;
 
+
+                // Realizar la búsqueda
+                await LoadMoreItems();
+
+                // Ocultar indicador de carga
                 LoadingIndicator.IsVisible = false;
                 LoadingIndicator.IsRunning = false;
             }
         }
+    
 
         private async void OnAgregarClicked(object sender, EventArgs e) {
             if (sender is Button button && button.CommandParameter is Juego juego) {
@@ -199,10 +227,22 @@ namespace MeepleNote.Views {
         private async void OnVerDetallesClicked(object sender, EventArgs e) {
             if (sender is Button button && button.CommandParameter is Juego juego) {
                 try {
-                    var detalles = await _explorarService.ObtenerDetallesJuegoAsync(juego.IdJuego);
-                    if (detalles != null) {
-                        await Navigation.PushAsync(new DetalleJuegoPage(detalles));
+                    var idUsuario = Preferences.Get("UsuarioId", "0");
+
+                    if (await _dbService.JuegoExisteAsync(juego.IdJuego, idUsuario)) {
+                        Juego juegoExistente = await _dbService.GetJuegoByIdAsync(juego.IdJuego);
+
+                        await Navigation.PushAsync(new DetalleJuegoPage(juegoExistente));
+
                     }
+                    else {
+                        var detalles = await _explorarService.ObtenerDetallesJuegoAsync(juego.IdJuego);
+                        if (detalles != null) {
+                            await Navigation.PushAsync(new DetalleJuegoPage(detalles));
+                        }
+                    }
+
+                    
                 }
                 catch (Exception ex) {
                     Debug.WriteLine($"Error en OnVerDetallesClicked: {ex.Message}");

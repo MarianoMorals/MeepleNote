@@ -16,13 +16,15 @@
                 HorizontalOptions="End"/>
 
         <!-- Lista de partidas -->
-        <RefreshView Grid.Row="1"
-                    IsRefreshing="{Binding IsRefreshing}" 
-                    Command="{Binding RefreshCommand}">
-            <CollectionView x:Name="PartidasCollection" 
+        <RefreshView x:Name="PartidasRefreshView"
+                     Grid.Row="1"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="PartidasCollection"
+                            ItemsSource="{Binding Partidas}"
                             SelectionMode="None"
                             ItemsUpdatingScrollMode="KeepLastItemInView">
-                
+
                 <CollectionView.EmptyView>
                     <Label Text="No has registrado partidas aún"
                            FontSize="16"
@@ -30,7 +32,7 @@
                            VerticalOptions="Center"
                            TextColor="{StaticResource TextColor}"/>
                 </CollectionView.EmptyView>
-                
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="{StaticResource PrimaryColor}" 
@@ -43,8 +45,8 @@
 
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer 
-                                        Command="{Binding BindingContext.PartidaTapCommand, Source={x:Reference PartidasCollection}}"
-                                        CommandParameter="{Binding .}" />
+                                    Command="{Binding BindingContext.PartidaTapCommand, Source={x:Reference PartidasCollection}}"
+                                    CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
 
                             <Grid ColumnDefinitions="Auto,*,Auto" BackgroundColor="Transparent">

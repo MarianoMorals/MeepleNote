@@ -22,18 +22,28 @@
                 <Label Text="/10" FontSize="18" TextColor="Gray"/>
 
                 <!-- Puntuación personal -->
-                <Label Text="Tu puntuación:" FontSize="18" Margin="20,0,0,0"/>
-                <Picker x:Name="PuntuacionPicker" 
-                        Title="Selecciona" 
-                        SelectedIndexChanged="OnPuntuacionChanged">
-                    <Picker.Items>
-                        <x:String>1</x:String>
-                        <x:String>2</x:String>
-                        <x:String>3</x:String>
-                        <x:String>4</x:String>
-                        <x:String>5</x:String>
-                    </Picker.Items>
-                </Picker>
+                <HorizontalStackLayout Spacing="5" VerticalOptions="Center" Margin="20,0,0,0">
+                    <Label Text="Tu puntuación:" 
+                           FontSize="18" 
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"/>
+                    <Picker x:Name="PuntuacionPicker" 
+                            Title="Selecciona" 
+                            SelectedIndexChanged="OnPuntuacionChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="100"
+                            HeightRequest="40">
+                        <Picker.Items>
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </HorizontalStackLayout>
+
             </HorizontalStackLayout>
 
             <!-- Detalles en 2 columnas -->

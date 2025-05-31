@@ -58,13 +58,13 @@
 
                     <Button Text="Añadir Jugador" 
                             Clicked="OnAgregarJugadorClicked"
-                            Style="{StaticResource SecondaryButton}"/>
+                            Style="{StaticResource SecondaryButtonStyle}"/>
                 </VerticalStackLayout>
             </Frame>
 
             <Button Text="Guardar Partida" 
                     Clicked="OnGuardarPartidaClicked"
-                    Style="{StaticResource PrimaryButton}"/>
+                    Style="{StaticResource PrimaryButtonStyle}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -50,8 +50,7 @@ namespace MeepleNote.Views {
         private async void CargarDetallesCompletos() {
             var juegoCompleto = await _explorarService.ObtenerDetallesJuegoAsync(_juego.IdJuego);
             if (juegoCompleto != null) {
-                Device.BeginInvokeOnMainThread(() =>
-                {
+                Device.BeginInvokeOnMainThread(() => {
                     // Actualizar con los datos completos de BGG
                     Puntuacion.Text = juegoCompleto.PuntuacionFormateada;
                     Jugadores.Text = $"👥 {juegoCompleto.RangoJugadores} jugadores";
@@ -61,6 +60,8 @@ namespace MeepleNote.Views {
                     _juego.Descripcion = juegoCompleto.Descripcion;
                     _juego.MinJugadores = juegoCompleto.MinJugadores;
                     _juego.MaxJugadores = juegoCompleto.MaxJugadores;
+                    _juego.IdUsuario = Preferences.Get("UsuarioId", "0"); // Asegurar que tiene el IdUsuario
+                    _juego.EnColeccion = false; // Establecer explícitamente que no está en colección
                 });
             }
         }
@@ -108,7 +109,14 @@ namespace MeepleNote.Views {
         private async void OnPuntuacionChanged(object sender, EventArgs e) {
             if (PuntuacionPicker.SelectedIndex >= 0) {
                 _juego.PuntuacionPersonal = PuntuacionPicker.SelectedIndex + 1;
+
+                // Asegurarnos de que el juego tenga el IdUsuario correcto
+                var idUsuario = Preferences.Get("UsuarioId", "0");
+                _juego.IdUsuario = idUsuario;
+
+                // Guardar el juego aunque no esté en la colección
                 await _dbService.SaveJuegoAsync(_juego);
+
             }
         }
         private async void OnRegistrarPartidaClicked(object sender, EventArgs e) {

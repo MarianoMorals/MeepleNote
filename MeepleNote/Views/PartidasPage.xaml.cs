@@ -1,14 +1,14 @@
 using MeepleNote.Models;
 using MeepleNote.Services;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Input;
 
 namespace MeepleNote.Views {
-    public partial class PartidasPage : ContentPage {
+    public partial class PartidasPage : ContentPage, INotifyPropertyChanged {
         private readonly SQLiteService _dbService;
-        private readonly ObservableCollection<PartidaViewModel> _partidas;
-        private bool _isInitialLoad = true;
+        private ObservableCollection<PartidaViewModel> _partidas = new();
 
         private bool _isRefreshing;
         public bool IsRefreshing {
@@ -16,61 +16,72 @@ namespace MeepleNote.Views {
             set {
                 if (_isRefreshing != value) {
                     _isRefreshing = value;
+                    OnPropertyChanged(nameof(IsRefreshing));
+                }
+            }
+        }
+        public ObservableCollection<PartidaViewModel> Partidas {
+            get => _partidas;
+            set {
+                if (_partidas != value) {
+                    _partidas = value;
                     OnPropertyChanged();
                 }
             }
         }
-
-        public ICommand RefreshCommand => new Command(async () => {
-            if (IsRefreshing) return;
-            await CargarPartidas();
-        });
+        private ICommand _refreshCommand;
+        public ICommand RefreshCommand => _refreshCommand;
 
         public PartidasPage() {
             InitializeComponent();
             _dbService = new SQLiteService();
-            _partidas = new ObservableCollection<PartidaViewModel>();
+            _refreshCommand = new Command(async () => await CargarPartidas());
+
             BindingContext = this;
-            PartidasCollection.ItemsSource = _partidas;
         }
 
         protected override async void OnAppearing() {
             base.OnAppearing();
-
-            /*if (_isInitialLoad) {
-                _isInitialLoad = false;
-                await CargarPartidas();
-            }*/
             await CargarPartidas();
         }
 
         private async Task CargarPartidas() {
             IsRefreshing = true;
-            _partidas.Clear();
 
-            var idUsuario = Preferences.Get("UsuarioId", "0");
-            var partidas = (await _dbService.GetPartidasAsync(idUsuario))
-                .DistinctBy(p => p.IdPartida)
-                .OrderByDescending(p => p.Fecha)
-                .ToList();
+            try {
+                var idUsuario = Preferences.Get("UsuarioId", "0");
+                var partidasLocales = (await _dbService.GetPartidasAsync(idUsuario))
+                    .OrderByDescending(p => p.Fecha)
+                    .ToList();
 
-            foreach (var partida in partidas) {
-                var juego = await _dbService.GetJuegoByIdAsync(partida.IdJuego);
+                var nuevasPartidas = new ObservableCollection<PartidaViewModel>();
+                foreach (var partida in partidasLocales) {
+                    var juego = await _dbService.GetJuegoByIdAsync(partida.IdJuego);
+                    nuevasPartidas.Add(new PartidaViewModel {
+                        IdPartida = partida.IdPartida,
+                        IdJuego = partida.IdJuego,
+                        TituloJuego = juego?.Titulo ?? "Juego no registrado",
+                        FotoPortada = juego?.FotoPortada ?? "missing_image.png",
+                        Fecha = partida.Fecha,
+                        Ganador = partida.Ganador
+                    });
+                }
 
-                _partidas.Add(new PartidaViewModel {
-                    IdPartida = partida.IdPartida,
-                    IdJuego = partida.IdJuego,
-                    TituloJuego = juego?.Titulo ?? "Juego no registrado",
-                    FotoPortada = juego?.FotoPortada,
-                    Fecha = partida.Fecha,
-                    Ganador = partida.Ganador
+                Partidas = nuevasPartidas;
+            }
+            catch (Exception ex) {
+                Debug.WriteLine($"Error al cargar partidas: {ex.Message}");
+                await DisplayAlert("Error", "No se pudieron cargar las partidas.", "OK");
+            }
+            finally {
+                Device.BeginInvokeOnMainThread(() => {
+                    IsRefreshing = false;
                 });
             }
-
-            IsRefreshing = false;
         }
 
-        public ICommand PartidaTapCommand => new Command<PartidaViewModel>(async (partida) => {
+
+        public Command<PartidaViewModel> PartidaTapCommand => new(async (partida) => {
             if (partida == null) return;
 
             try {
@@ -80,14 +91,24 @@ namespace MeepleNote.Views {
                 if (partidaCompleta != null) {
                     await Navigation.PushAsync(new DetallePartidaPage(partidaCompleta));
                 }
+                else {
+                    await DisplayAlert("Error", "No se encontró la partida seleccionada.", "OK");
+                }
             }
             catch (Exception ex) {
                 Debug.WriteLine($"Error al navegar a partida: {ex.Message}");
+                await DisplayAlert("Error", "No se pudo abrir la partida.", "OK");
             }
         });
 
         private async void OnVerPartidasPublicasClicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new PartidasPublicasPage());
+            try {
+                await Navigation.PushAsync(new PartidasPublicasPage());
+            }
+            catch (Exception ex) {
+                Debug.WriteLine($"Error al navegar a partidas públicas: {ex.Message}");
+                await DisplayAlert("Error", "No se pudo abrir la vista de partidas públicas.", "OK");
+            }
         }
     }
 }

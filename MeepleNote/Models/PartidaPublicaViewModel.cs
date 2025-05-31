@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MeepleNote.Models {
     public class PartidaPublicaViewModel {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string TituloJuego { get; set; }
         public string FotoPortada { get; set; }
         public string Ciudad { get; set; }

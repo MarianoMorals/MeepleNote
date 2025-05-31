@@ -11,12 +11,15 @@ obj\Debug\net8.0-android\resizetizer\r\drawable\informacion.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\login.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\logo.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\logout.png
+obj\Debug\net8.0-android\resizetizer\r\drawable\missing_image.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\partidaannadir.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\partidas.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\publicar.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\refresh.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\register.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\save.png
+obj\Debug\net8.0-android\resizetizer\r\drawable\star_empty.png
+obj\Debug\net8.0-android\resizetizer\r\drawable\star_filled.png
 obj\Debug\net8.0-android\resizetizer\r\drawable\utilidades.png
 obj\Debug\net8.0-android\resizetizer\r\mipmap-anydpi-v26\appicon.xml
 obj\Debug\net8.0-android\resizetizer\r\mipmap-anydpi-v26\appicon_round.xml

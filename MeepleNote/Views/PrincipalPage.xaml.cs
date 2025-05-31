@@ -26,12 +26,22 @@ public partial class PrincipalPage : ContentPage {
         // 2. Juego más jugado
         var mostPlayed = await GetMostPlayedGame(userId);
         if (mostPlayed != null) {
-            MostPlayedGameImage.Source = mostPlayed.FotoPortada ?? "placeholder.png";
+            MostPlayedGameImage.IsVisible = true;
+            MostPlayedGameLabel.IsVisible = true;
+            PlayCountLabel.IsVisible = true;
+            MostPlayedGameImage.Source = mostPlayed.FotoPortada ?? "missing_image.png";
             MostPlayedGameLabel.Text = mostPlayed.Titulo;
             PlayCountLabel.Text = $"{mostPlayed.PartidasCount} partidas";
+            NoMostPlayedLabel.IsVisible = false;
+        }
+        else {
+            MostPlayedGameImage.IsVisible = false;
+            MostPlayedGameLabel.IsVisible = false;
+            PlayCountLabel.IsVisible = false;
+            NoMostPlayedLabel.IsVisible = true;
         }
 
-        // 3. Últimas partidas - Versión optimizada
+        // 3. Últimas partidas
         var recentGames = await _dbService.GetPartidasAsync(userId);
         var viewModels = new List<PartidaViewModel>();
 
@@ -41,7 +51,7 @@ public partial class PrincipalPage : ContentPage {
                 IdPartida = partida.IdPartida,
                 IdJuego = partida.IdJuego,
                 TituloJuego = juego?.Titulo ?? "Juego no encontrado",
-                FotoPortada = juego?.FotoPortada ?? "placeholder.png",
+                FotoPortada = juego?.FotoPortada ?? "missing_image.png",
                 Fecha = partida.Fecha,
                 Ganador = partida.Ganador
             });
@@ -56,9 +66,15 @@ public partial class PrincipalPage : ContentPage {
 
     private async Task<JuegoConPartidas> GetMostPlayedGame(string userId) {
         var partidas = await _dbService.GetPartidasAsync(userId);
-        var juegos = await _dbService.GetJuegosAsyncEnColeccion(userId);
 
+        // Si no hay partidas, retornar null
+        if (!partidas.Any()) {
+            return null;
+        }
+
+        var juegos = await _dbService.GetJuegosAsyncEnColeccion(userId);
         var juegoMasJugado = partidas
+            .Where(p => p.IdUsuario == userId)
             .GroupBy(p => p.IdJuego)
             .OrderByDescending(g => g.Count())
             .FirstOrDefault();

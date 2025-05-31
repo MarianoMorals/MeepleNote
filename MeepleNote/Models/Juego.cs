@@ -46,7 +46,7 @@ namespace MeepleNote.Models {
         [Ignore]
         public string PuntuacionFormateada => Puntuacion.ToString("0.00");
 
-        public double PuntuacionPersonal { get; set; }
+        public int PuntuacionPersonal { get; set; }
 
         [Ignore]
         public string PuntuacionPersonalFormateada => PuntuacionPersonal.ToString("0.00");
