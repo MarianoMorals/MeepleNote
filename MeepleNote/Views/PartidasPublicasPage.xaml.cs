@@ -31,6 +31,16 @@ namespace MeepleNote.Views {
         });
 
         public ICommand CompletarCommand => new Command<PartidaPublicaViewModel>(async (partida) => {
+
+            if (!NetworkUtils.TieneConexionInternet()) {
+                await DisplayAlert(
+                    "Sin conexión",
+                    "Necesitas conexión a Internet para hacer una marcar la partida como completada.",
+                    "OK");
+                return;
+            }
+
+
             bool confirmar = await DisplayAlert("Confirmar",
                 "¿Marcar esta partida como completada?", "Sí", "No");
 

@@ -138,6 +138,14 @@ namespace MeepleNote.Views {
         }
 
         private async void OnCrearPartidaPublicaClicked(object sender, EventArgs e) {
+            if (!NetworkUtils.TieneConexionInternet()) {
+                await DisplayAlert(
+                    "Sin conexión",
+                    "Necesitas conexión a Internet para publicar una partida.",
+                    "OK");
+                return;
+            }
+
             await Navigation.PushAsync(new NuevaPartidaPublicaPage(_juego));
         }
     }

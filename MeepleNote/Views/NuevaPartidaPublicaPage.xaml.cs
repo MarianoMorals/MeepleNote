@@ -45,6 +45,15 @@ namespace MeepleNote.Views {
             EmailEntry.Text = email;
         }
         private async void OnPublicarClicked(object sender, EventArgs e) {
+
+            if (!NetworkUtils.TieneConexionInternet()) {
+                await DisplayAlert(
+                    "Sin conexión",
+                    "Necesitas conexión a Internet para publicar una partida.",
+                    "OK");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(CiudadEntry.Text)) {
                 await DisplayAlert("Error", "Debes indicar una ciudad", "OK");
                 return;

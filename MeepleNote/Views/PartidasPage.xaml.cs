@@ -103,6 +103,16 @@ namespace MeepleNote.Views {
 
         private async void OnVerPartidasPublicasClicked(object sender, EventArgs e) {
             try {
+
+                if (!NetworkUtils.TieneConexionInternet()) {
+                    await DisplayAlert(
+                        "Sin conexión",
+                        "Necesitas conexión a Internet para hacer una busqueda.",
+                        "OK");
+                    return;
+                }
+
+
                 await Navigation.PushAsync(new PartidasPublicasPage());
             }
             catch (Exception ex) {

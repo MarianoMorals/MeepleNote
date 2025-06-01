@@ -109,8 +109,8 @@ namespace MeepleNote.Services {
             }
         }
 
-        public async Task QuitarJuegoExistenteDeColeccion(int idJuego) {
-            var juego = await _database.Table<Juego>().Where(j => j.IdJuego == idJuego).FirstOrDefaultAsync();
+        public async Task QuitarJuegoExistenteDeColeccion(int idJuego, string firebaseId) {
+            var juego = await _database.Table<Juego>().Where(j => j.IdJuego == idJuego && j.IdUsuario == firebaseId).FirstOrDefaultAsync();
             if (juego != null) {
                 juego.EnColeccion = false;
                 await _database.UpdateAsync(juego);
@@ -209,7 +209,7 @@ namespace MeepleNote.Services {
         // === PARTIDA PUBLICA ===
         public async Task<List<PartidaPublica>> GetPartidasPublicasAsync() {
             return await _database.Table<PartidaPublica>()
-                                 .Where(p => !p.Completada)
+                                 .Where(p => p.Completada == false && p.Fecha > DateTime.Now)
                                  .ToListAsync();
         }
 

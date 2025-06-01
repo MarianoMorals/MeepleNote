@@ -21,6 +21,15 @@ public partial class LoginPage : ContentPage {
         var password = PasswordEntry.Text;
 
         try {
+
+            if (!NetworkUtils.TieneConexionInternet()) {
+                await DisplayAlert(
+                    "Sin conexión",
+                    "Necesitas conexión a Internet para iniciar sesión",
+                    "OK");
+                return;
+            }
+
             var sqliteDb = new SQLiteService();
             //await sqliteDb.LimpiarDatosUsuario();
 
@@ -66,31 +75,68 @@ public partial class LoginPage : ContentPage {
         }
         catch (FirebaseAuthException firebaseAuthEx) {
             string errorMessage = "Error de autenticación: ";
-            switch (firebaseAuthEx.Reason) {
-                case AuthErrorReason.InvalidEmailAddress:
-                    errorMessage += "Correo electrónico inválido.";
+
+            switch (firebaseAuthEx.Reason.ToString()) {
+                case "InvalidEmailAddress":
+                    errorMessage += "El correo electrónico no tiene un formato válido.";
                     break;
-                case AuthErrorReason.WrongPassword:
-                    errorMessage += "Contraseña incorrecta.";
+                case "MissingEmail":
+                    errorMessage += "Debes ingresar un correo electrónico.";
+                    break;
+                case "MissingPassword":
+                    errorMessage += "Debes ingresar una contraseña.";
+                    break;
+                case "WrongPassword":
+                    errorMessage += "La contraseña es incorrecta.";
+                    break;
+                case "EmailNotFound":
+                    errorMessage += "No existe una cuenta con ese correo electrónico.";
+                    break;
+                case "UserDisabled":
+                    errorMessage += "La cuenta ha sido deshabilitada.";
+                    break;
+                case "TooManyAttemptsTryLater":
+                    errorMessage += "Demasiados intentos fallidos. Intenta más tarde.";
+                    break;
+                case "OperationNotAllowed":
+                    errorMessage += "Este tipo de inicio de sesión no está permitido.";
                     break;
                 default:
-                    errorMessage += firebaseAuthEx.Message;
+                    errorMessage += "Compruebe que los datos sean correctos.";
                     break;
             }
+
             await DisplayAlert("Error", errorMessage, "OK");
         }
-        catch (Exception ex) {
-            await DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
-        }
+
+
     }
 
     private async void OnIrARegistro(object sender, EventArgs e) {
+
+        if (!NetworkUtils.TieneConexionInternet()) {
+            await DisplayAlert(
+                "Sin conexión",
+                "Necesitas conexión a Internet para registrarte.",
+                "OK");
+            return;
+        }
+
         // Redirigir a la página de registro
         await Shell.Current.GoToAsync($"//RegisterPage");
     }
 
     private async void OnRestablecerContraseñaClicked(object sender, EventArgs e) {
         try {
+
+            if (!NetworkUtils.TieneConexionInternet()) {
+                await DisplayAlert(
+                    "Sin conexión",
+                    "Necesitas conexión a Internet para restablecer contraseña.",
+                    "OK");
+                return;
+            }
+
             if (string.IsNullOrEmpty(UsernameEntry.Text)) {
                 await DisplayAlert("Error", "Por favor, ingrese su correo electrónico para restablecer la contraseña.", "OK");
                 return;

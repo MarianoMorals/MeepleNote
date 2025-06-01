@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9VAiMgbtUPk=",
+  "dgSpecHash": "pXfH5om0BAA=",
   "success": true,
   "projectFilePath": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\MeepleNote.csproj",
   "expectedPackageFiles": [
@@ -118,6 +118,7 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\system.net.nameresolution\\4.0.0\\system.net.nameresolution.4.0.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.net.primitives\\4.0.11\\system.net.primitives.4.0.11.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.net.sockets\\4.1.0\\system.net.sockets.4.1.0.nupkg.sha512",
+    "C:\\Users\\mot_7\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.objectmodel\\4.0.12\\system.objectmodel.4.0.12.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.private.uri\\4.0.1\\system.private.uri.4.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.reflection\\4.1.0\\system.reflection.4.1.0.nupkg.sha512",
@@ -229,6 +230,7 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.androidx.viewpager2\\1.0.0.21\\xamarin.androidx.viewpager2.1.0.0.21.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.androidx.window\\1.1.0.1\\xamarin.androidx.window.1.1.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.androidx.window.extensions.core.core\\1.0.0.1\\xamarin.androidx.window.extensions.core.core.1.0.0.1.nupkg.sha512",
+    "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.essentials\\1.8.1\\xamarin.essentials.1.8.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.google.android.material\\1.9.0.2\\xamarin.google.android.material.1.9.0.2.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.google.code.findbugs.jsr305\\3.0.2.9\\xamarin.google.code.findbugs.jsr305.3.0.2.9.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.google.crypto.tink.android\\1.10.0\\xamarin.google.crypto.tink.android.1.10.0.nupkg.sha512",

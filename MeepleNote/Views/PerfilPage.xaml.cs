@@ -3,6 +3,7 @@ using MeepleNote.Models;
 using MeepleNote.Services;
 using Microsoft.Maui.Storage;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace MeepleNote.Views {
@@ -78,6 +79,15 @@ namespace MeepleNote.Views {
 
         private async void OnRestablecerContraseñaClicked(object sender, EventArgs e) {
             try {
+
+                if (!NetworkUtils.TieneConexionInternet()) {
+                    await DisplayAlert(
+                        "Sin conexión",
+                        "Necesitas conexión a Internet para restablecer contraseña.",
+                        "OK");
+                    return;
+                }
+
                 if (_usuarioActual == null || string.IsNullOrEmpty(_usuarioActual.Email)) {
                     await DisplayAlert("Error", "No se pudo obtener el correo electrónico del usuario", "OK");
                     return;
@@ -102,27 +112,43 @@ namespace MeepleNote.Views {
             if (!confirmar) return;
 
             try {
-                // 1. Sincronizar datos antes de cerrar
-                await InicializarSincronizacionService();
-                if (_sincronizacionService != null) {
-                    await _sincronizacionService.SincronizarConFirebase();
+                if (!NetworkUtils.TieneConexionInternet()) {
+                    bool continuar = await DisplayAlert(
+                        "Sin conexión",
+                        "No hay conexión a Internet. Si cierras sesión ahora, los cambios no se sincronizarán. ¿Deseas cerrar sesión igualmente?",
+                        "Sí, cerrar",
+                        "Cancelar");
+
+                    if (!continuar) return;
+                }
+                else {
+                    // Sincronizar solo si hay conexión
+                    await SincronizarYLimpiar();
                 }
 
-                // 2. Limpiar datos locales
-                //await _sqliteDb.LimpiarDatosUsuario();
-
-                // 3. Cerrar sesión en Firebase
-                _firebaseAuthService.Logout();
-
-                // 4. Limpiar preferencias
-                Preferences.Clear();
-
-                // 5. Redirigir a login
-                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                await CerrarSesion();
             }
             catch (Exception ex) {
                 await DisplayAlert("Error", $"Error al cerrar sesión: {ex.Message}", "OK");
             }
+        }
+        private async Task SincronizarYLimpiar() {
+            try {
+                var token = Preferences.Get("FirebaseToken", null);
+                if (!string.IsNullOrEmpty(token)) {
+                    var firebaseDb = new FirebaseDatabaseService(token);
+                    var sqliteDb = new SQLiteService();
+                    var sincService = new SincronizacionService(sqliteDb, firebaseDb);
+                    await sincService.SincronizarConFirebase();
+                }
+            }
+            catch (Exception ex) {
+                Debug.WriteLine($"Error al sincronizar: {ex.Message}");
+            }
+        }
+        private async Task CerrarSesion() {
+            Preferences.Clear();
+            await Shell.Current.GoToAsync($"//LoginPage");
         }
 
         protected override bool OnBackButtonPressed() {

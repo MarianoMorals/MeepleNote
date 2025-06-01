@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace MeepleNote.Models {
     public class Juego {
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
         public int IdJuego { get; set; }
         public string IdUsuario { get; set; }
 

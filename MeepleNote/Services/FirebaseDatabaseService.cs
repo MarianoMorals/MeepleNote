@@ -79,14 +79,17 @@ namespace MeepleNote.Services
         }
 
         public async Task<List<PartidaPublica>> DescargarPartidasPublicas() {
-            return (await _firebase
+            /*return (await _firebase
                 .Child("partidasPublicasGlobales")
                 .OnceAsync<PartidaPublica>())
                 .Select(item => {
                     var partida = item.Object;
                     partida.IdFirebase = item.Key; // Asignar el ID de Firebase
                     return partida;
-                }).ToList();
+                }).ToList();*/
+
+           return await _firebase.Child("partidasPublicasGlobales").OnceSingleAsync<List<PartidaPublica>>() ?? new();
+
         }
 
         public async Task<DatosUsuario?> DescargarTodo(string usuarioId) {

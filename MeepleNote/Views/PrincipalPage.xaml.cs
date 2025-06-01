@@ -72,7 +72,7 @@ public partial class PrincipalPage : ContentPage {
             return null;
         }
 
-        var juegos = await _dbService.GetJuegosAsyncEnColeccion(userId);
+        var juegos = await _dbService.GetJuegosAsync(userId);
         var juegoMasJugado = partidas
             .Where(p => p.IdUsuario == userId)
             .GroupBy(p => p.IdJuego)

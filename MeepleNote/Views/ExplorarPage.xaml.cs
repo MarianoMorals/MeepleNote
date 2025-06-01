@@ -66,6 +66,15 @@ namespace MeepleNote.Views {
         }
 
         private async void OnBuscarClicked(object sender, EventArgs e) {
+
+            if (!NetworkUtils.TieneConexionInternet()) {
+                await DisplayAlert(
+                    "Sin conexión",
+                    "Necesitas conexión a Internet para hacer una busqueda.",
+                    "OK");
+                return;
+            }
+
             _currentQuery = BuscarEntry.Text?.Trim() ?? string.Empty;
 
             BuscarEntry.Text = string.Empty;
@@ -162,6 +171,15 @@ namespace MeepleNote.Views {
         }
 
         private async void SugerenciasList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (!NetworkUtils.TieneConexionInternet()) {
+                await DisplayAlert(
+                    "Sin conexión",
+                    "Necesitas conexión a Internet para hacer una busqueda.",
+                    "OK");
+                return;
+            }
+
+
             if (e.CurrentSelection.FirstOrDefault() is Juego juego) {
                 // Ocultar sugerencias inmediatamente
                 SugerenciasList.IsVisible = false;
@@ -225,6 +243,15 @@ namespace MeepleNote.Views {
         }
 
         private async void OnVerDetallesClicked(object sender, EventArgs e) {
+
+            if (!NetworkUtils.TieneConexionInternet()) {
+                await DisplayAlert(
+                    "Sin conexión",
+                    "Necesitas conexión a Internet para acceder a los detalles.",
+                    "OK");
+                return;
+            }
+
             if (sender is Button button && button.CommandParameter is Juego juego) {
                 try {
                     var idUsuario = Preferences.Get("UsuarioId", "0");

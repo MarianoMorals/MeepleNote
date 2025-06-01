@@ -24,13 +24,39 @@ namespace MeepleNote {
             bool sesionActiva = Preferences.Get("SesionIniciada", false);
 
             if (sesionActiva) {
-                // Cargar datos desde Firebase al iniciar
-                await CargarDatosDesdeFirebase();
-                await Shell.Current.GoToAsync($"//PrincipalPage");
+                if (!NetworkUtils.TieneConexionInternet()) {
+                    await MostrarAlertaOffline();
+                    await Shell.Current.GoToAsync($"//PrincipalPage");
+                }
+                else {
+                    try {
+                        await CargarDatosDesdeFirebase();
+                        await Shell.Current.GoToAsync($"//PrincipalPage");
+                    }
+                    catch (Exception ex) {
+                        await MostrarErrorCarga(ex);
+                        await Shell.Current.GoToAsync("//LoginPage");
+                    }
+                }
             }
             else {
                 await Shell.Current.GoToAsync("//LoginPage");
             }
+        }
+        private async Task MostrarAlertaOffline() {
+            await Current.MainPage.DisplayAlert(
+                "Modo Offline",
+                "No hay conexión a Internet. Trabajarás con los datos locales.",
+                "Entendido");
+        }
+
+        private async Task MostrarErrorCarga(Exception ex) {
+            await Current.MainPage.DisplayAlert(
+                "Error de conexión",
+                $"No se pudieron cargar los datos: {ex.Message}",
+                "Aceptar");
+
+            Preferences.Set("SesionIniciada", false);
         }
 
         private async Task CargarDatosDesdeFirebase() {
@@ -53,7 +79,24 @@ namespace MeepleNote {
         }
 
         protected override async void OnSleep() {
-            await RealizarSincronizacionAntesDeCerrar();
+
+            if (!NetworkUtils.TieneConexionInternet()) {
+                bool continuar = await Current.MainPage.DisplayAlert(
+                    "⚠️ Sin conexión",
+                    "Los cambios no se sincronizarán con la nube. ¿Deseas salir igualmente?",
+                    "Sí, salir",
+                    "Cancelar");
+
+                if (!continuar) return;
+            }
+
+            try {
+                await RealizarSincronizacionAntesDeCerrar();
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Error en sincronización: {ex.Message}");
+            }
+
         }
 
         private async Task RealizarSincronizacionAntesDeCerrar() {

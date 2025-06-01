@@ -11,7 +11,8 @@ public partial class RegisterPage : ContentPage {
     // Usa la misma API key que en LoginPage
     private const string ApiKey = "AIzaSyCmcqsaPemAyArjJBBiV7nFm2TeXLFp9cI";
     private readonly SQLiteService _sqliteService;
-
+    private string usuarioID;
+    private string token;
     public RegisterPage() {
         InitializeComponent();
         _sqliteService = new SQLiteService();
@@ -50,6 +51,15 @@ public partial class RegisterPage : ContentPage {
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e) {
+
+        if (!NetworkUtils.TieneConexionInternet()) {
+            await DisplayAlert(
+                "Sin conexión",
+                "Necesitas conexión a Internet para registrarte.",
+                "OK");
+            return;
+        }
+
         var email = EmailEntry.Text?.Trim();
         var password = PasswordEntry.Text;
         var confirm = ConfirmPasswordEntry.Text;
@@ -84,7 +94,12 @@ public partial class RegisterPage : ContentPage {
                 FechaNacimiento = birthDate, // Usar la fecha de nacimiento obtenida
             };
 
+            usuarioID = firebaseUserId;
+            token = result.FirebaseToken;
+
             await _sqliteService.SaveUsuarioAsync(nuevoUsuario);
+
+            await RealizarSincronizacionInicial(); //Asi añadimos los datos de usuario a firebase, por si mas adelante cerramos sin guardar.
 
             await DisplayAlert("Éxito", "Usuario registrado correctamente.", "OK");
             await Shell.Current.GoToAsync($"//LoginPage");
@@ -103,6 +118,24 @@ public partial class RegisterPage : ContentPage {
         }
         catch (Exception ex) {
             await DisplayAlert("Error", $"No se pudo registrar: {ex.Message}", "OK");
+        }
+    }
+
+    private async Task RealizarSincronizacionInicial() {
+        try {
+            if (string.IsNullOrEmpty(usuarioID)) return;
+
+            var firebaseDb = new FirebaseDatabaseService(token);
+            var sincService = new SincronizacionService(_sqliteService, firebaseDb, usuarioID);
+
+            // Sincronizar todos los datos locales con Firebase
+            await sincService.SincronizarConFirebase();
+
+            Console.WriteLine("Datos sincronizados correctamente con Firebase");
+        }
+        catch (Exception ex) {
+            Console.WriteLine($"Error en sincronización: {ex.Message}");
+            // Aquí podrías implementar un sistema de reintentos o notificación de error
         }
     }
 }

@@ -56,7 +56,9 @@ namespace MeepleNote.Views {
             if (confirmar) {
                 foreach (var juego in seleccionados) {
                     //await dbService.DeleteJuegoAsync(juego);
-                    await dbService.QuitarJuegoExistenteDeColeccion(juego.IdJuego);
+                    var idUsuario = Preferences.Get("UsuarioId", "0");
+
+                    await dbService.QuitarJuegoExistenteDeColeccion(juego.IdJuego, idUsuario);
                 }
 
                 await CargarColeccion();

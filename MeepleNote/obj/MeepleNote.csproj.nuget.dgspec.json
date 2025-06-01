@@ -92,6 +92,10 @@
               "version": "[8.0.8, )",
               "autoReferenced": true
             },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.8.1, )"
+            },
             "sqlite-net-pcl": {
               "target": "Package",
               "version": "[1.9.172, )"
@@ -146,6 +150,10 @@
               "target": "Package",
               "version": "[8.0.8, )",
               "autoReferenced": true
+            },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.8.1, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",
@@ -202,6 +210,10 @@
               "version": "[8.0.8, )",
               "autoReferenced": true
             },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.8.1, )"
+            },
             "sqlite-net-pcl": {
               "target": "Package",
               "version": "[1.9.172, )"
@@ -251,6 +263,10 @@
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
               "version": "[8.0.72, )"
+            },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.8.1, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",

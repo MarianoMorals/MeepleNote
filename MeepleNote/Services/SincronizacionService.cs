@@ -16,7 +16,11 @@ namespace MeepleNote.Services {
             _firebase = firebaseService;
             _firebaseUsuarioId = Preferences.Get("UsuarioId", null); // Obtener el Firebase User ID al instanciar
         }
-
+        public SincronizacionService(SQLiteService sqliteService, FirebaseDatabaseService firebaseService, string fireBaseId) {
+            _sqlite = sqliteService;
+            _firebase = firebaseService;
+            _firebaseUsuarioId = fireBaseId; // Obtener el Firebase User ID al instanciar
+        }
         public async Task SincronizarConFirebase() {
             if (string.IsNullOrEmpty(_firebaseUsuarioId))
                 return;
@@ -46,9 +50,11 @@ namespace MeepleNote.Services {
             if (string.IsNullOrEmpty(_firebaseUsuarioId))
                 return;
 
+            //La comparacion de fechas se elimina de momento, ya que al cambiar de usuario hay veces que no recoge lo de firabase.
+
             var fechaLocal = _sqlite.ObtenerFechaUltimaSync();
             var fechaFirebase = await _firebase.ObtenerFechaUltimaSync(_firebaseUsuarioId);
-
+            /*
             // Si hay una fecha en Firebase y es más reciente que la local, descargar los datos
             if (fechaFirebase.HasValue && (!fechaLocal.HasValue || fechaFirebase > fechaLocal)) {
                 var usuario = await _firebase.DescargarPerfil(_firebaseUsuarioId);
@@ -56,14 +62,14 @@ namespace MeepleNote.Services {
                 var colecciones = await _firebase.DescargarColeccion(_firebaseUsuarioId);
                 var partidas = await _firebase.DescargarPartidas(_firebaseUsuarioId);
                 var jugadores = await _firebase.DescargarJugadoresPartida(_firebaseUsuarioId);
-                var partidasPublicas = await _firebase.DescargarPartidasPublicas();
+                //var partidasPublicas = await _firebase.DescargarPartidasPublicas();
 
                 // Reemplazar los datos locales con los descargados de Firebase
                 await _sqlite.ReplaceJuegosAsync(juegos);
                 await _sqlite.ReplaceColeccionesAsync(colecciones);
                 await _sqlite.ReplacePartidasAsync(partidas);
                 await _sqlite.ReplaceJugadoresPartidaAsync(jugadores);
-                await _sqlite.ReplacePartidasPublicasAsync(partidasPublicas);
+                //await _sqlite.ReplacePartidasPublicasAsync(partidasPublicas);
 
 
                 // Guardar el perfil del usuario si se descargó
@@ -72,7 +78,29 @@ namespace MeepleNote.Services {
 
                 // Guardar la fecha de la última sincronización desde Firebase
                 _sqlite.GuardarFechaUltimaSync(fechaFirebase.Value);
-            }
+            }*/
+
+            var usuario = await _firebase.DescargarPerfil(_firebaseUsuarioId);
+            var juegos = await _firebase.DescargarJuegos(_firebaseUsuarioId);
+            var colecciones = await _firebase.DescargarColeccion(_firebaseUsuarioId);
+            var partidas = await _firebase.DescargarPartidas(_firebaseUsuarioId);
+            var jugadores = await _firebase.DescargarJugadoresPartida(_firebaseUsuarioId);
+            //var partidasPublicas = await _firebase.DescargarPartidasPublicas();
+
+            // Reemplazar los datos locales con los descargados de Firebase
+            await _sqlite.ReplaceJuegosAsync(juegos);
+            await _sqlite.ReplaceColeccionesAsync(colecciones);
+            await _sqlite.ReplacePartidasAsync(partidas);
+            await _sqlite.ReplaceJugadoresPartidaAsync(jugadores);
+            //await _sqlite.ReplacePartidasPublicasAsync(partidasPublicas);
+
+
+            // Guardar el perfil del usuario si se descargó
+            if (usuario != null)
+                await _sqlite.SaveUsuarioAsync(usuario);
+
+            // Guardar la fecha de la última sincronización desde Firebase
+            _sqlite.GuardarFechaUltimaSync(fechaFirebase.Value);
         }
     }
 }
