@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MeepleNote.Views.NuevaPartidaPublicaPage"
              Title="Nueva Partida Pública"
-             BackgroundColor="{StaticResource BackgroundColor}">
+             BackgroundColor="{StaticResource BackgroundColor}"
+             Shell.TabBarIsVisible="False">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">

@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:MeepleNote.Views"
     FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarUnselectedColor="#999999">
 
     <!-- Páginas de autenticación (sin barra de navegación) -->
     <ShellContent 
@@ -43,7 +44,7 @@
         </Tab>
 
         <Tab Title="Utilidades" Icon="utilidades.png" Route="UtilidadesPage">
-            <ShellContent ContentTemplate="{DataTemplate views:ExplorarPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:UtilidadesPage}" />
         </Tab>
     </TabBar>
 </Shell>

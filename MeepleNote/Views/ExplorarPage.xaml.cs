@@ -41,6 +41,36 @@ namespace MeepleNote.Views {
             ResultadosList.RemainingItemsThreshold = 1; // Cargar más cuando quede 1 item por ver
             ResultadosList.RemainingItemsThresholdReached += ResultadosList_RemainingItemsThresholdReached;
         }
+        protected override async void OnAppearing() {
+            base.OnAppearing();
+
+            // Limpiar el texto del buscador
+            BuscarEntry.Text = string.Empty;
+
+            // Ocultar sugerencias
+            SugerenciasList.IsVisible = false;
+
+            // Ocultar etiquetas de sin resultados
+            SinResultadosLabel.IsVisible = false;
+
+            // Ocultar indicadores de carga
+            LoadingIndicator.IsVisible = false;
+            LoadingIndicator.IsRunning = false;
+            LoadingMoreIndicator.IsVisible = false;
+
+            // Resetear estado de paginación y búsqueda
+            _currentQuery = string.Empty;
+            _currentPage = 0;
+            _hasMoreItems = true;
+
+            // Limpiar la colección de resultados
+            _juegos.Clear();
+
+            // Resetear indicador de refresco
+            IsRefreshing = false;
+            
+        }
+
 
         private async Task RefreshDataAsync() {
             if (string.IsNullOrWhiteSpace(_currentQuery)) {

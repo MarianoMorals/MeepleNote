@@ -46,6 +46,18 @@ build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.Coleccion
 build_metadata.AdditionalFiles.TargetPath = Views\ColeccionPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\ColeccionPage.xaml
 
+[C:/Users/mot_7/source/repos/MeepleNote/MeepleNote/Views/ContadorVidaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.ContadorVidaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ContadorVidaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ContadorVidaPage.xaml
+
+[C:/Users/mot_7/source/repos/MeepleNote/MeepleNote/Views/DadosPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.DadosPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DadosPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DadosPage.xaml
+
 [C:/Users/mot_7/source/repos/MeepleNote/MeepleNote/Views/DetalleJuegoPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.DetalleJuegoPage.xaml
@@ -111,3 +123,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.RegistrarPartidaPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\RegistrarPartidaPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\RegistrarPartidaPage.xaml
+
+[C:/Users/mot_7/source/repos/MeepleNote/MeepleNote/Views/UtilidadesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MeepleNote.Views.UtilidadesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\UtilidadesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\UtilidadesPage.xaml

@@ -1,0 +1,134 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeepleNote.Views.DadosPage"
+             Title="Dados"
+             BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1C1C1E}"
+             Shell.TabBarIsVisible="False">
+
+    <ScrollView>
+        <Grid Padding="20" ColumnSpacing="15" RowSpacing="15">
+            <!-- Fondo multicolor degradado -->
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#3F51B5" Offset="0.0" />
+                    <GradientStop Color="#9C27B0" Offset="0.5" />
+                    <GradientStop Color="#FF5722" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Columna 1 -->
+            <!-- D4 -->
+            <Frame Grid.Column="0" Grid.Row="0" 
+                   HeightRequest="160" CornerRadius="12"
+                   Padding="0" BackgroundColor="Transparent">
+                <Grid>
+                    <Image x:Name="d4Image" Source="d4.png" 
+                           Aspect="AspectFit" HeightRequest="90">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnD4Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="d4Result" Text="🎲" FontSize="42" 
+                           HorizontalOptions="Center" VerticalOptions="Center" 
+                           IsVisible="False"/>
+                </Grid>
+            </Frame>
+
+            <!-- D6 -->
+            <Frame Grid.Column="0" Grid.Row="1" 
+                   HeightRequest="160" CornerRadius="12"
+                   Padding="0" BackgroundColor="Transparent">
+                <Grid>
+                    <Image x:Name="d6Image" Source="d6.png" 
+                           Aspect="AspectFit" HeightRequest="90">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnD6Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="d6Result" Text="🎲" FontSize="42" 
+                           HorizontalOptions="Center" VerticalOptions="Center" 
+                           IsVisible="False"/>
+                </Grid>
+            </Frame>
+
+            <!-- D8 -->
+            <Frame Grid.Column="0" Grid.Row="2" 
+                   HeightRequest="160" CornerRadius="12"
+                   Padding="0" BackgroundColor="Transparent">
+                <Grid>
+                    <Image x:Name="d8Image" Source="d8.png" 
+                           Aspect="AspectFit" HeightRequest="90">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnD8Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="d8Result" Text="🎲" FontSize="42" 
+                           HorizontalOptions="Center" VerticalOptions="Center" 
+                           IsVisible="False"/>
+                </Grid>
+            </Frame>
+
+            <!-- Columna 2 -->
+            <!-- D10 -->
+            <Frame Grid.Column="1" Grid.Row="0" 
+                   HeightRequest="160" CornerRadius="12"
+                   Padding="0" BackgroundColor="Transparent">
+                <Grid>
+                    <Image x:Name="d10Image" Source="d10.png" 
+                           Aspect="AspectFit" HeightRequest="90">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnD10Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="d10Result" Text="🎲" FontSize="42" 
+                           HorizontalOptions="Center" VerticalOptions="Center" 
+                           IsVisible="False"/>
+                </Grid>
+            </Frame>
+
+            <!-- D12 -->
+            <Frame Grid.Column="1" Grid.Row="1" 
+                   HeightRequest="160" CornerRadius="12"
+                   Padding="0" BackgroundColor="Transparent">
+                <Grid>
+                    <Image x:Name="d12Image" Source="d12.png" 
+                           Aspect="AspectFit" HeightRequest="90">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnD12Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="d12Result" Text="🎲" FontSize="42" 
+                           HorizontalOptions="Center" VerticalOptions="Center" 
+                           IsVisible="False"/>
+                </Grid>
+            </Frame>
+
+            <!-- D20 -->
+            <Frame Grid.Column="1" Grid.Row="2" 
+                   HeightRequest="160" CornerRadius="12"
+                   Padding="0" BackgroundColor="Transparent">
+                <Grid>
+                    <Image x:Name="d20Image" Source="d20.png" 
+                           Aspect="AspectFit" HeightRequest="90">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnD20Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="d20Result" Text="🎲" FontSize="42" 
+                           HorizontalOptions="Center" VerticalOptions="Center" 
+                           IsVisible="False"/>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,33 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeepleNote.Views.UtilidadesPage"
+             Title="Utilidades"
+             BackgroundColor="{StaticResource BackgroundColor}">
+    <Grid RowDefinitions="Auto,*">
+        <!-- Cabecera -->
+        <Label Text="Utilidades" 
+           Grid.Row="0"
+           FontSize="24" 
+           HorizontalOptions="Center" 
+           Margin="10"
+           FontAttributes="Bold"/>
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20" Padding="20">
+
+                <!-- Botón Dados -->
+                <Button Text="Dados" 
+                    ImageSource="dice.png"
+                    Clicked="OnDadosClicked"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+
+                
+                <!-- Botón Contador de Vida -->
+                <Button Text="Contador de Vida" 
+                    ImageSource="heart.png"
+                    Clicked="OnContadorVidaClicked"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

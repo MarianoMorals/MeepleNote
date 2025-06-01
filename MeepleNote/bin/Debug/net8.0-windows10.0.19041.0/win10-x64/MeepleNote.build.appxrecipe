@@ -61,11 +61,11 @@
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf">
       <PackagePath>OpenSans-Semibold.ttf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\publicar.scale-100.png">
-      <PackagePath>publicar.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\login.scale-100.png">
+      <PackagePath>login.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\config.scale-100.png">
-      <PackagePath>config.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\informacion.scale-100.png">
+      <PackagePath>informacion.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\refresh.scale-100.png">
       <PackagePath>refresh.scale-100.png</PackagePath>
@@ -73,35 +73,68 @@
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\logo.scale-100.png">
       <PackagePath>logo.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\register.scale-100.png">
-      <PackagePath>register.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\config.scale-100.png">
+      <PackagePath>config.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\informacion.scale-100.png">
-      <PackagePath>informacion.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\logout.scale-100.png">
+      <PackagePath>logout.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\save.scale-100.png">
-      <PackagePath>save.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\home.scale-100.png">
+      <PackagePath>home.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\eliminar.scale-100.png">
-      <PackagePath>eliminar.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\missing_image.scale-100.png">
+      <PackagePath>missing_image.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\star_empty.scale-100.png">
-      <PackagePath>star_empty.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\d12.scale-100.png">
+      <PackagePath>d12.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\partidaannadir.scale-100.png">
+      <PackagePath>partidaannadir.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\coleccion.scale-100.png">
       <PackagePath>coleccion.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\star_filled.scale-100.png">
-      <PackagePath>star_filled.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\partidas.scale-100.png">
+      <PackagePath>partidas.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\back.scale-100.png">
+      <PackagePath>back.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\publicar.scale-100.png">
+      <PackagePath>publicar.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\eliminar.scale-100.png">
+      <PackagePath>eliminar.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\register.scale-100.png">
+      <PackagePath>register.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\annadir.scale-100.png">
       <PackagePath>annadir.scale-100.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\save.scale-100.png">
+      <PackagePath>save.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\d8.scale-100.png">
+      <PackagePath>d8.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\star_empty.scale-100.png">
+      <PackagePath>star_empty.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\d4.scale-100.png">
+      <PackagePath>d4.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\star_filled.scale-100.png">
+      <PackagePath>star_filled.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\d6.scale-100.png">
+      <PackagePath>d6.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\utilidades.scale-100.png">
       <PackagePath>utilidades.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon_juego_desconocido.scale-100.png">
-      <PackagePath>icon_juego_desconocido.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\details.scale-100.png">
+      <PackagePath>details.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
@@ -241,32 +274,17 @@
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\logout.scale-100.png">
-      <PackagePath>logout.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\d10.scale-100.png">
+      <PackagePath>d10.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\home.scale-100.png">
-      <PackagePath>home.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\d20.scale-100.png">
+      <PackagePath>d20.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\details.scale-100.png">
-      <PackagePath>details.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon_juego_desconocido.scale-100.png">
+      <PackagePath>icon_juego_desconocido.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\buscar.scale-100.png">
       <PackagePath>buscar.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\login.scale-100.png">
-      <PackagePath>login.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\back.scale-100.png">
-      <PackagePath>back.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\missing_image.scale-100.png">
-      <PackagePath>missing_image.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\partidas.scale-100.png">
-      <PackagePath>partidas.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\partidaannadir.scale-100.png">
-      <PackagePath>partidaannadir.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MeepleNote.deps.json">
       <PackagePath>MeepleNote.deps.json</PackagePath>
