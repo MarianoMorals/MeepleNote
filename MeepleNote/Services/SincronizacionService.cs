@@ -35,7 +35,7 @@ namespace MeepleNote.Services {
             var partidas = await _sqlite.GetPartidasAsync(idUsuario);
             var jugadores = await _sqlite.GetJugadoresPartidaAsync();
             var partidasPublicas = await _sqlite.GetPartidasPublicasAsync();
-            await _firebase.SubirPartidasPublicas(partidasPublicas);
+            //await _firebase.SubirPartidasPublicas(partidasPublicas);
 
             var fechaSync = DateTime.UtcNow;
 

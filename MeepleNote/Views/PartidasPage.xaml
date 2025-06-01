@@ -5,10 +5,17 @@
     Title="Mis Partidas"
     BackgroundColor="{StaticResource BackgroundColor}">
 
-    <Grid RowDefinitions="Auto,*">
+    <Grid RowDefinitions="Auto,Auto,*">
+        <!-- Cabecera -->
+        <Label Text="Mis Partidas" 
+               Grid.Row="0"
+               FontSize="24" 
+               HorizontalOptions="Center" 
+               Margin="10"
+               FontAttributes="Bold"/>
         <!-- Botón para partidas públicas -->
         <Button Text="Ver Partidas Públicas"
-                Grid.Row="0"
+                Grid.Row="1"
                 Margin="10"
                 Clicked="OnVerPartidasPublicasClicked"
                 ImageSource="publicar.png"
@@ -17,7 +24,7 @@
 
         <!-- Lista de partidas -->
         <RefreshView x:Name="PartidasRefreshView"
-                     Grid.Row="1"
+                     Grid.Row="2"
                      IsRefreshing="{Binding IsRefreshing}"
                      Command="{Binding RefreshCommand}">
             <CollectionView x:Name="PartidasCollection"

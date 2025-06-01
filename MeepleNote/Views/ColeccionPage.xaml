@@ -7,11 +7,12 @@
 
     <Grid RowDefinitions="Auto,Auto,*" Padding="10">
         <!-- Título -->
-        <Label Text="Mi Colección"
+        <Label Text="Mi Colección" 
                Grid.Row="0"
-               FontSize="24"
-               HorizontalOptions="Center"
-               Margin="0,10"/>
+               FontSize="24" 
+               HorizontalOptions="Center" 
+               Margin="10"
+               FontAttributes="Bold"/>
 
         <!-- Botón Eliminar -->
         <Button x:Name="EliminarButton"
