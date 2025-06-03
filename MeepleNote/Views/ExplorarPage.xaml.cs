@@ -27,6 +27,8 @@ namespace MeepleNote.Views {
             }
         }
 
+        private string _ultimoUsuario;
+
         public ICommand RefreshCommand { get; }
 
         public ExplorarPage() {
@@ -43,31 +45,39 @@ namespace MeepleNote.Views {
         }
         protected override async void OnAppearing() {
             base.OnAppearing();
+            string usuarioActual = Preferences.Get("UsuarioId", "0");
+            //Si se abre por primera vez o cambiamos de usuario, limpiamos la pagina.
+            if (string.IsNullOrWhiteSpace(_ultimoUsuario) || _ultimoUsuario != usuarioActual) {
 
-            // Limpiar el texto del buscador
-            BuscarEntry.Text = string.Empty;
+                // Limpiar el texto del buscador
+                BuscarEntry.Text = string.Empty;
 
-            // Ocultar sugerencias
-            SugerenciasList.IsVisible = false;
+                // Ocultar sugerencias
+                SugerenciasList.IsVisible = false;
 
-            // Ocultar etiquetas de sin resultados
-            SinResultadosLabel.IsVisible = false;
+                // Ocultar etiquetas de sin resultados
+                SinResultadosLabel.IsVisible = false;
 
-            // Ocultar indicadores de carga
-            LoadingIndicator.IsVisible = false;
-            LoadingIndicator.IsRunning = false;
-            LoadingMoreIndicator.IsVisible = false;
+                // Ocultar indicadores de carga
+                LoadingIndicator.IsVisible = false;
+                LoadingIndicator.IsRunning = false;
+                LoadingMoreIndicator.IsVisible = false;
 
-            // Resetear estado de paginación y búsqueda
-            _currentQuery = string.Empty;
-            _currentPage = 0;
-            _hasMoreItems = true;
+                // Resetear estado de paginación y búsqueda
+                _currentQuery = string.Empty;
+                _currentPage = 0;
+                _hasMoreItems = true;
 
-            // Limpiar la colección de resultados
-            _juegos.Clear();
+                // Limpiar la colección de resultados
+                _juegos.Clear();
 
-            // Resetear indicador de refresco
-            IsRefreshing = false;
+                // Resetear indicador de refresco
+                IsRefreshing = false;
+
+                _ultimoUsuario = usuarioActual;
+            }
+            
+            
             
         }
 
