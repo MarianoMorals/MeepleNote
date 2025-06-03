@@ -34,7 +34,13 @@ namespace MeepleNote.Views {
                 Console.WriteLine($"Error inicializando página: {ex.Message}");
             }
         }
-        private async void ComprobarJuegoEnColeccion() {
+
+        protected override async void OnAppearing() {
+            base.OnAppearing();
+
+            CargarPartidasRecientes();
+        }
+            private async void ComprobarJuegoEnColeccion() {
             _juegoEnColeccion = await _dbService.JuegoExisteEnColeccionAsync(_juego.Id);
 
         }

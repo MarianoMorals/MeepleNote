@@ -5,6 +5,7 @@ using System.Diagnostics;
 namespace MeepleNote.Views {
     public partial class ColeccionPage : ContentPage {
         private SQLiteService dbService;
+        private bool _isNavigating = false;
 
         public ColeccionPage() {
             InitializeComponent();
@@ -26,8 +27,16 @@ namespace MeepleNote.Views {
         }
 
         private async void OnVerDetallesClicked(object sender, EventArgs e) {
+
+            if (_isNavigating)
+                return; // Ya está navegando, ignorar clicks adicionales
+
             try {
-                if (sender is Button button && button.BindingContext is Juego juego) {
+                _isNavigating = true;
+                var button = sender as Button;
+                button.IsEnabled = false;
+
+                if (button.BindingContext is Juego juego) {
                     if (juego == null) {
                         await DisplayAlert("Error", "Juego no disponible", "OK");
                         return;
@@ -36,11 +45,19 @@ namespace MeepleNote.Views {
                     var detailPage = new DetalleJuegoPage(juego);
                     await Navigation.PushAsync(detailPage);
                 }
-            }
-            catch (Exception ex) {
+                    
+
+            }catch (Exception ex) {
                 Debug.WriteLine($"CRASH DETAIL: {ex.ToString()}");
                 await DisplayAlert("Error", $"Error técnico: {ex.Message}", "OK");
             }
+            finally {
+                _isNavigating = false;
+                if (sender is Button btn)
+                    btn.IsEnabled = true;
+            }
+
+            
         }
 
         private async void OnEliminarSeleccionadosClicked(object sender, EventArgs e) {
