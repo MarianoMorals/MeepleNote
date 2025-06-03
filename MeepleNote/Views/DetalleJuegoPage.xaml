@@ -44,7 +44,6 @@
                         </Picker.Items>
                     </Picker>
                 </HorizontalStackLayout>
-
             </HorizontalStackLayout>
 
             <!-- Detalles en 2 columnas -->
@@ -94,23 +93,40 @@
             <Label Grid.Row="7" Text="Últimas partidas" FontSize="20" FontAttributes="Bold"/>
 
             <CollectionView Grid.Row="8" x:Name="PartidasCollection"
-               
-                           SelectionMode="Single"
-                           SelectionChanged="OnPartidaSelected">
+                           ItemsSource="{Binding Partidas}"
+                           SelectionMode="None"
+                           ItemsUpdatingScrollMode="KeepLastItemInView"
+                           HeightRequest="200">
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="No hay partidas registradas de este juego."
+                               FontSize="16"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource TextColor}"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="{StaticResource PrimaryColor}" 
                                CornerRadius="10" 
                                Padding="10" 
-                               Margin="0,0,0,10">
+                               Margin="0,0,0,10"
+                               HasShadow="False"
+                               BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.PartidaTapCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+
                             <Grid ColumnDefinitions="Auto,*,Auto">
                                 <Image Source="{Binding FotoPortada}" 
                                        WidthRequest="60" 
                                        HeightRequest="60"
                                        Aspect="AspectFill"/>
 
-                                <VerticalStackLayout Grid.Column="1" 
-                                                     Padding="10,0">
+                                <VerticalStackLayout Grid.Column="1" Padding="10,0">
                                     <Label Text="{Binding TituloJuego}" 
                                            FontSize="16" 
                                            FontAttributes="Bold"/>

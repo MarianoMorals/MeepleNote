@@ -11,6 +11,7 @@
             <Frame BorderColor="{StaticResource PrimaryColor}" 
                    CornerRadius="12" 
                    Padding="15">
+
                 <VerticalStackLayout Spacing="10">
                     <Label Text="{Binding TituloJuego}" 
                            FontSize="20" 

@@ -20,6 +20,9 @@ namespace MeepleNote.Views {
                 }
             }
         }
+
+        private bool _isNavigating = false;
+
         public ObservableCollection<PartidaViewModel> Partidas {
             get => _partidas;
             set {
@@ -82,7 +85,10 @@ namespace MeepleNote.Views {
 
 
         public Command<PartidaViewModel> PartidaTapCommand => new(async (partida) => {
-            if (partida == null) return;
+            if (_isNavigating || partida == null)
+                return;
+
+            _isNavigating = true;
 
             try {
                 Debug.WriteLine($"Partida seleccionada ID: {partida.IdPartida}");
@@ -99,19 +105,28 @@ namespace MeepleNote.Views {
                 Debug.WriteLine($"Error al navegar a partida: {ex.Message}");
                 await DisplayAlert("Error", "No se pudo abrir la partida.", "OK");
             }
+            finally {
+                _isNavigating = false;
+            }
         });
 
         private async void OnVerPartidasPublicasClicked(object sender, EventArgs e) {
+            if (_isNavigating)
+                return;
+
             try {
+                _isNavigating = true;
+
+                if (sender is Button btn)
+                    btn.IsEnabled = false;
 
                 if (!NetworkUtils.TieneConexionInternet()) {
                     await DisplayAlert(
                         "Sin conexión",
-                        "Necesitas conexión a Internet para hacer una busqueda.",
+                        "Necesitas conexión a Internet para hacer una búsqueda.",
                         "OK");
                     return;
                 }
-
 
                 await Navigation.PushAsync(new PartidasPublicasPage());
             }
@@ -119,6 +134,14 @@ namespace MeepleNote.Views {
                 Debug.WriteLine($"Error al navegar a partidas públicas: {ex.Message}");
                 await DisplayAlert("Error", "No se pudo abrir la vista de partidas públicas.", "OK");
             }
+            finally {
+                _isNavigating = false;
+
+                if (sender is Button btn)
+                    btn.IsEnabled = true;
+            }
         }
+
     }
+
 }

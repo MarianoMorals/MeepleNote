@@ -26,6 +26,7 @@ namespace MeepleNote.Views {
                 }
             }
         }
+        private bool _isNavigating = false;
 
         private string _ultimoUsuario;
 
@@ -246,12 +247,19 @@ namespace MeepleNote.Views {
                 LoadingIndicator.IsRunning = false;
             }
         }
-    
+
 
         private async void OnAgregarClicked(object sender, EventArgs e) {
+            if (_isNavigating)
+                return;
+
             if (sender is Button button && button.CommandParameter is Juego juego) {
                 try {
-                    var idUsuario = Preferences.Get("UsuarioId", "0"); // Lo vinculamos al id de firebase que es unico a nivel global y no solo local.
+                    _isNavigating = true;
+                    button.IsEnabled = false;
+
+                    var idUsuario = Preferences.Get("UsuarioId", "0"); // ID único del usuario
+
                     bool yaExiste = await _dbService.JuegoExisteAsync(juego.IdJuego, idUsuario);
 
                     if (yaExiste) {
@@ -270,7 +278,7 @@ namespace MeepleNote.Views {
 
                     var juegoCompleto = await _explorarService.ObtenerDetallesJuegoAsync(juego.IdJuego);
                     if (juegoCompleto != null) {
-                        juegoCompleto.IdUsuario = idUsuario; // Asignar el ID de usuario
+                        juegoCompleto.IdUsuario = idUsuario;
                         await _dbService.SaveJuegoAsync(juegoCompleto);
                         await DisplayAlert("Éxito", $"{juegoCompleto.Titulo} añadido a tu colección", "OK");
                     }
@@ -279,10 +287,16 @@ namespace MeepleNote.Views {
                     Debug.WriteLine($"Error en OnAgregarClicked: {ex.Message}");
                     await DisplayAlert("Error", "No se pudo añadir el juego", "OK");
                 }
+                finally {
+                    _isNavigating = false;
+                    button.IsEnabled = true;
+                }
             }
         }
 
         private async void OnVerDetallesClicked(object sender, EventArgs e) {
+            if (_isNavigating)
+                return;
 
             if (!NetworkUtils.TieneConexionInternet()) {
                 await DisplayAlert(
@@ -294,13 +308,14 @@ namespace MeepleNote.Views {
 
             if (sender is Button button && button.CommandParameter is Juego juego) {
                 try {
+                    _isNavigating = true;
+                    button.IsEnabled = false;
+
                     var idUsuario = Preferences.Get("UsuarioId", "0");
 
                     if (await _dbService.JuegoExisteAsync(juego.IdJuego, idUsuario)) {
                         Juego juegoExistente = await _dbService.GetJuegoByIdAsync(juego.IdJuego);
-
                         await Navigation.PushAsync(new DetalleJuegoPage(juegoExistente));
-
                     }
                     else {
                         var detalles = await _explorarService.ObtenerDetallesJuegoAsync(juego.IdJuego);
@@ -308,15 +323,18 @@ namespace MeepleNote.Views {
                             await Navigation.PushAsync(new DetalleJuegoPage(detalles));
                         }
                     }
-
-                    
                 }
                 catch (Exception ex) {
                     Debug.WriteLine($"Error en OnVerDetallesClicked: {ex.Message}");
                     await DisplayAlert("Error", "No se pudo cargar los detalles", "OK");
                 }
+                finally {
+                    _isNavigating = false;
+                    button.IsEnabled = true;
+                }
             }
         }
+
 
         protected override void OnDisappearing() {
             base.OnDisappearing();
