@@ -78,19 +78,19 @@
                             <DataTemplate>
                                 <Grid ColumnDefinitions="Auto,*,Auto" Padding="5">
                                     <Image Source="{Binding FotoPortada}" 
-                               WidthRequest="50"
-                               HeightRequest="50"
-                               Aspect="AspectFill"/>
+                                           WidthRequest="50"
+                                           HeightRequest="50"
+                                           Aspect="AspectFill"/>
 
-                                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="4">
                                         <Label Text="{Binding TituloJuego}" FontSize="14"/>
                                         <Label Text="{Binding Fecha, StringFormat='Jugado el {0:dd/MM/yy}'}" 
-                                   FontSize="12" TextColor="Gray"/>
+                                                FontSize="12" TextColor="Gray"/>
                                     </StackLayout>
 
                                     <Label Grid.Column="2" 
-                               Text="{Binding Ganador, StringFormat='🏆 {0}'}"
-                               VerticalOptions="Center"/>
+                                           Text="{Binding Ganador, StringFormat='🏆 {0}'}"
+                                           VerticalOptions="Center"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

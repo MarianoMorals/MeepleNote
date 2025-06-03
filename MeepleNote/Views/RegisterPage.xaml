@@ -6,6 +6,9 @@
     
     <ScrollView Padding="30">
         <VerticalStackLayout Spacing="15">
+            <Label Text="Registro de Usuario"
+                   FontSize="24"
+                   HorizontalOptions="Center" />
             <Entry x:Name="NameEntry" Placeholder="Nombre" />
             <DatePicker x:Name="BirthDateEntry"  MaximumDate="01/01/2020" />
             <Entry x:Name="EmailEntry" Placeholder="Correo electrónico" />

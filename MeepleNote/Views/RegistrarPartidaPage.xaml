@@ -45,6 +45,7 @@
                                 <Grid ColumnDefinitions="*,Auto" Padding="0,5">
                                     <Entry Text="{Binding Nombre}" 
                                            Placeholder="Nombre jugador"
+                                           MaxLength="10"
                                            TextColor="{StaticResource TextColor}"
                                            Completed="OnJugadorEntryCompleted"/>
                                     <Button Grid.Column="1" 

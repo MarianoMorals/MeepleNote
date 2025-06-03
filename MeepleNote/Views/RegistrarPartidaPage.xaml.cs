@@ -59,7 +59,7 @@ namespace MeepleNote.Views {
         private void OnAgregarJugadorClicked(object sender, EventArgs e) {
             _jugadores.Add(new JugadorTemp());
             JugadoresCollection.ItemsSource = _jugadores;
-            ActualizarListaGanadores(); // ? Añade esta línea
+            ActualizarListaGanadores();
         }
 
 

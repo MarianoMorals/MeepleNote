@@ -17,10 +17,10 @@
             <!-- Título y Rating -->
             <Label Grid.Row="1" x:Name="Titulo" FontSize="24" FontAttributes="Bold"/>
 
-            <HorizontalStackLayout Grid.Row="2" Spacing="5">
-                <Label Text="⭐" FontSize="18"/>
-                <Label x:Name="Puntuacion" FontSize="18"/>
-                <Label Text="/10" FontSize="18" TextColor="Gray"/>
+            <HorizontalStackLayout Grid.Row="2" Spacing="5" VerticalOptions="Center">
+                <Label Text="⭐" FontSize="18" VerticalOptions="Center"/>
+                <Label x:Name="Puntuacion" FontSize="18" VerticalOptions="Center"/>
+                <Label Text="/10" FontSize="18" TextColor="Gray" VerticalOptions="Center"/>
 
                 <!-- Puntuación personal -->
                 <HorizontalStackLayout Spacing="5" VerticalOptions="Center" Margin="20,0,0,0">
