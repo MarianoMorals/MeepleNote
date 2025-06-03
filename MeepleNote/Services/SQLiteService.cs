@@ -76,6 +76,7 @@ namespace MeepleNote.Services {
 
             if (juegoExistente != null) {
                 // Actualizar los campos necesarios
+                //juegoExistente.Id = juego.Id;
                 juegoExistente.PuntuacionPersonal = juego.PuntuacionPersonal;
                 juegoExistente.Titulo = juego.Titulo;
                 juegoExistente.FotoPortada = juego.FotoPortada;
@@ -136,7 +137,17 @@ namespace MeepleNote.Services {
         public async Task MarcarTodosLosJuegosEnColeccionAsync() {
             await _database.ExecuteAsync("UPDATE Juego SET EnColeccion = 1");
         }
+        public async Task<int> ActualizarPuntuacionJuegoAsync(int idJuego, string idUsuario, int nuevaPuntuacion) {
+            var juegoExistente = await _database.Table<Juego>()
+                .Where(j => j.IdJuego == idJuego && j.IdUsuario == idUsuario)
+                .FirstOrDefaultAsync();
 
+            if (juegoExistente != null) {
+                juegoExistente.PuntuacionPersonal = nuevaPuntuacion;
+                return await _database.UpdateAsync(juegoExistente);
+            }
+            return 0;
+        }
         // === PARTIDA ===
         public async Task ReplacePartidasAsync(List<Partida> partidas) {
             await _database.DeleteAllAsync<Partida>();
@@ -184,8 +195,8 @@ namespace MeepleNote.Services {
         }
 
         public async Task<bool> JuegoExisteEnColeccionAsync(int idJuego) {
-            return await _database.Table<Coleccion>()
-                                 .Where(c => c.IdJuego == idJuego)
+            return await _database.Table<Juego>()
+                                 .Where(c => c.Id == idJuego && c.EnColeccion)
                                  .CountAsync() > 0;
         }
 

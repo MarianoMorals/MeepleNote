@@ -79,17 +79,22 @@ namespace MeepleNote.Services
         }
 
         public async Task<List<PartidaPublica>> DescargarPartidasPublicas() {
-            /*return (await _firebase
-                .Child("partidasPublicasGlobales")
-                .OnceAsync<PartidaPublica>())
-                .Select(item => {
-                    var partida = item.Object;
-                    partida.IdFirebase = item.Key; // Asignar el ID de Firebase
-                    return partida;
-                }).ToList();*/
+            try {
+                var firebaseObjects = await _firebase
+                    .Child("partidasPublicasGlobales")
+                    .OnceAsync<PartidaPublica>();
 
-           return await _firebase.Child("partidasPublicasGlobales").OnceSingleAsync<List<PartidaPublica>>() ?? new();
-
+                return firebaseObjects?
+                    .Select(item => {
+                        item.Object.IdFirebase = item.Key; // Asignar ID de Firebase
+                        return item.Object;
+                    })
+                    .ToList() ?? new List<PartidaPublica>();
+            }
+            catch (Exception ex) {
+                Debug.WriteLine($"Error al descargar partidas: {ex.Message}");
+                return new List<PartidaPublica>();
+            }
         }
 
         public async Task<DatosUsuario?> DescargarTodo(string usuarioId) {

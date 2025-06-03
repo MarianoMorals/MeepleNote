@@ -272,7 +272,6 @@ C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\bin\Debug\net8.0-ios\iossimula
 C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot.a
 C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet.a
 C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
-C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-ios\iossimulator-x64\build-signature\signature
 C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-ios\iossimulator-x64\mauiimage.inputs
 C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-ios\iossimulator-x64\mauifont.inputs
 C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-ios\iossimulator-x64\mauisplash.inputs

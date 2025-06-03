@@ -8,6 +8,7 @@ namespace MeepleNote.Views {
         private readonly ExplorarService _explorarService;
         private readonly Juego _juego;
         private ObservableCollection<PartidaViewModel> _partidas;
+        private bool _juegoEnColeccion;
 
         public DetalleJuegoPage(Juego juego) {
             InitializeComponent();
@@ -20,6 +21,7 @@ namespace MeepleNote.Views {
             _dbService = new SQLiteService();
             _explorarService = new ExplorarService();
             _juego = juego ?? throw new ArgumentNullException(nameof(juego));
+            ComprobarJuegoEnColeccion();
             _partidas = new ObservableCollection<PartidaViewModel>();
 
             try {
@@ -32,7 +34,10 @@ namespace MeepleNote.Views {
                 Console.WriteLine($"Error inicializando página: {ex.Message}");
             }
         }
+        private async void ComprobarJuegoEnColeccion() {
+            _juegoEnColeccion = await _dbService.JuegoExisteEnColeccionAsync(_juego.Id);
 
+        }
         private void CargarDatosIniciales() {
             ImagenPortada.Source = _juego.FotoPortada;
             Titulo.Text = _juego.Titulo;
@@ -108,17 +113,27 @@ namespace MeepleNote.Views {
         }*/
         private async void OnPuntuacionChanged(object sender, EventArgs e) {
             if (PuntuacionPicker.SelectedIndex >= 0) {
-                _juego.PuntuacionPersonal = PuntuacionPicker.SelectedIndex + 1;
+                // Preservar el estado actual de EnColeccion
+                bool estabaEnColeccion = _juegoEnColeccion;
 
-                // Asegurarnos de que el juego tenga el IdUsuario correcto
+                _juego.PuntuacionPersonal = PuntuacionPicker.SelectedIndex + 1;
                 var idUsuario = Preferences.Get("UsuarioId", "0");
                 _juego.IdUsuario = idUsuario;
 
-                // Guardar el juego aunque no esté en la colección
-                await _dbService.SaveJuegoAsync(_juego);
+                // Restaurar el estado original
+
+                if (estabaEnColeccion) {
+                    await _dbService.ActualizarPuntuacionJuegoAsync(_juego.IdJuego, _juego.IdUsuario, _juego.PuntuacionPersonal);
+                }
+                else {
+                    await _dbService.SaveJuegoAsync(_juego);
+
+                }
+
 
             }
         }
+
         private async void OnRegistrarPartidaClicked(object sender, EventArgs e) {
             await Navigation.PushAsync(new RegistrarPartidaPage(_juego));
 

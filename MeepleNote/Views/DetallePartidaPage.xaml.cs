@@ -35,6 +35,8 @@ namespace MeepleNote.Views {
             OnPropertyChanged(nameof(TituloJuego));
             OnPropertyChanged(nameof(Fecha));
             OnPropertyChanged(nameof(Ganador));
+            OnPropertyChanged(nameof(Jugadores));
+
         }
         private async void OnEliminarPartidaClicked(object sender, EventArgs e) {
             var confirmacion = await DisplayAlert("Confirmar", "¿Seguro que quieres eliminar esta partida?", "Sí", "Cancelar");
