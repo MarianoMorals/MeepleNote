@@ -161,13 +161,13 @@ namespace MeepleNote.Services {
         }
 
         public async Task<int> SavePartidaAsync(Partida partida) {
-            if (partida.IdPartida != 0)
-                return await _database.UpdateAsync(partida);
-            else {
-                await _database.InsertAsync(partida);
-
-                return partida.IdPartida;
+            if (partida.IdPartida == 0)  // Si es nuevo (ID no asignado)
+            {
+                partida.IdPartida = await GetNuevoIdPartidaAsync();
             }
+
+            await _database.InsertOrReplaceAsync(partida);
+            return partida.IdPartida;
         }
 
         public Task<List<Partida>> GetPartidasByJuegoAsync(int idJuego) =>
@@ -176,13 +176,13 @@ namespace MeepleNote.Services {
         public Task<Partida> GetPartidaByIdAsync(int idPartida) =>
             _database.Table<Partida>().FirstOrDefaultAsync(p => p.IdPartida == idPartida);
 
-        public async Task EliminarPartidaAsync(int idPartida) {
+        public async Task EliminarPartidaAsync(int idPartida, string idUsuario) {
             var partida = await _database.Table<Partida>().Where(p => p.IdPartida == idPartida).FirstOrDefaultAsync();
             if (partida != null) {
                 await _database.DeleteAsync(partida);
 
                 // Elimina también los jugadores relacionados si aplica
-                var jugadores = await GetJugadoresByPartidaAsync(idPartida);
+                var jugadores = await GetJugadoresByPartidaAsync(idPartida, idUsuario);
                 foreach (var jugador in jugadores) {
                     await _database.DeleteAsync(jugador);
                 }
@@ -199,7 +199,14 @@ namespace MeepleNote.Services {
                                  .Where(c => c.Id == idJuego && c.EnColeccion)
                                  .CountAsync() > 0;
         }
+        public async Task<int> GetNuevoIdPartidaAsync() {
+            // Obtener el máximo ID actual
+            var maxId = await _database.Table<Partida>()
+                                      .OrderByDescending(p => p.IdPartida)
+                                      .FirstOrDefaultAsync();
 
+            return (maxId?.IdPartida ?? 0) + 1;  // Si no hay partidas, empieza en 1
+        }
         // === JUGADOR PARTIDA ===
         public async Task ReplaceJugadoresPartidaAsync(List<JugadorPartida> jugadores) {
             await _database.DeleteAllAsync<JugadorPartida>();
@@ -212,8 +219,8 @@ namespace MeepleNote.Services {
                 return await _database.UpdateAsync(jugador);
         }
 
-        public Task<List<JugadorPartida>> GetJugadoresByPartidaAsync(int idPartida) =>
-            _database.Table<JugadorPartida>().Where(j => j.IdPartida == idPartida).ToListAsync();
+        public Task<List<JugadorPartida>> GetJugadoresByPartidaAsync(int idPartida, string idUsuario) =>
+            _database.Table<JugadorPartida>().Where(j => j.IdPartida == idPartida && j.IdUsuario == idUsuario).ToListAsync();
 
         public Task<List<JugadorPartida>> GetJugadoresPartidaAsync() => _database.Table<JugadorPartida>().ToListAsync();
 

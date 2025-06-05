@@ -105,6 +105,7 @@ namespace MeepleNote.Views {
             }
 
             var partida = new Partida {
+                IdPartida = await _dbService.GetNuevoIdPartidaAsync(),  // Auto-incremento manual
                 IdJuego = _juego.IdJuego,
                 IdUsuario = Preferences.Get("UsuarioId", "1"), //FirebaseId
                 Fecha = FechaPicker.Date,
@@ -118,6 +119,7 @@ namespace MeepleNote.Views {
                 // Guardar jugadores
                 foreach (var jugador in _jugadores) {
                     await _dbService.SaveJugadorPartidaAsync(new JugadorPartida {
+                        IdUsuario = Preferences.Get("UsuarioId", "1"), //FirebaseId
                         IdPartida = idGenerado,
                         NombreJugador = jugador.Nombre
                     });

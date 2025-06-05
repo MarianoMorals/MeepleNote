@@ -351,3 +351,4 @@ C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-ios\iossimula
 C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-ios\iossimulator-x64\MeepleNote.pdb
 C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-ios\iossimulator-x64\MeepleNote.genruntimeconfig.cache
 C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-ios\iossimulator-x64\ref\MeepleNote.dll
+C:\Users\mot_7\source\repos\MeepleNote\MeepleNote\obj\Debug\net8.0-ios\iossimulator-x64\build-signature\signature

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pXfH5om0BAA=",
+  "dgSpecHash": "K4zEGj/nLU8=",
   "success": true,
   "projectFilePath": "C:\\Users\\mot_7\\source\\repos\\MeepleNote\\MeepleNote\\MeepleNote.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,6 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.extensions.logging.debug\\8.0.0\\microsoft.extensions.logging.debug.8.0.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.graphics.win2d\\1.2.0\\microsoft.graphics.win2d.1.2.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.maui.controls\\8.0.72\\microsoft.maui.controls.8.0.72.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.maui.controls.build.tasks\\8.0.72\\microsoft.maui.controls.build.tasks.8.0.72.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.maui.controls.compatibility\\8.0.72\\microsoft.maui.controls.compatibility.8.0.72.nupkg.sha512",
@@ -26,7 +25,6 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.maui.core\\8.0.72\\microsoft.maui.core.8.0.72.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.maui.essentials\\8.0.72\\microsoft.maui.essentials.8.0.72.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.maui.graphics\\8.0.72\\microsoft.maui.graphics.8.0.72.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\8.0.72\\microsoft.maui.graphics.win2d.winui.desktop.8.0.72.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.maui.resizetizer\\8.0.72\\microsoft.maui.resizetizer.8.0.72.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.8\\microsoft.net.illink.tasks.8.0.8.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.netcore.jit\\1.0.2\\microsoft.netcore.jit.1.0.2.nupkg.sha512",
@@ -36,8 +34,6 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.netcore.windows.apisets\\1.0.1\\microsoft.netcore.windows.apisets.1.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.win32.primitives\\4.0.1\\microsoft.win32.primitives.4.0.1.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.windowsappsdk\\1.5.240607001\\microsoft.windowsappsdk.1.5.240607001.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\runtime.any.system.collections\\4.0.11\\runtime.any.system.collections.4.0.11.nupkg.sha512",
@@ -69,17 +65,6 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\runtime.unix.system.net.sockets\\4.1.0\\runtime.unix.system.net.sockets.4.1.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\runtime.unix.system.private.uri\\4.0.1\\runtime.unix.system.private.uri.4.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\runtime.unix.system.runtime.extensions\\4.1.0\\runtime.unix.system.runtime.extensions.4.1.0.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win.microsoft.win32.primitives\\4.0.1\\runtime.win.microsoft.win32.primitives.4.0.1.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win.system.console\\4.0.0\\runtime.win.system.console.4.0.0.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win.system.diagnostics.debug\\4.0.11\\runtime.win.system.diagnostics.debug.4.0.11.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win.system.io.filesystem\\4.0.1\\runtime.win.system.io.filesystem.4.0.1.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win.system.net.primitives\\4.0.11\\runtime.win.system.net.primitives.4.0.11.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win.system.net.sockets\\4.1.0\\runtime.win.system.net.sockets.4.1.0.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win.system.runtime.extensions\\4.1.0\\runtime.win.system.runtime.extensions.4.1.0.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win7-x64.microsoft.netcore.jit\\1.0.2\\runtime.win7-x64.microsoft.netcore.jit.1.0.2.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win7-x64.microsoft.netcore.runtime.coreclr\\1.0.2\\runtime.win7-x64.microsoft.netcore.runtime.coreclr.1.0.2.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win7-x64.runtime.native.system.io.compression\\4.0.1\\runtime.win7-x64.runtime.native.system.io.compression.4.0.1.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\runtime.win7.system.private.uri\\4.0.1\\runtime.win7.system.private.uri.4.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\rx-core\\2.2.5\\rx-core.2.2.5.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\rx-interfaces\\2.2.5\\rx-interfaces.2.2.5.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\rx-linq\\2.2.5\\rx-linq.2.2.5.nupkg.sha512",
@@ -91,7 +76,6 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.2\\sqlitepclraw.lib.e_sqlite3.2.1.2.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3.android\\2.1.2\\sqlitepclraw.lib.e_sqlite3.android.2.1.2.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.2\\sqlitepclraw.provider.e_sqlite3.2.1.2.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\sqlitepclraw.provider.sqlite3\\2.1.2\\sqlitepclraw.provider.sqlite3.2.1.2.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.buffers\\4.0.0\\system.buffers.4.0.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
@@ -134,7 +118,6 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\system.runtime.extensions\\4.1.0\\system.runtime.extensions.4.1.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.runtime.handles\\4.0.1\\system.runtime.handles.4.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.runtime.interopservices\\4.1.0\\system.runtime.interopservices.4.1.0.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\system.runtime.interopservices.nfloat.internal\\6.0.1\\system.runtime.interopservices.nfloat.internal.6.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.runtime.interopservices.runtimeinformation\\4.0.0\\system.runtime.interopservices.runtimeinformation.4.0.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.runtime.numerics\\4.0.1\\system.runtime.numerics.4.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.runtime.serialization.primitives\\4.1.1\\system.runtime.serialization.primitives.4.1.1.nupkg.sha512",
@@ -152,7 +135,6 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\system.text.encoding.extensions\\4.0.11\\system.text.encoding.extensions.4.0.11.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.text.regularexpressions\\4.1.0\\system.text.regularexpressions.4.1.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\system.threading.overlapped\\4.0.1\\system.threading.overlapped.4.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.threading.tasks.extensions\\4.0.0\\system.threading.tasks.extensions.4.0.0.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\system.threading.threadpool\\4.0.10\\system.threading.threadpool.4.0.10.nupkg.sha512",
@@ -242,58 +224,57 @@
     "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk7\\1.9.0.1\\xamarin.kotlin.stdlib.jdk7.1.9.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk8\\1.9.0.1\\xamarin.kotlin.stdlib.jdk8.1.9.0.1.nupkg.sha512",
     "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.kotlinx.coroutines.android\\1.7.2.1\\xamarin.kotlinx.coroutines.android.1.7.2.1.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.7.2.1\\xamarin.kotlinx.coroutines.core.jvm.1.7.2.1.nupkg.sha512",
-    "C:\\Users\\mot_7\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.34\\microsoft.windows.sdk.net.ref.10.0.19041.34.nupkg.sha512"
+    "C:\\Users\\mot_7\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.7.2.1\\xamarin.kotlinx.coroutines.core.jvm.1.7.2.1.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Firebase.Database 1.0.0\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-ios17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "El paquete \"Firebase.Database 1.0.0\" se restauró con \"Xamarin.iOS,Version=v1.0, .NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-maccatalyst17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Firebase.Database",
       "targetGraphs": [
-        "net8.0-ios17.5"
+        "net8.0-maccatalyst17.5"
       ]
     },
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Rx-Core 2.2.5\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-ios17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "El paquete \"Rx-Core 2.2.5\" se restauró con \"Xamarin.iOS,Version=v1.0, .NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-maccatalyst17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Rx-Core",
       "targetGraphs": [
-        "net8.0-ios17.5"
+        "net8.0-maccatalyst17.5"
       ]
     },
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Rx-Interfaces 2.2.5\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-ios17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "El paquete \"Rx-Interfaces 2.2.5\" se restauró con \"Xamarin.iOS,Version=v1.0, .NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-maccatalyst17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Rx-Interfaces",
       "targetGraphs": [
-        "net8.0-ios17.5"
+        "net8.0-maccatalyst17.5"
       ]
     },
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Rx-Linq 2.2.5\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-ios17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "El paquete \"Rx-Linq 2.2.5\" se restauró con \"Xamarin.iOS,Version=v1.0, .NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-maccatalyst17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Rx-Linq",
       "targetGraphs": [
-        "net8.0-ios17.5"
+        "net8.0-maccatalyst17.5"
       ]
     },
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Rx-PlatformServices 2.2.5\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-ios17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "El paquete \"Rx-PlatformServices 2.2.5\" se restauró con \"Xamarin.iOS,Version=v1.0, .NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-maccatalyst17.5\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Rx-PlatformServices",
       "targetGraphs": [
-        "net8.0-ios17.5"
+        "net8.0-maccatalyst17.5"
       ]
     }
   ]

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MeepleNote.Models {
     public class Partida {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int IdPartida { get; set; }
 
         public string IdUsuario { get; set; }

@@ -9,7 +9,7 @@ namespace MeepleNote.Models {
     public class JugadorPartida {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-
+        public string IdUsuario {  get; set; }
         public int IdPartida { get; set; }
 
         public string NombreJugador { get; set; }

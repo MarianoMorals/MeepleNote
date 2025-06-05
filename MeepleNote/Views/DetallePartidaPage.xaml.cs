@@ -27,7 +27,7 @@ namespace MeepleNote.Views {
             Fecha = partida.Fecha;
             Ganador = partida.Ganador;
 
-            var jugadores = await dbService.GetJugadoresByPartidaAsync(partida.IdPartida);
+            var jugadores = await dbService.GetJugadoresByPartidaAsync(partida.IdPartida, partida.IdUsuario);
             foreach (var jugador in jugadores) {
                 Jugadores.Add(jugador);
             }
@@ -43,7 +43,7 @@ namespace MeepleNote.Views {
 
             if (confirmacion && _partida != null) {
                 var dbService = new SQLiteService();
-                await dbService.EliminarPartidaAsync(_partida.IdPartida);
+                await dbService.EliminarPartidaAsync(_partida.IdPartida, _partida.IdUsuario);
 
                 await DisplayAlert("Éxito", "La partida ha sido eliminada.", "OK");
 
