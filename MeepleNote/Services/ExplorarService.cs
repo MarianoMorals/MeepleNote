@@ -3,39 +3,56 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using MeepleNote.Models;
 
-// Clase que gestiona la búsqueda y obtención de detalles de juegos desde la API de BoardGameGeek.
+/// <summary>
+/// Servicio para interactuar con la API de BoardGameGeek (BGG).
+/// Maneja búsquedas, obtención de detalles y sugerencias de juegos.
+/// </summary>
 public class ExplorarService {
     private readonly HttpClient _httpClient;  // Cliente HTTP usado para hacer peticiones a la API.
 
-    // Constructor: configura la URL base y el tiempo de espera del cliente HTTP.
+    /// <summary>
+    /// Configura el cliente HTTP con:
+    /// - BaseAddress: API oficial de BGG (XMLAPI2)
+    /// - Timeout: 30 segundos máximo por petición
+    /// </summary>
     public ExplorarService() {
+
         _httpClient = new HttpClient {
             BaseAddress = new Uri("https://boardgamegeek.com/xmlapi2/") // URL base de la API.
         };
+
         _httpClient.Timeout = TimeSpan.FromSeconds(30); // Tiempo máximo de espera para respuestas.
     }
 
-    // Busca juegos por nombre. Retorna una lista de objetos Juego.
+    /// <summary>
+    /// Busca juegos por nombre con paginación.
+    /// </summary>
+    /// <param name="query">Término de búsqueda</param>
+    /// <param name="start">Índice de inicio (para paginación)</param>
+    /// <param name="limit">Máximo de resultados (default: 10)</param>
+    /// <returns>Lista de juegos completos con detalles</returns>
     public async Task<List<Juego>> BuscarJuegosAsync(string query, int start = 0, int limit = 10) {
         try {
             // Construye la URL con los parámetros de búsqueda.
             string url = $"search?query={Uri.EscapeDataString(query)}&type=boardgame&start={start}&max={limit}";
 
-            // Realiza una solicitud GET a la API.
+            // Realiza una solicitud GET a la API. Primera peticion.
             var response = await _httpClient.GetAsync(url).ConfigureAwait(false);
 
             // Si la respuesta es 202 (Accepted), espera 1 segundo y vuelve a intentar.
             if (response.StatusCode == System.Net.HttpStatusCode.Accepted) {
-                await Task.Delay(1000).ConfigureAwait(false);
-                response = await _httpClient.GetAsync(url).ConfigureAwait(false);
+
+                await Task.Delay(1000).ConfigureAwait(false); //Espera 1 segundo
+
+                response = await _httpClient.GetAsync(url).ConfigureAwait(false);//Reintenta
             }
 
             // Si la respuesta no es exitosa, retorna una lista vacía.
             if (!response.IsSuccessStatusCode)
                 return new List<Juego>();
 
-            // Lee el contenido XML de la respuesta.
-            var xml = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            // Procesamiento del XML
+            var xml = await response.Content.ReadAsStringAsync().ConfigureAwait(false); // Lee el contenido XML de la respuesta.
             var doc = XDocument.Parse(xml); // Parsea el XML.
 
             // Extrae todos los IDs de los juegos devueltos.
@@ -56,8 +73,13 @@ public class ExplorarService {
         }
     }
 
-    // Obtiene los detalles completos de un juego por su ID desde la API.
+    /// <summary>
+    /// Obtiene detalles completos de un juego específico.
+    /// </summary>
+    /// <param name="idJuego">ID de BGG (ej: 1234 para Catan)</param>
+    /// <returns>Objeto Juego poblado o null si falla</returns>
     public async Task<Juego?> ObtenerDetallesJuegoAsync(int idJuego) {
+
         try {
             // Construye la URL con el ID del juego.
             string url = $"thing?id={idJuego}&stats=1";
@@ -130,21 +152,9 @@ public class ExplorarService {
         }
     }
 
-    // Método auxiliar que limpia una descripción en HTML.
-    private string LimpiarDescripcion(string html) {
-        // Elimina etiquetas HTML.
-        string descripcion = Regex.Replace(html, "<[^>]*>", string.Empty);
-
-        // Decodifica caracteres especiales (&amp;, &lt;, etc.).
-        descripcion = System.Net.WebUtility.HtmlDecode(descripcion);
-
-        // Limita la longitud a 1000 caracteres.
-        return descripcion.Length > 1000
-            ? descripcion.Substring(0, 1000) + "..."
-            : descripcion;
-    }
-
-    // Realiza una búsqueda básica para autocompletado o sugerencias (sin detalles).
+    /// <summary>
+    /// Búsqueda rápida (sin detalles) para autocompletado (solo ID y título).
+    /// </summary>
     public async Task<List<Juego>> BuscarSugerenciasAsync(string query) {
         try {
             // Construye la URL para buscar sugerencias.

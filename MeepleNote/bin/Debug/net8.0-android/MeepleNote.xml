@@ -4,5 +4,1510 @@
         <name>MeepleNote</name>
     </assembly>
     <members>
+        <member name="T:MeepleNote.Models.Coleccion">
+            <summary>
+            Clase originalmente pensada para gestionar la coleccion.
+            Obsoleta, por el uso de la adicion del atributo IDUsuario (firebase) a los propios juegos.
+            En proximas actualizaciones desaparecera, cuando se asegure que no comprometa el correcto funcionamiento de la app.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Models.DatosUsuario">
+            <summary>
+            Clase contenedora de todos los datos asociados a un usuario.
+            Centraliza las entidades principales de la aplicación para facilitar su gestión.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.DatosUsuario.Perfil">
+            <summary>
+            Perfil del usuario con información básica (nombre, email, etc.).
+            Tipo: Modelo <see cref="T:MeepleNote.Models.Usuario"/>.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.DatosUsuario.Juegos">
+            <summary>
+            Lista de todos los juegos registrados por el usuario.
+            Inicializada como una lista vacía por defecto.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.DatosUsuario.Coleccion">
+            <summary>
+            Obsoleta, por el uso de la adicion del atributo IDUsuario (firebase) a los propios juegos.
+            En proximas actualizaciones desaparecera, cuando se asegure que no comprometa el correcto funcionamiento de la app.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.DatosUsuario.Partidas">
+            <summary>
+            Historial de partidas jugadas por el usuario.
+            Contiene detalles como fecha, resultado y juego asociado.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.DatosUsuario.JugadoresPartida">
+            <summary>
+            Relación de jugadores participantes en cada partida.
+            Permite registrar múltiples jugadores por partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.DatosUsuario.PartidaPublicas">
+            <summary>
+            Partidas publicadas por cualquier usuario.
+            Visible para otros usuarios para organizar sesiones en comunidad.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Models.Juego">
+            <summary>
+            Clase que representa un juego de mesa en el sistema.
+            Mapea la tabla 'Juego' en la base de datos SQLite y contiene
+            propiedades para gestión en la UI.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.Id">
+            <summary>
+            Clave primaria autoincremental (para la tabla local).
+            No confundir con IdJuego (ID de la API de BoardGameGeek).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.IdJuego">
+            <summary>
+            Identificador único del juego (ID de la API de BoardGameGeek).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.IdUsuario">
+            <summary>
+            ID del usuario dueño de este registro (para multi-usuario), se corresponde con el Id de FireBase.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.FotoPortada">
+            <summary>
+            Ruta o URL de la imagen de portada del juego.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.Titulo">
+            <summary>
+            Nombre del juego (ej: "Catan", "Ticket to Ride").
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.Puntuacion">
+            <summary>
+            Puntuación global del juego (ej: 7.5 de 10).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.NumeroJugadores">
+            <summary>
+            OBSOLETO, se eliminara en futuras actualizaciones. 
+            Es sustituido por el rango de jugadores, aporta mas informacion.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.DuracionEstimada">
+            <summary>
+            Duración estimada en formato legible (ej: "60 mins").
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.Edad">
+            <summary>
+            Edad mínima recomendada.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.Autor">
+            <summary>
+            Diseñador(es) del juego.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.Artista">
+            <summary>
+            Artista(s) que trabajó en el juego.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.EnColeccion">
+            <summary>
+            Indica si el juego está en la colección física del usuario.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.PuntuacionPersonal">
+            <summary>
+            Puntuación personal asignada por el usuario (no afecta la puntuación global).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.IsSelected">
+            <summary>
+            Usado para selección múltiple en la UI (checkboxes).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.Descripcion">
+            <summary>
+            Descripción detallada del juego (cargada desde API).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.MinJugadores">
+            <summary>
+            Mínimo número de jugadores requeridos.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.MaxJugadores">
+            <summary>
+            Máximo número de jugadores permitidos.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.RangoJugadores">
+            <summary>
+            Rango formateado de jugadores (ej: "2-4").
+            Propiedad calculada basada en MinJugadores/MaxJugadores.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.PuntuacionFormateada">
+            <summary>
+            Puntuación global formateada a 2 decimales (ej: "7.50").
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Juego.PuntuacionPersonalFormateada">
+            <summary>
+            OBSOLETA, se paso a un sistema de puntuacion de 1-5, pensado en asignar estrellas en el futuro.
+            Puntuación personal formateada a 2 decimales.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Models.JugadorPartida">
+            <summary>
+            Clase que representa la participación de un jugador en una partida específica.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.JugadorPartida.Id">
+            <summary>
+            Clave primaria autoincremental para la tabla local.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.JugadorPartida.IdUsuario">
+            <summary>
+            ID de Firebase del Usuario
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.JugadorPartida.IdPartida">
+            <summary>
+            ID de la partida asociada (clave foránea).
+            Relación con la tabla Partidas.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.JugadorPartida.NombreJugador">
+            <summary>
+            Nombre visible del jugador en el contexto de la partida.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Models.Partida">
+            <summary>
+            Clase que representa una partida (jugada) de un juego de mesa.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Partida.IdPartida">
+            <summary>
+            Clave primaria única para la partida.
+            No es autoincremental para permitir sincronizaciones sin conflictos, se autoincrementa manualmente.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Partida.IdUsuario">
+            <summary>
+            ID del usuario que creó el registro de la partida.
+            Relación con la tabla Usuarios.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Partida.IdJuego">
+            <summary>
+            ID del juego al que pertenece la partida.
+            Relación con la tabla Juegos.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Partida.Fecha">
+            <summary>
+            Fecha en que se jugó la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Partida.Ganador">
+            <summary>
+            Nombre del jugador ganador.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Models.PartidaPublica">
+            <summary>
+            Clase que representa una partida pública organizada por usuarios.
+            Combina almacenamiento local (SQLite) y sincronización con Firebase.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.IdLocal">
+            <summary>
+            Clave primaria autoincremental para la base de datos local (SQLite).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.IdFirebase">
+            <summary>
+            ID único de Firebase para sincronización en la nube.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.IdJuego">
+            <summary>
+            ID del juego asociado (relación con la tabla Juegos).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.IdUsuarioOrganizador">
+            <summary>
+            ID del usuario organizador (relación con la tabla Usuarios).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.NombreOrganizador">
+            <summary>
+            Nombre público del organizador.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.EmailContacto">
+            <summary>
+            Email de contacto para unirse a la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.Fecha">
+            <summary>
+            Fecha y hora programada para la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.Ciudad">
+            <summary>
+            Ciudad donde se organiza la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.JugadoresRequeridos">
+            <summary>
+            Número total de jugadores necesarios.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublica.Completada">
+            <summary>
+            Indica si la partida ya se completó (true) o sigue abierta (false).
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Models.PartidaPublicaViewModel">
+            <summary>
+            ViewModel para mostrar partidas públicas en la interfaz de usuario.
+            Contiene datos combinados de PartidaPublica y Juego para visualización.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublicaViewModel.Id">
+            <summary>
+            Identificador único de la partida pública (IdFirebase).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublicaViewModel.TituloJuego">
+            <summary>
+            Título del juego asociado a la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublicaViewModel.FotoPortada">
+            <summary>
+            URL o ruta local de la imagen de portada del juego.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublicaViewModel.Ciudad">
+            <summary>
+            Ciudad donde se organiza la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublicaViewModel.Fecha">
+            <summary>
+            Fecha y hora programada para la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublicaViewModel.JugadoresRequeridos">
+            <summary>
+            Número total de jugadores necesarios.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublicaViewModel.Organizador">
+            <summary>
+            Nombre público del usuario organizador.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublicaViewModel.EmailContacto">
+            <summary>
+            Email de contacto para unirse a la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaPublicaViewModel.EsOrganizador">
+            <summary>
+            Indica si el usuario actual es el organizador de esta partida.
+            Usado para mostrar/u ocultar controles de administración (boton "Completada").
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Models.PartidaViewModel">
+            <summary>
+            ViewModel para representar partidas en la interfaz de usuario,
+            implementando INotifyPropertyChanged para notificar cambios en las propiedades.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaViewModel.IdPartida">
+            <summary>
+            Identificador único de la partida (clave primaria).
+            No notifica cambios por ser identificador inmutable.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaViewModel.IdJuego">
+            <summary>
+            ID del juego asociado (clave foránea).
+            No notifica cambios por ser identificador inmutable.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaViewModel.TituloJuego">
+            <summary>
+            Título del juego asociado a la partida.
+            Notifica automáticamente cambios a la UI mediante PropertyChanged.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaViewModel.FotoPortada">
+            <summary>
+            Ruta de la imagen de portada del juego.
+            Proporciona un valor por defecto ("icon_juego_desconocido.png") si está vacía.
+            Notifica cambios a la UI automáticamente.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaViewModel.Fecha">
+            <summary>
+            Fecha y hora en que se jugó la partida.
+            Se considera inmutable después de su creación.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.PartidaViewModel.Ganador">
+            <summary>
+            Nombre del jugador ganador.
+            No notifica cambios por ser dato histórico.
+            </summary>
+        </member>
+        <member name="E:MeepleNote.Models.PartidaViewModel.PropertyChanged">
+            <summary>
+            Evento para notificar cambios en las propiedades a la capa de presentación.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Models.PartidaViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Método auxiliar para invocar el evento PropertyChanged.
+            Usa CallerMemberName para evitar especificar manualmente el nombre de la propiedad.
+            </summary>
+            <param name="propertyName">Nombre de la propiedad cambiada</param>
+        </member>
+        <member name="T:MeepleNote.Models.Usuario">
+            <summary>
+            Modelo que representa un usuario en el sistema.
+            Maneja tanto el almacenamiento local (SQLite) como la autenticación remota (Firebase).
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Usuario.IdUsuario">
+            <summary>
+            Clave primaria autoincremental para la base de datos local.
+            No se usa para autenticación, solo para relaciones internas.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Usuario.FirebaseUserId">
+            <summary>
+            Identificador único proporcionado por Firebase Authentication.
+            Este es el ID principal para operaciones de autenticación.
+            Formato típico: "abcdef123456..." (string alfanumérico)
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Usuario.Nombre">
+            <summary>
+            Nombre de visualización del usuario.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Usuario.FechaNacimiento">
+            <summary>
+            Fecha de nacimiento del usuario.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Models.Usuario.Email">
+            <summary>
+            Email del usuario (coincide con el de Firebase Authentication).
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Services.FirebaseAuthService">
+            <summary>
+            Servicio de autenticación usando Firebase Authentication.
+            Maneja: login, registro, recuperación de contraseña y logout.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseAuthService.#ctor">
+            <summary>
+            Constructor: inicializa el proveedor de autenticación con la API key.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseAuthService.LoginAsync(System.String,System.String)">
+            <summary>
+            Inicia sesión con email y contraseña.
+            </summary>
+            <param name="email">Email del usuario</param>
+            <param name="password">Contraseña</param>
+            <returns>FirebaseAuthLink con token de acceso y datos del usuario</returns>
+            <exception cref="T:Firebase.Auth.FirebaseAuthException">Error específico de Firebase</exception>
+            <exception cref="T:System.Exception">Otros errores</exception>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseAuthService.RegisterAsync(System.String,System.String)">
+            <summary>
+            Registra un nuevo usuario con email y contraseña.
+            </summary>
+            <param name="email">Email válido</param>
+            <param name="password">Contraseña (mínimo 6 caracteres)</param>
+            <returns>FirebaseAuthLink con token de acceso</returns>
+            <exception cref="T:Firebase.Auth.FirebaseAuthException">Si el email ya existe o es inválido</exception>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseAuthService.SendPasswordResetEmailAsync(System.String)">
+            <summary>
+            Envía un email para restablecer contraseña.
+            </summary>
+            <param name="email">Email registrado en Firebase</param>
+            <exception cref="T:Firebase.Auth.FirebaseAuthException">Si el email no existe</exception>
+        </member>
+        <member name="T:MeepleNote.Services.FirebaseDatabaseService">
+            <summary>
+            Servicio para interactuar con Firebase Realtime Database.
+            Maneja sincronización de datos de usuario, partidas públicas y colecciones.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.#ctor(System.String)">
+            <summary>
+            Constructor: inicializa el cliente Firebase con el token de autenticación.
+            </summary>
+            <param name="token">Token obtenido de Firebase Authentication</param>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.SubirDatosUsuario(System.String,MeepleNote.Models.Usuario,System.Collections.Generic.List{MeepleNote.Models.Coleccion},System.Collections.Generic.List{MeepleNote.Models.Juego},System.Collections.Generic.List{MeepleNote.Models.Partida},System.Collections.Generic.List{MeepleNote.Models.JugadorPartida},System.DateTime)">
+            <summary>
+            Sube todos los datos del usuario a Firebase en una operación atómica.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.ObtenerFechaUltimaSync(System.String)">
+            <summary>
+            Obtiene la última fecha de sincronización del usuario desde Firebase.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.DescargarPerfil(System.String)">
+            <summary>
+            Descarga el perfil básico del usuario.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.DescargarColeccion(System.String)">
+            <summary>
+            OBSOLETO, se eliminara en futuras actualizaciones.
+            Descarga la colección personal del usuario.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.DescargarJuegos(System.String)">
+            <summary>
+            Descarga los juegos del usuario.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.DescargarPartidas(System.String)">
+            <summary>
+            Descarga el historial de partidas del usuario.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.DescargarJugadoresPartida(System.String)">
+            <summary>
+            Descarga los jugadores asociados a partidas.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.SubirPartidasPublicas(System.Collections.Generic.List{MeepleNote.Models.PartidaPublica})">
+            <summary>
+            Sube una lista de partidas públicas al nodo global (no asociado a un usuario).
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.DescargarPartidasPublicas">
+            <summary>
+            Descarga todas las partidas públicas disponibles.
+            Asigna automáticamente el IdFirebase (clave generada por Firebase).
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.DescargarTodo(System.String)">
+            <summary>
+            Descarga todos los datos del usuario en un objeto unificado DatosUsuario.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.CrearPartidaPublicaEnFirebase(MeepleNote.Models.PartidaPublica)">
+            <summary>
+            Crea una nueva partida pública en Firebase y devuelve su ID generado.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.FirebaseDatabaseService.ActualizarPartidaPublicaEnFirebase(MeepleNote.Models.PartidaPublica)">
+            <summary>
+            Actualiza una partida pública existente en Firebase usando su ID.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Services.SincronizacionService">
+            <summary>
+            Servicio para sincronizar datos entre SQLite (local) y Firebase (nube).
+            Implementa estrategia de sincronización bidireccional.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SincronizacionService.#ctor(MeepleNote.Services.SQLiteService,MeepleNote.Services.FirebaseDatabaseService)">
+            <summary>
+            Constructor principal que obtiene el ID de usuario desde Preferences.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SincronizacionService.#ctor(MeepleNote.Services.SQLiteService,MeepleNote.Services.FirebaseDatabaseService,System.String)">
+            <summary>
+            Constructor alternativo que permite inyectar el ID de Firebase directamente.
+            Útil escenarios especiales.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SincronizacionService.SincronizarConFirebase">
+            <summary>
+            Sincronización hacia Firebase (upload):
+            1. Recoge todos los datos locales
+            2. Sube a Firebase en una operación atómica
+            3. Actualiza fecha de sincronización
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SincronizacionService.SincronizarDesdeFirebaseSiNecesario">
+            <summary>
+            Sincronización desde Firebase (download):
+            1. Compara fechas de modificación (lógica actualmente deshabilitada)
+            2. Descarga datos completos
+            3. Reemplaza base de datos local
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Services.SQLiteService">
+            <summary>
+            Servicio para manejar todas las operaciones de base de datos local SQLite.
+            Gestiona: Usuarios, Juegos, Colecciones, Partidas y relaciones.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.#ctor">
+            <summary>
+            Constructor: Inicializa la conexión a la base de datos y crea las tablas si no existen.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.SaveUsuarioAsync(MeepleNote.Models.Usuario)">
+            <summary>
+            Guarda o actualiza un usuario (upsert).
+            Usa FirebaseUserId como identificador principal.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetUsuariosAsync">
+            <summary>
+            Obtiene todos los usuarios
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetEmailUsuarioAsync(System.String)">
+            <summary>
+            Obtiene el email de un usuario por su FirebaseUserId.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetUsuarioByFirebaseIdAsync(System.String)">
+            <summary>
+            Obtiene un usuario por su FirebaseUserId.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ObtenerIdUsuarioPorFirebaseIdAsync(System.String)">
+            <summary>
+            Obtiene el id (local) de un usuario por su FirebaseUserId.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ReplaceColeccionesAsync(System.Collections.Generic.List{MeepleNote.Models.Coleccion})">
+            <summary>
+            Reemplaza todos los registros de la tabla Coleccion
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetColeccionesAsync">
+            <summary>
+            Obtiene todas las colecciones
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ReplaceJuegosAsync(System.Collections.Generic.List{MeepleNote.Models.Juego})">
+            <summary>
+            Reemplaza completamente la lista de juegos local.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.SaveJuegoAsync(MeepleNote.Models.Juego)">
+            <summary>
+            Guarda un juego con lógica especial:
+            - Si existe: Actualiza todos los campos excepto EnColeccion
+            - Si no existe: Inserta nuevo registro
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.AnnadirJuegoExistenteAColeccion(System.Int32,System.String)">
+            <summary>
+            Añade a la coleccion de un usuario un juego que ya existe en la base de datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.QuitarJuegoExistenteDeColeccion(System.Int32,System.String)">
+            <summary>
+            Quita de la coleccion de un usuario un juego sin eliminarlo de la base de datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetJuegosAsync(System.String)">
+            <summary>
+            Obtiene todos los juegos del usuario
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetJuegosAsyncEnColeccion(System.String)">
+            <summary>
+            Obtiene todos los juegos de la coleccion del usuario
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.DeleteJuegoAsync(MeepleNote.Models.Juego)">
+            <summary>
+            Elimina un juego del usuario de la base de datos
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.JuegoExisteAsync(System.Int32,System.String)">
+            <summary>
+            Comprueba si un juego existe en la base de datos del usuario
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.JuegoEnColeccionAsync(System.Int32,System.String)">
+            <summary>
+            Comprueba si un juego existe en la coleccion del usuario
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetJuegoByIdAsync(System.Int32)">
+            <summary>
+            Obtiene un juego por su id (API BGG)
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.MarcarTodosLosJuegosEnColeccionAsync">
+            <summary>
+            Pone todos los juegos en la base de datos en la coleccion
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ActualizarPuntuacionJuegoAsync(System.Int32,System.String,System.Int32)">
+            <summary>
+            Actualiza en un juego determinado la puntuacion personal de un usuario determinado.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.JuegoExisteEnColeccionAsync(System.Int32)">
+            <summary>
+            Comprueba si un juego de la base de datos esta en la coleccion.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ReplacePartidasAsync(System.Collections.Generic.List{MeepleNote.Models.Partida})">
+            <summary>
+            Reemplaza todas las partidas de la base de datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetPartidasAsync(System.String)">
+            <summary>
+            Obtiene todas las partidas de un usuario determinado.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.SavePartidaAsync(MeepleNote.Models.Partida)">
+            <summary>
+            Guarda una partida generando automáticamente un ID si es nueva.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetPartidasByJuegoAsync(System.Int32)">
+            <summary>
+            Obtiene todas las partidas de un juego determinado.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetPartidaByIdAsync(System.Int32)">
+            <summary>
+            Obtiene una partida determinada por su Id.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.EliminarPartidaAsync(System.Int32,System.String)">
+            <summary>
+            Elimina una partida determinada de un usuario determinado.
+            Tambien elimina los jugadores asociados a la partida.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.EliminarTodasPartidas">
+            <summary>
+            Elimina todas las partidas y sus respectivos jugadores de la base de datos
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetNuevoIdPartidaAsync">
+            <summary>
+            Genera un nuevo ID para partidas (máximo ID existente + 1).
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ReplaceJugadoresPartidaAsync(System.Collections.Generic.List{MeepleNote.Models.JugadorPartida})">
+            <summary>
+            Reemplaza todos los jugadores de la base de datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.SaveJugadorPartidaAsync(MeepleNote.Models.JugadorPartida)">
+            <summary>
+            Guarda un jugador en la base de datos.
+            Si ya existe, lo reemplaza.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetJugadoresByPartidaAsync(System.Int32,System.String)">
+            <summary>
+            Obtiene los jugadores pertenecientes a una partida determinada de un usuario determinado.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetJugadoresPartidaAsync">
+            <summary>
+            Obtiene todos los jugadores de la base de datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GetPartidasPublicasAsync">
+            <summary>
+            Obtiene todas las partidas publicas que no esten completadas y no hayan expirado (fecha anterior a la actual)
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.SavePartidaPublicaAsync(MeepleNote.Models.PartidaPublica)">
+            <summary>
+            Guarda una partida pública usando IdFirebase como clave.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.MarcarPartidaPublicaCompletadaAsync(System.String)">
+            <summary>
+            Marca una partida publica como completada.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ReplacePartidasPublicasAsync(System.Collections.Generic.List{MeepleNote.Models.PartidaPublica})">
+            <summary>
+            Reemplaza todas las partidas publicas.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GuardarFechaUltimaSync(System.DateTime)">
+            <summary>
+            Guarda la última fecha de sincronización en Preferences (no en SQLite).
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ObtenerFechaUltimaSync">
+            <summary>
+            Obtiene la fecha de ultima sincronizacion.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ObtenerTodo">
+            <summary>
+            Obtiene toda la informacion de la base de datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.GuardarTodoDesdeFirebase(MeepleNote.Models.DatosUsuario)">
+            <summary>
+            Reemplaza todos los datos de usuario.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Services.SQLiteService.ResetearBaseDatosCompleta">
+            <summary>
+            Resetea completamente la base de datos (para logout o cambios de usuario).
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.ColeccionPage">
+            <summary>
+            Página que muestra la colección de juegos del usuario.
+            Permite ver detalles y eliminar juegos seleccionados.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ColeccionPage.#ctor">
+            <summary>
+            Constructor: Inicializa componentes y crea instancia del servicio SQLite.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ColeccionPage.OnAppearing">
+            <summary>
+            Evento que se ejecuta cuando la página aparece en pantalla.
+            Carga automáticamente la colección del usuario.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ColeccionPage.CargarColeccion">
+            <summary>
+            Carga los juegos que están en la colección del usuario desde la base de datos.
+            Actualiza la interfaz según los resultados.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ColeccionPage.OnVerDetallesClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento al hacer clic en "Ver Detalles" de un juego.
+            Navega a la página de detalles del juego seleccionado.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ColeccionPage.OnEliminarSeleccionadosClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento al hacer clic en "Eliminar Seleccionados".
+            Elimina los juegos marcados de la colección del usuario.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.ContadorVidaPage">
+            <summary>
+            Página para llevar el conteo de vida/energía de jugadores.
+            Permite configurar número de jugadores y vida inicial, con interfaz dinámica.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ContadorVidaPage.OnPageLoaded(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se dispara cuando la página termina de cargar.
+            Inicia el flujo de configuración inicial.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ContadorVidaPage.ShowPlayerNumberPrompt">
+            <summary>
+            Muestra diálogos para configurar número de jugadores y vida inicial.
+            Valida los inputs y establece valores por defecto si son inválidos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ContadorVidaPage.SetupLifeCounters">
+            <summary>
+            Crea dinámicamente los contadores de vida basado en la configuración.
+            Diseño adaptable: 1 columna (2-4 jugadores) o 2 columnas (5+ jugadores).
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ContadorVidaPage.SafeUpdateLife(System.Int32,System.Int32)">
+            <summary>
+            Actualiza el valor de vida de un jugador de forma segura.
+            </summary>
+            <param name="playerIndex">Índice del jugador (0-based)</param>
+            <param name="change">Cantidad a modificar (+1 o -1)</param>
+        </member>
+        <member name="M:MeepleNote.Views.ContadorVidaPage.GetContrastingColors">
+            <summary>
+            Filtra la paleta de colores para mantener solo aquellos con buen contraste.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ContadorVidaPage.HasGoodContrastWithWhite(Microsoft.Maui.Graphics.Color)">
+            <summary>
+            Calcula si un color tiene suficiente contraste con texto blanco.
+            Usa fórmula estándar de luminancia.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.DadosPage">
+            <summary>
+            Página para simular el lanzamiento de dados (d4, d6, d8, d10, d12, d20).
+            Incluye temporizador para resetear la visualización.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DadosPage.RollDice(Microsoft.Maui.Controls.Image,Microsoft.Maui.Controls.Label,System.Int32)">
+            <summary>
+            Simula el lanzamiento de un dado con animaciones.
+            </summary>
+            <param name="diceImage">Imagen del dado a animar</param>
+            <param name="resultLabel">Label donde mostrar el resultado</param>
+            <param name="sides">Número de caras del dado (4, 6, 8, etc.)</param>
+        </member>
+        <member name="M:MeepleNote.Views.DadosPage.ResetDiceViews">
+            <summary>
+            Restablece todas las vistas de dados a su estado inicial.
+            Se ejecuta automáticamente 2 segundos después del último lanzamiento.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.DetalleJuegoPage">
+            <summary>
+            Página que muestra los detalles completos de un juego seleccionado.
+            Permite puntuar, registrar partidas, ver partidas recientes y crear partidas públicas.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.DetalleJuegoPage.Partidas">
+            <summary>
+            Colección observable de partidas recientes para mostrar en la interfaz.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DetalleJuegoPage.#ctor(MeepleNote.Models.Juego)">
+            <summary>
+            Constructor: Inicializa componentes y servicios, y carga datos del juego.
+            </summary>
+            <param name="juego">Instancia del juego seleccionado</param>
+        </member>
+        <member name="M:MeepleNote.Views.DetalleJuegoPage.OnAppearing">
+            <summary>
+            Evento que se ejecuta cada vez que la página aparece en pantalla.
+            Carga las partidas recientes asociadas al juego.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DetalleJuegoPage.ComprobarJuegoEnColeccion">
+            <summary>
+            Verifica si el juego ya existe en la colección del usuario.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DetalleJuegoPage.CargarDatosIniciales">
+            <summary>
+            Carga los datos básicos visibles del juego (sin descripción completa aún).
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DetalleJuegoPage.CargarDetallesCompletos">
+            <summary>
+            Obtiene información detallada del juego desde el servicio externo.
+            Actualiza campos como descripción y número de jugadores.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DetalleJuegoPage.CargarPartidasRecientes">
+            <summary>
+            Carga las partidas recientes asociadas a este juego desde la base de datos.
+            Solo se muestran las 5 más recientes.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DetalleJuegoPage.OnPuntuacionChanged(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se lanza cuando el usuario cambia la puntuación personal del juego.
+            Guarda o actualiza la puntuación en la base de datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DetalleJuegoPage.OnRegistrarPartidaClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento al pulsar el botón de "Registrar Partida".
+            Navega a la página de registro y recarga la lista de partidas recientes.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.DetalleJuegoPage.PartidaTapCommand">
+            <summary>
+            Comando que se ejecuta al pulsar una partida reciente.
+            Muestra los detalles completos de esa partida.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DetalleJuegoPage.OnCrearPartidaPublicaClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento al pulsar "Crear partida pública".
+            Abre la pantalla para crear una partida accesible desde Internet.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.DetallePartidaPage">
+            <summary>
+            Página que muestra los detalles de una partida registrada.
+            Permite visualizar información del juego, fecha, ganador y participantes.
+            También permite eliminar la partida si el usuario lo desea.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.DetallePartidaPage.#ctor(MeepleNote.Models.Partida)">
+            <summary>
+            Constructor: Inicializa componentes y carga los datos de la partida.
+            </summary>
+            <param name="partida">Partida seleccionada para mostrar sus detalles.</param>
+        </member>
+        <member name="M:MeepleNote.Views.DetallePartidaPage.CargarDatosPartida(MeepleNote.Models.Partida)">
+            <summary>
+            Carga los datos de la partida desde la base de datos y actualiza la interfaz.
+            </summary>
+            <param name="partida">Partida de la que se deben obtener los detalles.</param>
+        </member>
+        <member name="M:MeepleNote.Views.DetallePartidaPage.OnEliminarPartidaClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento al hacer clic en el botón "Eliminar Partida".
+            Solicita confirmación y elimina la partida si se acepta.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.ExplorarPage">
+            <summary>
+            Página para explorar juegos, buscar y añadir a la colección.
+            Implementa paginación, sugerencias y refresco.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.ExplorarPage.IsRefreshing">
+            <summary>
+            Propiedad enlazada a la UI para mostrar el estado de refresco.
+            Al cambiar, notifica para actualizar la interfaz.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.ExplorarPage.RefreshCommand">
+            <summary>
+            Comando que ejecuta la acción de refrescar la lista de juegos.
+            Usado para Pull to Refresh.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.#ctor">
+            <summary>
+            Constructor de la página ExplorarPage.
+            Inicializa servicios, comandos, binding context y eventos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.OnAppearing">
+            <summary>
+            Evento llamado cuando la página aparece en pantalla.
+            Resetea estado si el usuario ha cambiado para evitar datos cruzados.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.RefreshDataAsync">
+            <summary>
+            Método para refrescar los datos de la búsqueda actual.
+            Resetea paginación y recarga datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.OnBuscarClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento llamado al pulsar el botón de búsqueda.
+            Valida conexión y lanza búsqueda.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.LoadMoreItems">
+            <summary>
+            Carga más elementos en la lista según paginación y consulta actual.
+            Controla estados para no hacer llamadas simultáneas.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.ResultadosList_RemainingItemsThresholdReached(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se dispara cuando la lista está cerca del final (umbral).
+            Llama a LoadMoreItems para cargar más juegos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.OnBuscarTextChanged(System.Object,Microsoft.Maui.Controls.TextChangedEventArgs)">
+            <summary>
+            Evento llamado cuando cambia el texto del buscador.
+            Muestra sugerencias si hay texto suficiente.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.SugerenciasList_SelectionChanged(System.Object,Microsoft.Maui.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Evento al seleccionar una sugerencia de la lista.
+            Realiza la búsqueda con el título seleccionado.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.OnAgregarClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento al pulsar el botón de "Agregar" un juego a la colección.
+            Verifica si el juego ya existe, y si no, lo añade a la base local.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.OnVerDetallesClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se dispara al pulsar el botón para ver los detalles de un juego.
+            Gestiona la navegación hacia la página de detalle del juego seleccionado.
+            </summary>
+            <param name="sender">El botón que disparó el evento.</param>
+            <param name="e">Argumentos del evento.</param>
+        </member>
+        <member name="M:MeepleNote.Views.ExplorarPage.OnDisappearing">
+            <summary>
+            Evento que se ejecuta cuando la página Explorar desaparece de la vista.
+            Se usa para eliminar el handler del evento de carga de más ítems y evitar memory leaks.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.LoginPage">
+            <summary>
+            Página que permite al usuario iniciar sesión en la aplicación usando Firebase Authentication.
+            También ofrece opciones para ir a la página de registro y para restablecer la contraseña.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.LoginPage.#ctor">
+            <summary>
+            Constructor que inicializa los componentes de la página.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.LoginPage.OnLoginClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta al pulsar el botón de iniciar sesión.
+            Valida la conexión, intenta autenticar al usuario y sincroniza datos.
+            </summary>
+            <param name="sender">Objeto que envió el evento.</param>
+            <param name="e">Argumentos del evento.</param>
+        </member>
+        <member name="M:MeepleNote.Views.LoginPage.OnIrARegistro(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta al pulsar para ir a la página de registro.
+            Valida la conexión y redirige a la página de registro.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.LoginPage.OnRestablecerContraseñaClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento para restablecer la contraseña.
+            Envía un correo electrónico con instrucciones para restablecer la contraseña si el email es válido.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.NuevaPartidaPublicaPage">
+            <summary>
+            Página para crear una nueva partida pública de un juego.
+            Permite configurar la fecha, hora, ciudad, email de contacto y número de jugadores.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.NuevaPartidaPublicaPage.TodayDate">
+            <summary>
+            Fecha actual (hoy) para uso en bindings.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.NuevaPartidaPublicaPage.Juego">
+            <summary>
+            Juego para el cual se crea la partida.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.NuevaPartidaPublicaPage.#ctor(MeepleNote.Models.Juego)">
+            <summary>
+            Constructor que inicializa la página con el juego pasado como parámetro.
+            Inicializa servicios, configura valores por defecto y obtiene email del organizador.
+            </summary>
+            <param name="juego">Juego para el que se crea la partida pública.</param>
+        </member>
+        <member name="M:MeepleNote.Views.NuevaPartidaPublicaPage.ObtenerEmailOrganizador(System.String)">
+            <summary>
+            Obtiene el email del organizador (usuario) a partir de su ID y lo muestra en el campo correspondiente.
+            </summary>
+            <param name="idUsuarioOrganizador">ID del usuario organizador.</param>
+        </member>
+        <member name="M:MeepleNote.Views.NuevaPartidaPublicaPage.OnPublicarClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta al pulsar el botón "Publicar".
+            Valida los datos introducidos, crea la partida pública en Firebase y guarda una copia localmente.
+            </summary>
+            <param name="sender">El botón que disparó el evento.</param>
+            <param name="e">Argumentos del evento.</param>
+        </member>
+        <member name="T:MeepleNote.Views.PartidasPage">
+            <summary>
+            Página que muestra la lista de partidas jugadas por el usuario.
+            Permite refrescar la lista, navegar a detalles de una partida y acceder a partidas públicas.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.PartidasPage.IsRefreshing">
+            <summary>
+            Indica si la lista está en proceso de actualización para mostrar el indicador de carga.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.PartidasPage.Partidas">
+            <summary>
+            Colección observable con las partidas mostradas en la lista.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.PartidasPage.RefreshCommand">
+            <summary>
+            Comando para refrescar la lista de partidas.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PartidasPage.#ctor">
+            <summary>
+            Constructor que inicializa la página y servicios, y configura el comando de refresco.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PartidasPage.OnAppearing">
+            <summary>
+            Método que se ejecuta al aparecer la página.
+            Carga la lista de partidas.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PartidasPage.CargarPartidas">
+            <summary>
+            Carga las partidas desde la base de datos local, ordenadas por fecha descendente.
+            Convierte los datos a PartidaViewModel para su visualización.
+            </summary>
+            <returns>Tarea asincrónica.</returns>
+        </member>
+        <member name="P:MeepleNote.Views.PartidasPage.PartidaTapCommand">
+            <summary>
+            Comando que se ejecuta al seleccionar una partida en la lista.
+            Navega a la página de detalles de la partida seleccionada.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PartidasPage.OnVerPartidasPublicasClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta al pulsar el botón para ver partidas públicas.
+            Comprueba la conexión a Internet y navega a la página de partidas públicas.
+            </summary>
+            <param name="sender">Botón que dispara el evento.</param>
+            <param name="e">Argumentos del evento.</param>
+        </member>
+        <member name="T:MeepleNote.Views.PartidasPublicasPage">
+            <summary>
+            Página que muestra partidas públicas disponibles y permite marcarlas como completadas.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.PartidasPublicasPage.RefreshCommand">
+            <summary>
+            Comando para refrescar la lista de partidas públicas.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.PartidasPublicasPage.CompletarCommand">
+            <summary>
+            Comando para marcar una partida pública como completada (solo si el usuario es el organizador).
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PartidasPublicasPage.#ctor">
+            <summary>
+            Constructor principal de la página.
+            Inicializa servicios, recupera el token de Firebase y establece el contexto de datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PartidasPublicasPage.OnAppearing">
+            <summary>
+            Evento que se ejecuta cuando la página aparece en pantalla.
+            Carga las partidas públicas si no se está cargando ya.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PartidasPublicasPage.CargarPartidasPublicas">
+            <summary>
+            Carga las partidas públicas desde Firebase (si hay conexión) o desde la base de datos local.
+            También sincroniza los juegos no registrados descargándolos con el servicio de exploración.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.PerfilPage">
+            <summary>
+            Página que muestra y permite editar el perfil del usuario actual.
+            Incluye opciones para actualizar datos, cerrar sesión y restablecer contraseña.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.#ctor">
+            <summary>
+            Constructor de la página de perfil.
+            Inicializa los servicios locales y el contexto para mostrar la fecha actual.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.OnAppearing">
+            <summary>
+            Evento que se ejecuta cuando la página aparece.
+            Carga los datos del usuario desde SQLite.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.CargarPerfilUsuario">
+            <summary>
+            Carga los datos del perfil del usuario actual desde SQLite y los muestra en pantalla.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.OnGuardarClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se dispara al pulsar el botón de guardar.
+            Guarda los cambios del usuario localmente y sincroniza con Firebase.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.InicializarSincronizacionService">
+            <summary>
+            Inicializa el servicio de sincronización si se tiene un token válido.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.OnRestablecerContraseñaClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se dispara al pulsar el botón "Restablecer contraseña".
+            Envía un correo de recuperación de contraseña a través de Firebase.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.OnCerrarSesionClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se dispara al pulsar el botón "Cerrar sesión".
+            Ofrece confirmar, sincroniza si es posible y limpia los datos.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.SincronizarYLimpiar">
+            <summary>
+            Realiza la sincronización final con Firebase antes de cerrar sesión.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.CerrarSesion">
+            <summary>
+            Limpia las preferencias guardadas y redirige a la pantalla de login.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.OnBackButtonPressed">
+            <summary>
+            Reescribe el comportamiento del botón atrás físico en Android.
+            Si no hay más páginas en la pila, vuelve a la página principal.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.OnBackClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se lanza al pulsar el botón atrás de la interfaz.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PerfilPage.VolverAInicio">
+            <summary>
+            Vuelve a la página anterior si existe, o a la página principal si no.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.PrincipalPage">
+            <summary>
+            Página principal de la aplicación MeepleNote. 
+            Muestra información como el nombre del usuario, el juego más jugado, partidas recientes y estadísticas.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PrincipalPage.OnAppearing">
+            <summary>
+            Se ejecuta cada vez que la página aparece en pantalla.
+            Asegura que los datos estén actualizados si el usuario vuelve desde otra vista.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PrincipalPage.LoadData">
+            <summary>
+            Carga y actualiza todos los datos visibles en la pantalla principal:
+            nombre del usuario, juego más jugado, partidas recientes y estadísticas.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PrincipalPage.GetMostPlayedGame(System.String)">
+            <summary>
+            Devuelve el juego que tiene más partidas jugadas por el usuario.
+            </summary>
+            <param name="userId">ID del usuario</param>
+            <returns>Instancia de JuegoConPartidas con información del juego más jugado</returns>
+        </member>
+        <member name="M:MeepleNote.Views.PrincipalPage.OnPerfilClicked(System.Object,System.EventArgs)">
+            <summary>
+            Navega a la página de perfil del usuario.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.PrincipalPage.OnViewCollectionClicked(System.Object,System.EventArgs)">
+            <summary>
+            Navega a la página de la colección de juegos del usuario.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.JuegoConPartidas">
+            <summary>
+            Clase auxiliar que representa un juego junto con la cantidad de partidas jugadas.
+            Utilizada para mostrar el juego más jugado.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.RegisterPage">
+            <summary>
+            Página de registro de usuario en la aplicación MeepleNote.
+            Permite crear una nueva cuenta con nombre, email, contraseña y fecha de nacimiento.
+            También guarda los datos en SQLite y sincroniza con Firebase.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegisterPage.#ctor">
+            <summary>
+            Constructor. Inicializa componentes y configura botón de retroceso.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegisterPage.SetupBackButton">
+            <summary>
+            Configura el botón de retroceso visual y su comportamiento.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegisterPage.OnBackButtonPressed">
+            <summary>
+            Captura el botón de retroceso físico (en Android/Windows) y navega manualmente a la pantalla de login.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegisterPage.OnBackClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento para el botón de retroceso en pantalla.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegisterPage.VolverALogin">
+            <summary>
+            Navega a la pantalla de login.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegisterPage.OnRegisterClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se lanza al pulsar el botón de registro.
+            Valida los campos, registra el usuario en Firebase Auth, guarda en SQLite y sincroniza con Firebase.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegisterPage.RealizarSincronizacionInicial">
+            <summary>
+            Realiza la sincronización inicial de datos del nuevo usuario con Firebase Database.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.RegistrarPartidaPage">
+            <summary>
+            Página para registrar una nueva partida de un juego, permitiendo introducir jugadores y seleccionar un ganador.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.RegistrarPartidaPage.TodayDate">
+            <summary>
+            Fecha actual, usada como valor predeterminado.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.RegistrarPartidaPage.TituloJuego">
+            <summary>
+            Título del juego mostrado en la interfaz.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.RegistrarPartidaPage.Fecha">
+            <summary>
+            Fecha seleccionada para la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.RegistrarPartidaPage.Juego">
+            <summary>
+            Juego asociado a la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.RegistrarPartidaPage.JugadoresParaGanador">
+            <summary>
+            Lista de jugadores mostrados en el Picker de selección de ganador.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegistrarPartidaPage.#ctor(MeepleNote.Models.Juego)">
+            <summary>
+            Constructor principal que recibe el objeto Juego directamente.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegistrarPartidaPage.#ctor(System.Int32,System.String)">
+            <summary>
+            Constructor alternativo cuando se recibe solo el ID y el nombre del juego.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegistrarPartidaPage.CargarImagenJuego">
+            <summary>
+            Intenta obtener la imagen del juego desde la BGG si aún no está disponible localmente.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegistrarPartidaPage.OnAgregarJugadorClicked(System.Object,System.EventArgs)">
+            <summary>
+            Se ejecuta cuando el Entry de un jugador se completa.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegistrarPartidaPage.OnJugadorEntryCompleted(System.Object,System.EventArgs)">
+            <summary>
+            Se ejecuta cuando el Entry de un jugador se completa.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegistrarPartidaPage.OnEliminarJugadorClicked(System.Object,System.EventArgs)">
+            <summary>
+            Elimina un jugador de la lista.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegistrarPartidaPage.ActualizarListaGanadores">
+            <summary>
+            Actualiza el listado de jugadores disponibles para seleccionar como ganador.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.RegistrarPartidaPage.OnGuardarPartidaClicked(System.Object,System.EventArgs)">
+            <summary>
+            Guarda la partida en la base de datos local.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.JugadorTemp">
+            <summary>
+            Clase temporal para representar un jugador antes de guardar la partida.
+            </summary>
+        </member>
+        <member name="P:MeepleNote.Views.JugadorTemp.Nombre">
+            <summary>
+            Nombre del jugador.
+            </summary>
+        </member>
+        <member name="T:MeepleNote.Views.UtilidadesPage">
+            <summary>
+            Página de utilidades que permite acceder a herramientas adicionales como los dados y el contador de vida.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.UtilidadesPage.#ctor">
+            <summary>
+            Constructor de la página UtilidadesPage.
+            Inicializa los componentes visuales definidos en XAML.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.UtilidadesPage.OnDadosClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta al pulsar el botón para abrir la utilidad de dados.
+            Previene navegación duplicada y controla errores en tiempo de ejecución.
+            </summary>
+        </member>
+        <member name="M:MeepleNote.Views.UtilidadesPage.OnContadorVidaClicked(System.Object,System.EventArgs)">
+            <summary>
+            Evento que se ejecuta al pulsar el botón para abrir la utilidad del contador de vida.
+            Similar a OnDadosClicked, controla la navegación y manejo de errores.
+            </summary>
+        </member>
+        <member name="T:ExplorarService">
+            <summary>
+            Servicio para interactuar con la API de BoardGameGeek (BGG).
+            Maneja búsquedas, obtención de detalles y sugerencias de juegos.
+            </summary>
+        </member>
+        <member name="M:ExplorarService.#ctor">
+            <summary>
+            Configura el cliente HTTP con:
+            - BaseAddress: API oficial de BGG (XMLAPI2)
+            - Timeout: 30 segundos máximo por petición
+            </summary>
+        </member>
+        <member name="M:ExplorarService.BuscarJuegosAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            Busca juegos por nombre con paginación.
+            </summary>
+            <param name="query">Término de búsqueda</param>
+            <param name="start">Índice de inicio (para paginación)</param>
+            <param name="limit">Máximo de resultados (default: 10)</param>
+            <returns>Lista de juegos completos con detalles</returns>
+        </member>
+        <member name="M:ExplorarService.ObtenerDetallesJuegoAsync(System.Int32)">
+            <summary>
+            Obtiene detalles completos de un juego específico.
+            </summary>
+            <param name="idJuego">ID de BGG (ej: 1234 para Catan)</param>
+            <returns>Objeto Juego poblado o null si falla</returns>
+        </member>
+        <member name="M:ExplorarService.BuscarSugerenciasAsync(System.String)">
+            <summary>
+            Búsqueda rápida (sin detalles) para autocompletado (solo ID y título).
+            </summary>
+        </member>
     </members>
 </doc>

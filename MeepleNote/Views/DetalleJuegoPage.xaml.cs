@@ -4,15 +4,35 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace MeepleNote.Views {
+    /// <summary>
+    /// Página que muestra los detalles completos de un juego seleccionado.
+    /// Permite puntuar, registrar partidas, ver partidas recientes y crear partidas públicas.
+    /// </summary>
     public partial class DetalleJuegoPage : ContentPage {
+        // Servicio de base de datos local SQLite
         private readonly SQLiteService _dbService;
+
+        // Servicio para obtener detalles del juego desde la API
         private readonly ExplorarService _explorarService;
+
+        // Juego que se está visualizando en esta página
         private readonly Juego _juego;
+
+        // Bandera que indica si el juego ya está en la colección local
         private bool _juegoEnColeccion;
+
+        // Bandera para evitar múltiples navegaciones simultáneas
         private bool _isNavigating = false;
 
+        /// <summary>
+        /// Colección observable de partidas recientes para mostrar en la interfaz.
+        /// </summary>
         public ObservableCollection<PartidaViewModel> Partidas { get; } = new ObservableCollection<PartidaViewModel>();
 
+        /// <summary>
+        /// Constructor: Inicializa componentes y servicios, y carga datos del juego.
+        /// </summary>
+        /// <param name="juego">Instancia del juego seleccionado</param>
         public DetalleJuegoPage(Juego juego) {
             InitializeComponent();
             BindingContext = this;
@@ -27,30 +47,40 @@ namespace MeepleNote.Views {
             _juego = juego ?? throw new ArgumentNullException(nameof(juego));
 
             try {
-                ComprobarJuegoEnColeccion();
-                CargarDatosIniciales();
-                CargarDetallesCompletos();
-                //CargarPartidasRecientes();
+                ComprobarJuegoEnColeccion(); // Verifica si el juego está guardado localmente
+                CargarDatosIniciales();      // Carga datos básicos del juego
+                CargarDetallesCompletos();   // Obtiene descripción completa desde el servicio
             }
             catch (Exception ex) {
                 Debug.WriteLine($"Error inicializando página: {ex.Message}");
             }
         }
 
+        /// <summary>
+        /// Evento que se ejecuta cada vez que la página aparece en pantalla.
+        /// Carga las partidas recientes asociadas al juego.
+        /// </summary>
         protected override async void OnAppearing() {
             base.OnAppearing();
             await CargarPartidasRecientes();
         }
 
+        /// <summary>
+        /// Verifica si el juego ya existe en la colección del usuario.
+        /// </summary>
         private async void ComprobarJuegoEnColeccion() {
             _juegoEnColeccion = await _dbService.JuegoExisteEnColeccionAsync(_juego.Id);
         }
 
+        /// <summary>
+        /// Carga los datos básicos visibles del juego (sin descripción completa aún).
+        /// </summary>
         private void CargarDatosIniciales() {
             ImagenPortada.Source = _juego.FotoPortada;
             Titulo.Text = _juego.Titulo;
             Puntuacion.Text = _juego.PuntuacionFormateada;
 
+            // Muestra puntuación personal en el picker (si existe)
             if (_juego.PuntuacionPersonal >= 1 && _juego.PuntuacionPersonal <= 5) {
                 PuntuacionPicker.SelectedIndex = (int)_juego.PuntuacionPersonal - 1;
             }
@@ -62,6 +92,10 @@ namespace MeepleNote.Views {
             Descripcion.Text = "Cargando descripción...";
         }
 
+        /// <summary>
+        /// Obtiene información detallada del juego desde el servicio externo.
+        /// Actualiza campos como descripción y número de jugadores.
+        /// </summary>
         private async void CargarDetallesCompletos() {
             var juegoCompleto = await _explorarService.ObtenerDetallesJuegoAsync(_juego.IdJuego);
             if (juegoCompleto != null) {
@@ -70,6 +104,7 @@ namespace MeepleNote.Views {
                     Jugadores.Text = $"👥 {juegoCompleto.RangoJugadores} jugadores";
                     Descripcion.Text = juegoCompleto.Descripcion;
 
+                    // Actualiza el modelo local con los nuevos datos
                     _juego.Descripcion = juegoCompleto.Descripcion;
                     _juego.MinJugadores = juegoCompleto.MinJugadores;
                     _juego.MaxJugadores = juegoCompleto.MaxJugadores;
@@ -78,9 +113,13 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Carga las partidas recientes asociadas a este juego desde la base de datos.
+        /// Solo se muestran las 5 más recientes.
+        /// </summary>
         private async Task CargarPartidasRecientes() {
             try {
-                Partidas.Clear();
+                Partidas.Clear(); // Limpia la colección antes de cargar nuevas partidas
                 var partidas = await _dbService.GetPartidasByJuegoAsync(_juego.IdJuego);
 
                 if (partidas != null && partidas.Any()) {
@@ -100,6 +139,10 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Evento que se lanza cuando el usuario cambia la puntuación personal del juego.
+        /// Guarda o actualiza la puntuación en la base de datos.
+        /// </summary>
         private async void OnPuntuacionChanged(object sender, EventArgs e) {
             if (PuntuacionPicker.SelectedIndex >= 0) {
                 bool estabaEnColeccion = _juegoEnColeccion;
@@ -116,6 +159,10 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Evento al pulsar el botón de "Registrar Partida".
+        /// Navega a la página de registro y recarga la lista de partidas recientes.
+        /// </summary>
         private async void OnRegistrarPartidaClicked(object sender, EventArgs e) {
             if (_isNavigating) return;
 
@@ -124,7 +171,7 @@ namespace MeepleNote.Views {
                 if (sender is Button button) button.IsEnabled = false;
 
                 await Navigation.PushAsync(new RegistrarPartidaPage(_juego));
-                await Task.Delay(500); // Pequeña espera antes de recargar
+                await Task.Delay(500); // Espera para recargar la lista tras volver
                 await CargarPartidasRecientes();
             }
             catch (Exception ex) {
@@ -137,6 +184,10 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Comando que se ejecuta al pulsar una partida reciente.
+        /// Muestra los detalles completos de esa partida.
+        /// </summary>
         public Command<PartidaViewModel> PartidaTapCommand => new Command<PartidaViewModel>(async (partida) => {
             if (_isNavigating || partida == null) return;
 
@@ -160,9 +211,14 @@ namespace MeepleNote.Views {
             }
         });
 
+        /// <summary>
+        /// Evento al pulsar "Crear partida pública".
+        /// Abre la pantalla para crear una partida accesible desde Internet.
+        /// </summary>
         private async void OnCrearPartidaPublicaClicked(object sender, EventArgs e) {
             if (_isNavigating) return;
 
+            // Verifica conexión a Internet antes de continuar
             if (!NetworkUtils.TieneConexionInternet()) {
                 await DisplayAlert("Sin conexión", "Necesitas conexión a Internet para publicar una partida.", "OK");
                 return;

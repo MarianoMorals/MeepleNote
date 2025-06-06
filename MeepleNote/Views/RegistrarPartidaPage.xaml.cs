@@ -5,6 +5,10 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace MeepleNote.Views {
+
+    /// <summary>
+    /// Página para registrar una nueva partida de un juego, permitiendo introducir jugadores y seleccionar un ganador.
+    /// </summary>
     public partial class RegistrarPartidaPage : ContentPage, INotifyPropertyChanged {
         private readonly SQLiteService _dbService;
         private readonly ExplorarService _explorarService;
@@ -12,11 +16,29 @@ namespace MeepleNote.Views {
         private ObservableCollection<JugadorTemp> _jugadores;
         private ObservableCollection<JugadorTemp> _jugadoresParaGanador;
 
+        /// <summary>
+        /// Fecha actual, usada como valor predeterminado.
+        /// </summary>
         public DateTime TodayDate => DateTime.Today;
+
+        /// <summary>
+        /// Título del juego mostrado en la interfaz.
+        /// </summary>
         public string TituloJuego => _juego?.Titulo ?? "Juego no registrado";
+
+        /// <summary>
+        /// Fecha seleccionada para la partida.
+        /// </summary>
         public DateTime Fecha { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// Juego asociado a la partida.
+        /// </summary>
         public Juego Juego => _juego;
 
+        /// <summary>
+        /// Lista de jugadores mostrados en el Picker de selección de ganador.
+        /// </summary>
         public ObservableCollection<JugadorTemp> JugadoresParaGanador {
             get => _jugadoresParaGanador;
             set {
@@ -25,6 +47,9 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Constructor principal que recibe el objeto Juego directamente.
+        /// </summary>
         public RegistrarPartidaPage(Juego juego) {
             InitializeComponent();
             _dbService = new SQLiteService();
@@ -38,6 +63,9 @@ namespace MeepleNote.Views {
 
         }
 
+        /// <summary>
+        /// Constructor alternativo cuando se recibe solo el ID y el nombre del juego.
+        /// </summary>
         public RegistrarPartidaPage(int idJuego, string nombreJuego) : this(new Juego {
             IdJuego = idJuego,
             Titulo = nombreJuego
@@ -46,6 +74,9 @@ namespace MeepleNote.Views {
             _ = CargarImagenJuego();
         }
 
+        /// <summary>
+        /// Intenta obtener la imagen del juego desde la BGG si aún no está disponible localmente.
+        /// </summary>
         private async Task CargarImagenJuego() {
             if (_juego.IdJuego > 0 && string.IsNullOrEmpty(_juego.FotoPortada)) {
                 var juegoCompleto = await _explorarService.ObtenerDetallesJuegoAsync(_juego.IdJuego);
@@ -56,17 +87,25 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Se ejecuta cuando el Entry de un jugador se completa.
+        /// </summary>
         private void OnAgregarJugadorClicked(object sender, EventArgs e) {
             _jugadores.Add(new JugadorTemp());
             JugadoresCollection.ItemsSource = _jugadores;
             ActualizarListaGanadores();
         }
 
-
+        /// <summary>
+        /// Se ejecuta cuando el Entry de un jugador se completa.
+        /// </summary>
         private void OnJugadorEntryCompleted(object sender, EventArgs e) {
             ActualizarListaGanadores();
         }
 
+        /// <summary>
+        /// Elimina un jugador de la lista.
+        /// </summary>
         private void OnEliminarJugadorClicked(object sender, EventArgs e) {
             if (sender is Button button && button.BindingContext is JugadorTemp jugador) {
                 _jugadores.Remove(jugador);
@@ -74,6 +113,9 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Actualiza el listado de jugadores disponibles para seleccionar como ganador.
+        /// </summary>
         private void ActualizarListaGanadores() {
             JugadoresParaGanador.Clear();
             foreach (var jugador in _jugadores.Where(j => !string.IsNullOrWhiteSpace(j.Nombre))) {
@@ -86,6 +128,9 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Guarda la partida en la base de datos local.
+        /// </summary>
         private async void OnGuardarPartidaClicked(object sender, EventArgs e) {
             if (GanadorPicker.SelectedItem == null) {
                 await DisplayAlert("Error", "Debes seleccionar un ganador", "OK");
@@ -139,8 +184,16 @@ namespace MeepleNote.Views {
         }
     }
 
+    /// <summary>
+    /// Clase temporal para representar un jugador antes de guardar la partida.
+    /// </summary>
     public class JugadorTemp : INotifyPropertyChanged {
+
         private string _nombre;
+
+        /// <summary>
+        /// Nombre del jugador.
+        /// </summary>
         public string Nombre {
             get => _nombre;
             set {

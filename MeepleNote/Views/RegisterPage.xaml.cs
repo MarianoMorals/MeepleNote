@@ -7,12 +7,21 @@ using System.Threading.Tasks;
 
 namespace MeepleNote.Views;
 
+/// <summary>
+/// Página de registro de usuario en la aplicación MeepleNote.
+/// Permite crear una nueva cuenta con nombre, email, contraseña y fecha de nacimiento.
+/// También guarda los datos en SQLite y sincroniza con Firebase.
+/// </summary>
 public partial class RegisterPage : ContentPage {
-    // Usa la misma API key que en LoginPage
+    // Usa la misma API key que en LoginPage (en proxima actualizacion se guardara en parametros de la aplicacion)
     private const string ApiKey = "AIzaSyCmcqsaPemAyArjJBBiV7nFm2TeXLFp9cI";
     private readonly SQLiteService _sqliteService;
     private string usuarioID;
     private string token;
+
+    /// <summary>
+    /// Constructor. Inicializa componentes y configura botón de retroceso.
+    /// </summary>
     public RegisterPage() {
         InitializeComponent();
         _sqliteService = new SQLiteService();
@@ -20,6 +29,10 @@ public partial class RegisterPage : ContentPage {
         // Configurar el botón de retroceso
         SetupBackButton();
     }
+
+    /// <summary>
+    /// Configura el botón de retroceso visual y su comportamiento.
+    /// </summary>
     private void SetupBackButton() {
         // Para Android e iOS
         NavigationPage.SetHasBackButton(this, true);
@@ -30,6 +43,9 @@ public partial class RegisterPage : ContentPage {
         }
     }
 
+    /// <summary>
+    /// Captura el botón de retroceso físico (en Android/Windows) y navega manualmente a la pantalla de login.
+    /// </summary>
     protected override bool OnBackButtonPressed() {
         Dispatcher.Dispatch(async () => {
             await VolverALogin();
@@ -37,10 +53,16 @@ public partial class RegisterPage : ContentPage {
         return true; // Indica que hemos manejado el evento
     }
 
+    /// <summary>
+    /// Evento para el botón de retroceso en pantalla.
+    /// </summary>
     private async void OnBackClicked(object sender, EventArgs e) {
         await VolverALogin();
     }
 
+    /// <summary>
+    /// Navega a la pantalla de login.
+    /// </summary>
     private async Task VolverALogin() {
         if (Navigation.NavigationStack.Count > 1) {
             await Navigation.PopAsync();
@@ -50,6 +72,10 @@ public partial class RegisterPage : ContentPage {
         }
     }
 
+    /// <summary>
+    /// Evento que se lanza al pulsar el botón de registro.
+    /// Valida los campos, registra el usuario en Firebase Auth, guarda en SQLite y sincroniza con Firebase.
+    /// </summary>
     private async void OnRegisterClicked(object sender, EventArgs e) {
 
         if (!NetworkUtils.TieneConexionInternet()) {
@@ -121,6 +147,9 @@ public partial class RegisterPage : ContentPage {
         }
     }
 
+    /// <summary>
+    /// Realiza la sincronización inicial de datos del nuevo usuario con Firebase Database.
+    /// </summary>
     private async Task RealizarSincronizacionInicial() {
         try {
             if (string.IsNullOrEmpty(usuarioID)) return;
@@ -135,7 +164,6 @@ public partial class RegisterPage : ContentPage {
         }
         catch (Exception ex) {
             Console.WriteLine($"Error en sincronización: {ex.Message}");
-            // Aquí podrías implementar un sistema de reintentos o notificación de error
         }
     }
 }

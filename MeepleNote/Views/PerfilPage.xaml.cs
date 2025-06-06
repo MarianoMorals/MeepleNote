@@ -7,6 +7,11 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace MeepleNote.Views {
+
+    /// <summary>
+    /// Página que muestra y permite editar el perfil del usuario actual.
+    /// Incluye opciones para actualizar datos, cerrar sesión y restablecer contraseña.
+    /// </summary>
     public partial class PerfilPage : ContentPage {
         private SincronizacionService _sincronizacionService;
         private readonly SQLiteService _sqliteDb;
@@ -14,6 +19,10 @@ namespace MeepleNote.Views {
         private Usuario _usuarioActual;
         private bool _datosModificados = false;
 
+        /// <summary>
+        /// Constructor de la página de perfil.
+        /// Inicializa los servicios locales y el contexto para mostrar la fecha actual.
+        /// </summary>
         public PerfilPage() {
             InitializeComponent();
             _sqliteDb = new SQLiteService();
@@ -25,12 +34,19 @@ namespace MeepleNote.Views {
 
         }
 
+        /// <summary>
+        /// Evento que se ejecuta cuando la página aparece.
+        /// Carga los datos del usuario desde SQLite.
+        /// </summary>
         protected override async void OnAppearing() {
             base.OnAppearing();
             await CargarPerfilUsuario();
 
         }
 
+        /// <summary>
+        /// Carga los datos del perfil del usuario actual desde SQLite y los muestra en pantalla.
+        /// </summary>
         private async Task CargarPerfilUsuario() {
             var firebaseUsuarioId = Preferences.Get("UsuarioId", null);
             if (!string.IsNullOrEmpty(firebaseUsuarioId)) {
@@ -43,7 +59,10 @@ namespace MeepleNote.Views {
             }
         }
 
-        
+        /// <summary>
+        /// Evento que se dispara al pulsar el botón de guardar.
+        /// Guarda los cambios del usuario localmente y sincroniza con Firebase.
+        /// </summary>
         private async void OnGuardarClicked(object sender, EventArgs e) {
             if (_usuarioActual == null)
                 return;
@@ -69,6 +88,9 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Inicializa el servicio de sincronización si se tiene un token válido.
+        /// </summary>
         private async Task InicializarSincronizacionService() {
             string authToken = Preferences.Get("FirebaseToken", null);
             if (!string.IsNullOrEmpty(authToken)) {
@@ -77,6 +99,10 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Evento que se dispara al pulsar el botón "Restablecer contraseña".
+        /// Envía un correo de recuperación de contraseña a través de Firebase.
+        /// </summary>
         private async void OnRestablecerContraseñaClicked(object sender, EventArgs e) {
             try {
 
@@ -104,6 +130,10 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Evento que se dispara al pulsar el botón "Cerrar sesión".
+        /// Ofrece confirmar, sincroniza si es posible y limpia los datos.
+        /// </summary>
         private async void OnCerrarSesionClicked(object sender, EventArgs e) {
             bool confirmar = await DisplayAlert("Cerrar sesión",
                 "¿Estás seguro de que quieres cerrar la sesión?",
@@ -132,6 +162,10 @@ namespace MeepleNote.Views {
                 await DisplayAlert("Error", $"Error al cerrar sesión: {ex.Message}", "OK");
             }
         }
+
+        /// <summary>
+        /// Realiza la sincronización final con Firebase antes de cerrar sesión.
+        /// </summary>
         private async Task SincronizarYLimpiar() {
             try {
                 var token = Preferences.Get("FirebaseToken", null);
@@ -146,11 +180,19 @@ namespace MeepleNote.Views {
                 Debug.WriteLine($"Error al sincronizar: {ex.Message}");
             }
         }
+
+        /// <summary>
+        /// Limpia las preferencias guardadas y redirige a la pantalla de login.
+        /// </summary>
         private async Task CerrarSesion() {
             Preferences.Clear();
             await Shell.Current.GoToAsync($"//LoginPage");
         }
 
+        /// <summary>
+        /// Reescribe el comportamiento del botón atrás físico en Android.
+        /// Si no hay más páginas en la pila, vuelve a la página principal.
+        /// </summary>
         protected override bool OnBackButtonPressed() {
             Dispatcher.Dispatch(async () => {
                 await VolverAInicio();
@@ -158,10 +200,16 @@ namespace MeepleNote.Views {
             return true; // Indica que hemos manejado el evento
         }
 
+        /// <summary>
+        /// Evento que se lanza al pulsar el botón atrás de la interfaz.
+        /// </summary>
         private async void OnBackClicked(object sender, EventArgs e) {
             await VolverAInicio();
         }
 
+        /// <summary>
+        /// Vuelve a la página anterior si existe, o a la página principal si no.
+        /// </summary>
         private async Task VolverAInicio() {
             if (Navigation.NavigationStack.Count > 1) {
                 await Navigation.PopAsync();

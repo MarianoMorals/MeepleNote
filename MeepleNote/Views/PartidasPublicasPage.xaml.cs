@@ -6,6 +6,9 @@ using System.ComponentModel;
 using System.Windows.Input;
 
 namespace MeepleNote.Views {
+    /// <summary>
+    /// Página que muestra partidas públicas disponibles y permite marcarlas como completadas.
+    /// </summary>
     public partial class PartidasPublicasPage : ContentPage, INotifyPropertyChanged {
         private readonly SQLiteService _dbService;
         private FirebaseDatabaseService _firebaseService;
@@ -14,6 +17,7 @@ namespace MeepleNote.Views {
         private ObservableCollection<PartidaPublicaViewModel> _partidas;
         private bool _isLoading = false;
 
+        // Indica si la vista está siendo actualizada (usado para animaciones de "pull-to-refresh")
         private bool _isRefreshing;
         public bool IsRefreshing {
             get => _isRefreshing;
@@ -25,11 +29,17 @@ namespace MeepleNote.Views {
             }
         }
 
+        /// <summary>
+        /// Comando para refrescar la lista de partidas públicas.
+        /// </summary>
         public ICommand RefreshCommand => new Command(async () => {
             if (_isLoading) return;
             await CargarPartidasPublicas();
         });
 
+        /// <summary>
+        /// Comando para marcar una partida pública como completada (solo si el usuario es el organizador).
+        /// </summary>
         public ICommand CompletarCommand => new Command<PartidaPublicaViewModel>(async (partida) => {
 
             if (!NetworkUtils.TieneConexionInternet()) {
@@ -40,31 +50,29 @@ namespace MeepleNote.Views {
                 return;
             }
 
-
+            // Confirmar acción del usuario
             bool confirmar = await DisplayAlert("Confirmar",
                 "¿Marcar esta partida como completada?", "Sí", "No");
 
             if (confirmar) {
                 try {
-                    // 1. Primero actualizar en Firebase
+                    // Paso 1: Actualizar en Firebase
                     if (_firebaseService != null) {
-                        // Obtener la partida completa
                         var partidaCompleta = (await _dbService.GetPartidasPublicasAsync())
-                            .FirstOrDefault(p => p.IdFirebase.Equals( partida.Id));
+                            .FirstOrDefault(p => p.IdFirebase.Equals(partida.Id));
 
                         if (partidaCompleta != null) {
                             partidaCompleta.Completada = true;
                             await _firebaseService.ActualizarPartidaPublicaEnFirebase(partidaCompleta);
 
-                            // 2. Luego actualizar localmente desde Firebase para garantizar consistencia
+                            // Paso 2: Sincronizar datos locales con Firebase
                             await _dbService.ReplacePartidasPublicasAsync(
                                 await _firebaseService.DescargarPartidasPublicas());
                         }
                     }
 
-                    // 3. Recargar la lista (que ahora vendrá de Firebase)
+                    // Paso 3: Recargar la lista actualizada
                     await CargarPartidasPublicas();
-
                     await DisplayAlert("Éxito", "Partida marcada como completada", "OK");
                 }
                 catch (Exception ex) {
@@ -73,6 +81,10 @@ namespace MeepleNote.Views {
             }
         });
 
+        /// <summary>
+        /// Constructor principal de la página.
+        /// Inicializa servicios, recupera el token de Firebase y establece el contexto de datos.
+        /// </summary>
         public PartidasPublicasPage() {
             InitializeComponent();
 
@@ -80,19 +92,28 @@ namespace MeepleNote.Views {
             if (!string.IsNullOrEmpty(authToken)) {
                 _firebaseService = new FirebaseDatabaseService(authToken);
             }
-            _explorarService = new ExplorarService();
 
+            _explorarService = new ExplorarService();
             _dbService = new SQLiteService();
             _partidas = new ObservableCollection<PartidaPublicaViewModel>();
+
             BindingContext = this;
         }
 
+        /// <summary>
+        /// Evento que se ejecuta cuando la página aparece en pantalla.
+        /// Carga las partidas públicas si no se está cargando ya.
+        /// </summary>
         protected override async void OnAppearing() {
             base.OnAppearing();
             if (!_isLoading)
                 await CargarPartidasPublicas();
         }
 
+        /// <summary>
+        /// Carga las partidas públicas desde Firebase (si hay conexión) o desde la base de datos local.
+        /// También sincroniza los juegos no registrados descargándolos con el servicio de exploración.
+        /// </summary>
         private async Task CargarPartidasPublicas() {
             if (_isLoading) return;
 
@@ -101,10 +122,9 @@ namespace MeepleNote.Views {
 
             try {
                 _partidas.Clear();
-
-                // 1. Intentar cargar desde Firebase primero
                 List<PartidaPublica> partidasPublicas = new();
 
+                // 1. Cargar desde Firebase
                 try {
                     if (_firebaseService != null) {
                         partidasPublicas = await _firebaseService.DescargarPartidasPublicas();
@@ -113,20 +133,23 @@ namespace MeepleNote.Views {
                 }
                 catch (Exception ex) {
                     Console.WriteLine($"Error Firebase: {ex.Message}");
-                    // Continuar con SQLite si falla Firebase
+                    // Continuar con base local si falla Firebase
                 }
 
-                // 2. Obtener datos locales como respaldo
+                // 2. Cargar desde SQLite (local)
                 var partidasLocales = await _dbService.GetPartidasPublicasAsync();
+
+                // Filtrar partidas no completadas y sin duplicados
                 var partidasUnicas = partidasLocales
                     .Where(p => !p.Completada)
                     .DistinctBy(p => p.IdFirebase)
                     .ToList();
 
-                // 3. Cargar datos en la UI
+                // 3. Construir la colección de partidas a mostrar
                 foreach (var partida in partidasUnicas) {
                     var juego = await _dbService.GetJuegoByIdAsync(partida.IdJuego);
 
+                    // Si no está en local, obtenerlo desde la API y guardarlo
                     if (juego == null) {
                         juego = await _explorarService.ObtenerDetallesJuegoAsync(partida.IdJuego);
                         if (juego != null) {
@@ -153,9 +176,8 @@ namespace MeepleNote.Views {
                 await DisplayAlert("Error", "No se pudieron cargar las partidas", "OK");
             }
             finally {
-                // Garantizar que siempre se desactive el refresco
-                Device.BeginInvokeOnMainThread(() =>
-                {
+                // Refrescar la vista de lista y liberar el bloqueo de carga
+                Device.BeginInvokeOnMainThread(() => {
                     PartidasPublicasList.ItemsSource = null;
                     PartidasPublicasList.ItemsSource = _partidas;
                     IsRefreshing = false;

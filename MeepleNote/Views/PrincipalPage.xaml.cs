@@ -3,6 +3,10 @@ using MeepleNote.Services;
 
 namespace MeepleNote.Views;
 
+/// <summary>
+/// Página principal de la aplicación MeepleNote. 
+/// Muestra información como el nombre del usuario, el juego más jugado, partidas recientes y estadísticas.
+/// </summary>
 public partial class PrincipalPage : ContentPage {
     private readonly SQLiteService _dbService = new SQLiteService();
 
@@ -11,11 +15,19 @@ public partial class PrincipalPage : ContentPage {
         LoadData();
     }
 
+    /// <summary>
+    /// Se ejecuta cada vez que la página aparece en pantalla.
+    /// Asegura que los datos estén actualizados si el usuario vuelve desde otra vista.
+    /// </summary>
     protected override void OnAppearing() {
         base.OnAppearing();
         LoadData();
     }
 
+    /// <summary>
+    /// Carga y actualiza todos los datos visibles en la pantalla principal:
+    /// nombre del usuario, juego más jugado, partidas recientes y estadísticas.
+    /// </summary>
     private async void LoadData() {
         var userId = Preferences.Get("UsuarioId", "0");
 
@@ -64,6 +76,12 @@ public partial class PrincipalPage : ContentPage {
         TotalMatchesLabel.Text = recentGames.Count.ToString();
     }
 
+
+    /// <summary>
+    /// Devuelve el juego que tiene más partidas jugadas por el usuario.
+    /// </summary>
+    /// <param name="userId">ID del usuario</param>
+    /// <returns>Instancia de JuegoConPartidas con información del juego más jugado</returns>
     private async Task<JuegoConPartidas> GetMostPlayedGame(string userId) {
         var partidas = await _dbService.GetPartidasAsync(userId);
 
@@ -93,16 +111,25 @@ public partial class PrincipalPage : ContentPage {
         return null;
     }
 
+    /// <summary>
+    /// Navega a la página de perfil del usuario.
+    /// </summary>
     private async void OnPerfilClicked(object sender, EventArgs e) {
         await Shell.Current.GoToAsync("//PerfilPage");
     }
 
+    /// <summary>
+    /// Navega a la página de la colección de juegos del usuario.
+    /// </summary>
     private async void OnViewCollectionClicked(object sender, EventArgs e) {
         await Shell.Current.GoToAsync("//ColeccionPage");
     }
 }
 
-// Clase auxiliar para el juego más jugado
+/// <summary>
+/// Clase auxiliar que representa un juego junto con la cantidad de partidas jugadas.
+/// Utilizada para mostrar el juego más jugado.
+/// </summary>
 public class JuegoConPartidas {
     public int IdJuego { get; set; }
     public string Titulo { get; set; }

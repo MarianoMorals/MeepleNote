@@ -6,11 +6,19 @@ using System.Diagnostics;
 using System.Windows.Input;
 
 namespace MeepleNote.Views {
+    /// <summary>
+    /// Página que muestra la lista de partidas jugadas por el usuario.
+    /// Permite refrescar la lista, navegar a detalles de una partida y acceder a partidas públicas.
+    /// </summary>
     public partial class PartidasPage : ContentPage, INotifyPropertyChanged {
         private readonly SQLiteService _dbService;
         private ObservableCollection<PartidaViewModel> _partidas = new();
 
         private bool _isRefreshing;
+
+        /// <summary>
+        /// Indica si la lista está en proceso de actualización para mostrar el indicador de carga.
+        /// </summary>
         public bool IsRefreshing {
             get => _isRefreshing;
             set {
@@ -23,6 +31,9 @@ namespace MeepleNote.Views {
 
         private bool _isNavigating = false;
 
+        /// <summary>
+        /// Colección observable con las partidas mostradas en la lista.
+        /// </summary>
         public ObservableCollection<PartidaViewModel> Partidas {
             get => _partidas;
             set {
@@ -32,9 +43,17 @@ namespace MeepleNote.Views {
                 }
             }
         }
+
         private ICommand _refreshCommand;
+
+        /// <summary>
+        /// Comando para refrescar la lista de partidas.
+        /// </summary>
         public ICommand RefreshCommand => _refreshCommand;
 
+        /// <summary>
+        /// Constructor que inicializa la página y servicios, y configura el comando de refresco.
+        /// </summary>
         public PartidasPage() {
             InitializeComponent();
             _dbService = new SQLiteService();
@@ -43,11 +62,20 @@ namespace MeepleNote.Views {
             BindingContext = this;
         }
 
+        /// <summary>
+        /// Método que se ejecuta al aparecer la página.
+        /// Carga la lista de partidas.
+        /// </summary>
         protected override async void OnAppearing() {
             base.OnAppearing();
             await CargarPartidas();
         }
 
+        /// <summary>
+        /// Carga las partidas desde la base de datos local, ordenadas por fecha descendente.
+        /// Convierte los datos a PartidaViewModel para su visualización.
+        /// </summary>
+        /// <returns>Tarea asincrónica.</returns>
         private async Task CargarPartidas() {
             IsRefreshing = true;
 
@@ -83,7 +111,10 @@ namespace MeepleNote.Views {
             }
         }
 
-
+        /// <summary>
+        /// Comando que se ejecuta al seleccionar una partida en la lista.
+        /// Navega a la página de detalles de la partida seleccionada.
+        /// </summary>
         public Command<PartidaViewModel> PartidaTapCommand => new(async (partida) => {
             if (_isNavigating || partida == null)
                 return;
@@ -110,6 +141,12 @@ namespace MeepleNote.Views {
             }
         });
 
+        /// <summary>
+        /// Evento que se ejecuta al pulsar el botón para ver partidas públicas.
+        /// Comprueba la conexión a Internet y navega a la página de partidas públicas.
+        /// </summary>
+        /// <param name="sender">Botón que dispara el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private async void OnVerPartidasPublicasClicked(object sender, EventArgs e) {
             if (_isNavigating)
                 return;
@@ -141,7 +178,5 @@ namespace MeepleNote.Views {
                     btn.IsEnabled = true;
             }
         }
-
     }
-
 }
